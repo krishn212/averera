@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Raw heavy source assets (prevents repository bloat)
+public/assets/logo reveal final/
+public/assets/upscayl_png_upscayl-standard-4x_2x/
+public/assets/upscayl_png_upscayl-standard-4x_3x/
+public/assets/watermark-removed-Electric_vehicle_reveal_video_202608142249_frames/
+public/assets/erasio_Vehicle_silhouette_engineering_a__202608141549_frames/
+public/assets/erasio_Vehicle_silhouette_engineering_a__202608141549_frames_webp/
+public/assets/watermark-removed-Electric_vehicle_reveal_video_202608142249_frames_webp/
+public/assets/upscayl_png_upscayl-standard-4x_2x_webp/
+public/assets/logo to vehicle reveal/
+public/assets/new/
+
+# Source raw asset folders in src
+src/AVERERA-CINEMATIC-ASSETS/
+src/actual assets/
+
+# Scratch conversion tools
+scratch/
+scratch_convert.js

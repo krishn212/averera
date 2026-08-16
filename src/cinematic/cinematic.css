@@ -1,0 +1,678 @@
+/* ============================================================================
+   cinematic.css — Clean Scroll-Controlled Rebuilt Styles
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Outfit:wght@300;400;500;600&family=Oxanium:wght@400;600;700&display=swap');
+
+/* ─── Scroll Container Runway ─────────────────────────────────────────────── */
+
+.cin-root {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Sticky 100vh Viewport Stage ─────────────────────────────────────────── */
+
+.cin-stage {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  will-change: opacity;
+  background: #000000;
+}
+
+/* ─── Deep Navy Atmospheric Gradient Background ───────────────────────────── */
+
+.cin-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 48%,
+    #031c36 0%,
+    #010c18 65%,
+    #00040a 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cin-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 40%;
+  background: radial-gradient(
+    ellipse at bottom center,
+    rgba(10, 28, 55, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ─── Scene 0: Approved Small Logo Top Center ─────────────────────────────── */
+
+.cin-logo {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 200px;
+  will-change: opacity, transform;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cin-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Scene 0: Center Composition Text ────────────────────────────────────── */
+
+.cin-center-block {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+  margin-top: -4vh;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.cin-eyebrow {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.55rem, 0.85vw, 0.70rem);
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: rgba(255, 255, 255, 0.28);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  will-change: opacity;
+}
+
+.cin-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.4rem, 5.8vw, 5.4rem);
+  font-weight: 900;
+  letter-spacing: 0.20em;
+  color: #ffffff;
+  line-height: 1.0;
+  margin: 0 0 24px 0;
+  will-change: opacity, transform, letter-spacing;
+}
+
+.cin-divider {
+  width: 80px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.16);
+  margin: 0 auto 22px auto;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.cin-tagline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.60rem, 1.10vw, 0.90rem);
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.42);
+  text-transform: uppercase;
+  margin: 0;
+  will-change: opacity, transform;
+}
+
+/* ─── Full-Screen Logo Canvas Wrapper ─────────────────────────────────────── */
+
+.cin-logo-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 7;
+  opacity: 0;
+  will-change: opacity;
+  background: transparent;
+}
+
+/* ─── Tagline (reveal under Logo 1) ───────────────────────────────────────── */
+
+.cin-logo-tagline-wrap {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 13;
+  text-align: center;
+  width: 90%;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cin-tagline-reveal-heavy {
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(22px, 2.0vw, 36px);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* ─── Full-Screen Vehicle Frames Canvas Wrapper ────────────────────────────── */
+
+.cin-vehicle-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
+  opacity: 0;
+  will-change: opacity, scale;
+  background: transparent;
+  transform-origin: center center;
+}
+
+.cin-video-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 55%,
+    rgba(0, 2, 10, 0.28) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  will-change: background;
+}
+
+.cin-transition-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 240, 255, 0.20) 0%,
+    rgba(255, 110, 0, 0.08) 45%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* ─── Dramatic Cinematic Text Container ───────────────────────────────────── */
+
+.cin-dramatic-text-container {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 90%;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  will-change: opacity, scale, letter-spacing, transform, filter;
+}
+
+.cin-dramatic-text-box {
+  position: relative;
+  padding: 8px 0;
+  display: inline-block;
+}
+
+/* Bright white text with warm/cyan edge glow */
+.cin-dramatic-text {
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(48px, 4.4vw, 76px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.6), 
+    -2px 0 8px rgba(0, 240, 255, 0.25),
+    2px 0 8px rgba(255, 100, 0, 0.2);
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+/* Volumetric horizontal sweep line across dramatic text */
+.cin-dramatic-text-sweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #00f0ff;
+  box-shadow: 
+    0 0 8px #00f0ff,
+    0 0 16px rgba(0, 240, 255, 0.6);
+  pointer-events: none;
+  opacity: 0;
+  will-change: left, opacity;
+  transform: translateX(-50%);
+}
+
+.cin-dramatic-sub-line-wrap {
+  position: relative;
+  padding: 4px 18px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.55) 20%,
+    rgba(0, 0, 0, 0.55) 80%,
+    transparent
+  );
+  border-radius: 4px;
+}
+
+/* High contrast supporting text, clearly readable */
+.cin-dramatic-sub-line {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(14px, 1.1vw, 20px);
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  color: #ffffff;
+  opacity: 1;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+/* ─── Heavy Control Gateway CTA (ENTER THE REALM) ─────────────────────────── */
+
+.cin-enter-stage {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  opacity: 0;
+  will-change: opacity, transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Custom premium architectural / control panel gateway button design */
+.cin-heavy-gateway-btn {
+  --border-glow-opacity: 0;
+  background: linear-gradient(135deg, rgba(2, 8, 18, 0.96) 0%, rgba(1, 4, 10, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  width: clamp(360px, 28vw, 480px);
+  height: clamp(74px, 6vw, 92px);
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.95),
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.15);
+  transition:
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, box-shadow, border-color;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* LED Dot status accent (Green Brand Accent) */
+.cin-btn-led-dot {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 5px;
+  height: 5px;
+  background: #39ff14;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #39ff14;
+  z-index: 3;
+  opacity: 0.85;
+}
+
+/* Thin blue edge lighting and glow border */
+.cin-btn-glow-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid rgba(0, 240, 255, 0.4);
+  opacity: calc(var(--border-glow-opacity) * 0.7);
+  box-shadow: 
+    inset 0 0 12px rgba(0, 240, 255, 0.15),
+    0 0 20px rgba(0, 240, 255, 0.25);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.25s ease;
+  will-change: opacity;
+}
+
+/* Slow animated inner glint sweep */
+.cin-btn-inner-glint {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 240, 255, 0.06) 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(0, 240, 255, 0.06) 70%,
+    transparent
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: cinBtnSweep 6.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.cin-heavy-btn-text {
+  position: relative;
+  z-index: 4;
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(20px, 1.6vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: #ffffff;
+  text-shadow: 
+    0 0 12px rgba(255, 255, 255, 0.75), 
+    0 0 24px rgba(0, 240, 255, 0.35);
+  text-transform: uppercase;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* Interactive Hover States */
+.cin-heavy-gateway-btn:hover,
+.cin-heavy-gateway-btn:focus-visible {
+  transform: scale(1.025);
+  border-color: rgba(0, 240, 255, 0.95);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.95),
+    0 0 32px rgba(0, 240, 255, 0.65),
+    inset 0 0 18px rgba(0, 240, 255, 0.4);
+}
+
+.cin-heavy-gateway-btn:hover .cin-btn-glow-border {
+  opacity: 1;
+}
+
+.cin-heavy-gateway-btn:hover .cin-heavy-btn-text {
+  color: #ffffff;
+  text-shadow: 
+    0 0 18px #ffffff, 
+    0 0 12px rgba(0, 240, 255, 0.8);
+}
+
+.cin-heavy-gateway-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+  transition: transform 0.08s ease;
+}
+
+/* ─── Skip Intro CTA ──────────────────────────────────────────────────────── */
+
+.cin-skip {
+  position: absolute;
+  top: 32px;
+  right: 28px;
+  z-index: 9100;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.32);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.54rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  padding: 7px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  min-height: 36px;
+}
+
+.cin-skip:hover {
+  color: rgba(255, 255, 255, 0.70);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* ─── App Reveal States & Light Transition ────────────────────────────────── */
+
+.cin-gateway-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 88%, rgba(255, 255, 255, 1) 0%, rgba(2, 17, 36, 0) 0%);
+  will-change: opacity, background;
+}
+
+.app-behind-intro {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  visibility: hidden;
+}
+
+.app-revealing {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Slide down navigation header */
+.app-revealing header,
+.app-revealed header {
+  animation: navRevealIn 1.0s cubic-bezier(0.25, 1, 0.36, 1) forwards;
+}
+
+/* Slide up page contents */
+.app-revealing .home-hero,
+.app-revealing .about-us,
+.app-revealing .sponsor-page,
+.app-revealing .timeline-page,
+.app-revealing .vehicles-container,
+.app-revealed .home-hero,
+.app-revealed .about-us,
+.app-revealed .sponsor-page,
+.app-revealed .timeline-page,
+.app-revealed .vehicles-container {
+  animation: contentRevealIn 1.1s cubic-bezier(0.25, 1, 0.36, 1) forwards;
+}
+
+.app-revealed {
+  opacity: 1;
+}
+
+@keyframes navRevealIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentRevealIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Responsive Styles ───────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .cin-logo-tagline-wrap {
+    bottom: 8%;
+  }
+
+  .cin-tagline-reveal-heavy {
+    font-size: clamp(20px, 2.2vw, 28px);
+  }
+
+  .cin-dramatic-text {
+    font-size: clamp(36px, 4.0vw, 56px);
+  }
+}
+
+@media (max-width: 768px) {
+  .cin-logo {
+    width: 140px;
+    top: 22px;
+  }
+
+  .cin-title {
+    font-size: clamp(1.9rem, 8.5vw, 3.2rem);
+    letter-spacing: 0.14em;
+  }
+
+  .cin-tagline {
+    font-size: 0.58rem;
+    letter-spacing: 0.20em;
+    padding: 0 12px;
+  }
+
+  .cin-logo-tagline-wrap {
+    bottom: 6%;
+  }
+
+  .cin-tagline-reveal-heavy {
+    font-size: clamp(14px, 3.5vw, 20px);
+    letter-spacing: 0.18em;
+    white-space: normal;
+    padding: 0 16px;
+    line-height: 1.4;
+  }
+
+  .cin-dramatic-text {
+    font-size: clamp(30px, 5.0vw, 42px);
+    letter-spacing: 0.18em;
+    line-height: 1.35;
+  }
+
+  .cin-dramatic-sub-line {
+    font-size: clamp(12px, 1.8vw, 16px);
+    letter-spacing: 0.28em;
+  }
+
+  .cin-dramatic-text-container {
+    top: 41%;
+  }
+
+  .cin-heavy-gateway-btn {
+    width: min(88vw, 360px);
+    height: clamp(66px, 12vh, 80px);
+  }
+
+  .cin-heavy-btn-text {
+    font-size: clamp(17px, 4vw, 21px);
+    letter-spacing: 0.26em;
+  }
+
+  .cin-skip {
+    top: 18px;
+    right: 16px;
+    font-size: 0.50rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cin-title {
+    font-size: clamp(1.6rem, 9.5vw, 2.6rem);
+    letter-spacing: 0.10em;
+  }
+
+  .cin-divider {
+    width: 52px;
+  }
+
+  .cin-logo-tagline-wrap {
+    bottom: 5%;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .cin-logo-tagline-wrap {
+    bottom: 4%;
+  }
+
+  .cin-tagline-reveal-heavy {
+    font-size: clamp(12px, 3.0vw, 18px);
+  }
+
+  .cin-dramatic-text-container {
+    top: 36%;
+    gap: 8px;
+  }
+
+  .cin-dramatic-text {
+    font-size: clamp(20px, 4vw, 28px);
+  }
+
+  .cin-heavy-gateway-btn {
+    height: 52px;
+  }
+
+  .cin-heavy-btn-text {
+    font-size: 15px;
+  }
+
+  .cin-title {
+    font-size: clamp(1.4rem, 5vw, 2.4rem);
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .cin-root { display: none; }
+}
