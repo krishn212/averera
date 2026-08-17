@@ -47,30 +47,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
                 Home
               </a>
             </li>
-            <li>
-              <a
-                href="#about"
-                className={activePage === 'about' ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('about');
-                }}
-              >
-                About Us
-              </a>
-            </li>
-            <li>
-              <a
-                href="#vehicles"
-                className={activePage === 'vehicles' ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('vehicles');
-                }}
-              >
-                Vehicles
-              </a>
-            </li>
+
             <li>
               <a
                 href="#timeline"
@@ -85,14 +62,14 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
             </li>
             <li>
               <a
-                href="#sponsors"
-                className={activePage === 'sponsors' ? 'active' : ''}
+                href="#vehicles"
+                className={activePage === 'vehicles' ? 'active' : ''}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick('sponsors');
+                  handleNavClick('vehicles');
                 }}
               >
-                Sponsors
+                Vehicles
               </a>
             </li>
             <li className="mobile-cta-li">
@@ -222,30 +199,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
               Home
             </a>
           </li>
-          <li className="mobile-nav-item">
-            <a
-              href="#about"
-              className={`mobile-nav-link ${activePage === 'about' ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('about');
-              }}
-            >
-              About Us
-            </a>
-          </li>
-          <li className="mobile-nav-item">
-            <a
-              href="#vehicles"
-              className={`mobile-nav-link ${activePage === 'vehicles' ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('vehicles');
-              }}
-            >
-              Vehicles
-            </a>
-          </li>
+
           <li className="mobile-nav-item">
             <a
               href="#timeline"
@@ -260,14 +214,14 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
           </li>
           <li className="mobile-nav-item">
             <a
-              href="#sponsors"
-              className={`mobile-nav-link ${activePage === 'sponsors' ? 'active' : ''}`}
+              href="#vehicles"
+              className={`mobile-nav-link ${activePage === 'vehicles' ? 'active' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick('sponsors');
+                handleNavClick('vehicles');
               }}
             >
-              Sponsors
+              Vehicles
             </a>
           </li>
           <li className="mobile-nav-item" style={{ marginTop: '20px' }}>

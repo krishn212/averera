@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import vehicleImg from '../assets/vehicle.png';
-import shivayImg from '../assets/shivay 2.png';
-import stylishCarImg from '../assets/averera_stylish_car.png';
-
-
+import priyaImg from '../assets/priya_anand.png';
+import marcusImg from '../assets/marcus_webb.png';
+import liImg from '../assets/li_yuen.png';
+import prospectusPdf from '../assets/SWARUP_AVERERA BROCHURE_FINAL14.pdf';
 
 // Sponsor Logos
 import spMain from '../assets/sponsors.avif';
@@ -29,15 +28,11 @@ import {
   initHeroAnimations,
   initStatCounters,
   initScrollReveals,
-  initVehiclesPinning,
   initNavScrollEffect,
   ScrollTrigger
 } from '../utils/animations';
 
 export default function Home({ setActivePage, introDone }) {
-  // Pinned Vehicle Showcase State
-  const [activeVehicleImg, setActiveVehicleImg] = useState(shivayImg);
-  const [activeVehicleName, setActiveVehicleName] = useState('Shivaay Urban Concept');
 
   // --- 1. Typewriter Effect ---
   const [typedText, setTypedText] = useState('');
@@ -230,7 +225,6 @@ export default function Home({ setActivePage, introDone }) {
     const cleanHero = initHeroAnimations(mainRef.current);
     const cleanStats = initStatCounters(mainRef.current);
     const cleanReveals = initScrollReveals(mainRef.current);
-    const cleanVehicles = initVehiclesPinning(mainRef.current);
     const cleanNav = initNavScrollEffect();
 
     // Settle layout then refresh ScrollTrigger
@@ -243,7 +237,6 @@ export default function Home({ setActivePage, introDone }) {
       if (cleanHero) cleanHero();
       if (cleanStats) cleanStats();
       if (cleanReveals) cleanReveals();
-      if (cleanVehicles) cleanVehicles();
       if (cleanNav) cleanNav();
     };
   }, [introDone]);
@@ -270,14 +263,11 @@ export default function Home({ setActivePage, introDone }) {
               <p>We are IIT BHU's premier automotive research team, designing and building ultra-efficient electric and autonomous vehicles to shape green transportation.</p>
               <div className="hero-buttons">
                 <a
-                  href="#vehicles"
+                  href={prospectusPdf}
+                  download="SWARUP_AVERERA_BROCHURE_FINAL14.pdf"
                   className="btn btn-glow"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActivePage('vehicles');
-                  }}
                 >
-                  Our Vehicles
+                  GET THE AVERERA PROSPECTUS <i className="fa-solid fa-download"></i>
                 </a>
                 <a
                   href="#about"
@@ -311,7 +301,7 @@ export default function Home({ setActivePage, introDone }) {
               onMouseLeave={handleMouseLeave}
             >
               <h3>1<sup>st</sup></h3>
-              <p>Shell Eco-Marathon Asia League</p>
+              <p>Shell Eco-Marathon Global League</p>
             </div>
             <div
               className="stat-card"
@@ -332,12 +322,10 @@ export default function Home({ setActivePage, introDone }) {
           </div>
         </section>
 
-
-
         {/* About / Mission Section */}
         <section id="about" className="about-section">
           <div className="section-header">
-            <h2>About Team Averera</h2>
+            <h2>ABOUT TEAM AVERERA</h2>
             <p>Pioneering eco-friendly vehicle technology through engineering excellence.</p>
           </div>
           <div className="about-grid">
@@ -371,82 +359,10 @@ export default function Home({ setActivePage, introDone }) {
           </div>
         </section>
 
-        {/* Pinned Vehicle Showcase */}
-        <section id="vehicles" className="vehicles-section">
-          <div className="section-header">
-            <h2>Our Fleet & Engineering Specs</h2>
-            <p>High-efficiency electric prototypes designed for maximum aerodynamic performance.</p>
-          </div>
-          <div className="pinned-vehicles-container">
-            {/* Pinned / Sticky Vehicle Stage on Left */}
-            <div className="pinned-vehicle-stage">
-              <img src={activeVehicleImg} alt={activeVehicleName} className="pinned-vehicle-img" />
-              <div className="pinned-vehicle-badge">
-                <i className="fa-solid fa-bolt"></i> {activeVehicleName}
-              </div>
-            </div>
-
-            {/* Scrolling Spec Details Column on Right */}
-            <div className="scrolling-specs-column">
-              <div
-                className="spec-detail-card vehicle-card"
-                onMouseEnter={() => {
-                  setActiveVehicleImg(shivayImg);
-                  setActiveVehicleName('Shivaay Urban Concept');
-                }}
-              >
-                <div className="vehicle-tag">Urban Concept Class</div>
-                <h3>Shivaay</h3>
-                <p>Our custom-built urban concept electric car, engineered specifically for stop-and-go efficiency with a high-strength carbon fiber monocoque chassis.</p>
-                <div className="vehicle-stats" style={{ marginTop: '15px' }}>
-                  <span><strong>Chassis:</strong> Carbon Fiber Monocoque</span>
-                  <span><strong>Weight:</strong> 92 kg</span>
-                  <span><strong>Max Speed:</strong> 55 km/h</span>
-                </div>
-              </div>
-
-              <div
-                className="spec-detail-card vehicle-card"
-                onMouseEnter={() => {
-                  setActiveVehicleImg(vehicleImg);
-                  setActiveVehicleName('Alterno v4.0 Prototype');
-                }}
-              >
-                <div className="vehicle-tag">Battery Electric Prototype</div>
-                <h3>Alterno v4.0</h3>
-                <p>An ultra-aerodynamic three-wheeled prototype designed specifically for extreme energy conservation in Shell Eco-Marathon competitions.</p>
-                <div className="vehicle-stats" style={{ marginTop: '15px' }}>
-                  <span><strong>Efficiency:</strong> 250+ km/kWh</span>
-                  <span><strong>Cd Drag:</strong> 0.12</span>
-                  <span><strong>Motor:</strong> Custom BLDC Driver</span>
-                </div>
-              </div>
-
-              <div
-                className="spec-detail-card vehicle-card"
-                onMouseEnter={() => {
-                  setActiveVehicleImg(stylishCarImg);
-                  setActiveVehicleName('Averera Vision Concept');
-                }}
-              >
-                <div className="vehicle-tag">Next-Gen Autonomous Concept</div>
-                <h3>Averera Vision</h3>
-                <p>Integrating LiDAR perception models, predictive power management, and active aerodynamic surfaces for autonomous efficiency racing.</p>
-                <div className="vehicle-stats" style={{ marginTop: '15px' }}>
-                  <span><strong>Perception:</strong> LiDAR + AI Vision</span>
-                  <span><strong>Telemetry:</strong> 4G LTE Live Stream</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
         {/* Tech Stack */}
         <section id="tech" className="tech-section">
           <div className="section-header">
-            <h2>Technological Pillars</h2>
+            <h2>TECHNOLOGICAL PILLARS</h2>
             <p>Integrating hardware, software, and aerodynamics.</p>
           </div>
           <div className="tech-grid">
@@ -456,8 +372,8 @@ export default function Home({ setActivePage, introDone }) {
               onMouseLeave={handleMouseLeave}
             >
               <i className="fa-solid fa-layer-group"></i>
-              <h4>Composite Materials</h4>
-              <p>Custom wet-layup and vacuum infusion of carbon fiber composites to achieve maximum strength-to-weight ratios.</p>
+              <h4>Vehicle Design</h4>
+              <p>Aerodynamics, lightweight structures, efficiency-focused vehicle architecture and mechanical design.</p>
             </div>
             <div
               className="tech-card"
@@ -465,8 +381,8 @@ export default function Home({ setActivePage, introDone }) {
               onMouseLeave={handleMouseLeave}
             >
               <i className="fa-solid fa-car-battery"></i>
-              <h4>Battery Tech</h4>
-              <p>In-house battery management systems (BMS) with optimized cell-balancing and thermodynamic protection systems.</p>
+              <h4>Embedded Systems</h4>
+              <p>Electronics, BMS, control systems, sensors and intelligent embedded hardware.</p>
             </div>
             <div
               className="tech-card"
@@ -474,8 +390,128 @@ export default function Home({ setActivePage, introDone }) {
               onMouseLeave={handleMouseLeave}
             >
               <i className="fa-solid fa-brain"></i>
-              <h4>Autonomous Navigation</h4>
-              <p>Sensor-fusion algorithms (LiDAR, Camera, IMU) paired with deep neural networks for real-time lane tracking and obstacle avoidance.</p>
+              <h4>Autonomous Vehicles</h4>
+              <p>Perception, control, autonomous systems and intelligent mobility.</p>
+            </div>
+            <div
+              className="tech-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <i className="fa-solid fa-bullhorn"></i>
+              <h4>Branding & Outreach</h4>
+              <p>Communication, outreach, sponsorship, brand development and representing AVERERA beyond engineering.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Faculty Mentors Section */}
+        <section id="mentors" className="about-section" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '60px' }}>
+          <div className="section-header">
+            <h2>FACULTY MENTORS</h2>
+            <p>World-class mentorship empowers our innovative minds to push the boundaries of what is possible.</p>
+          </div>
+          <div className="about-grid">
+            <div
+              className="about-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ textAlign: 'center', padding: '35px 25px' }}
+            >
+              <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
+                <img
+                  src={priyaImg}
+                  alt="Dr. Priya Anand"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(0,255,255,0.25)',
+                    boxShadow: '0 0 20px rgba(0,255,255,0.1)'
+                  }}
+                />
+                <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+              </div>
+              <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
+                Mechanical & Aerospace
+              </div>
+              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Priya Anand</h4>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
+                Specializes in structural composites and aerodynamic design optimization.
+              </p>
+              <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
+                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+
+            <div
+              className="about-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ textAlign: 'center', padding: '35px 25px' }}
+            >
+              <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
+                <img
+                  src={marcusImg}
+                  alt="Prof. Marcus Webb"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(16,185,129,0.25)',
+                    boxShadow: '0 0 20px rgba(16,185,129,0.1)'
+                  }}
+                />
+                <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+              </div>
+              <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px', borderColor: 'rgba(16,185,129,0.2)', color: 'var(--accent-green)' }}>
+                Autonomous Systems
+              </div>
+              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Prof. Marcus Webb</h4>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
+                Leads research in sensor fusion algorithms and vehicle autonomy.
+              </p>
+              <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
+                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+
+            <div
+              className="about-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ textAlign: 'center', padding: '35px 25px' }}
+            >
+              <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
+                <img
+                  src={liImg}
+                  alt="Dr. Li Yuen"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(0,255,255,0.25)',
+                    boxShadow: '0 0 20px rgba(0,255,255,0.1)'
+                  }}
+                />
+                <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+              </div>
+              <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
+                Power & Battery systems
+              </div>
+              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Li Yuen</h4>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
+                Focuses on custom BMS safety circuits and electric powertrains.
+              </p>
+              <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
+                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              </div>
             </div>
           </div>
         </section>
@@ -505,6 +541,28 @@ export default function Home({ setActivePage, introDone }) {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Spacious Closing Statement Section */}
+        <section className="closing-section" style={{ padding: '120px 20px', textAlign: 'center', borderTop: '1px solid var(--glass-border)' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '20px', fontFamily: 'Oxanium, sans-serif', fontWeight: 700 }}>
+              ENGINEERING WHAT MOVES TOMORROW.
+            </h2>
+            <p style={{ letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontSize: 'clamp(0.75rem, 1.8vw, 0.95rem)', marginBottom: '40px' }}>
+              TEAM AVERERA • IIT (BHU), VARANASI
+            </p>
+            <a
+              href="#timeline"
+              className="btn btn-glow"
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage('timeline');
+              }}
+            >
+              EXPLORE OUR LEGACY
+            </a>
           </div>
         </section>
 

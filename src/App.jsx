@@ -23,8 +23,6 @@ export default function App({ introDone }) {
 
   // Force scroll restoration to top on page reloads/refreshes
   useEffect(() => {
-    if (!introDone) return;
-
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
@@ -51,7 +49,7 @@ export default function App({ introDone }) {
       window.removeEventListener('unload', resetScroll);
       window.removeEventListener('load', resetScroll);
     };
-  }, [introDone]);
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -60,6 +58,20 @@ export default function App({ introDone }) {
 
   useEffect(() => {
     localStorage.setItem('activePage', activePage);
+    
+    // When navigating to timeline (Legacy), trigger a single-pass window reload
+    if (activePage === 'timeline') {
+      const hasReloaded = sessionStorage.getItem('legacyReloaded');
+      if (!hasReloaded) {
+        sessionStorage.setItem('legacyReloaded', 'true');
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        window.location.reload();
+        return;
+      }
+    } else {
+      sessionStorage.removeItem('legacyReloaded');
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     
     // Let DOM settle and images load, then refresh ScrollTrigger
@@ -89,7 +101,7 @@ export default function App({ introDone }) {
       case 'about':
         return <AboutUs />;
       case 'vehicles':
-        return <Vehicles />;
+        return <Vehicles setActivePage={setActivePage} />;
       case 'timeline':
         return <Timeline />;
       case 'sponsors':

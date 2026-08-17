@@ -1,23 +1,10 @@
-/* ============================================================================
-   cinematic.css — Clean Scroll-Controlled Rebuilt Styles
-   ============================================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Outfit:wght@300;400;500;600&family=Oxanium:wght@400;600;700&display=swap');
 
-/* ─── Scroll Container Runway ─────────────────────────────────────────────── */
-
-.cin-root {
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* ─── Sticky 100vh Viewport Stage ─────────────────────────────────────────── */
-
-.cin-stage {
-  position: sticky;
+/* ─── Fixed 100vh Viewport Stage Overlay ─────────────────────────────────── */
+.cin-stage-fixed {
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -25,314 +12,273 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  will-change: opacity;
+  z-index: 99999;
   background: #000000;
 }
 
-/* ─── Deep Navy Atmospheric Gradient Background ───────────────────────────── */
-
-.cin-bg {
+.cin-bg-black {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at 50% 48%,
-    #031c36 0%,
-    #010c18 65%,
-    #00040a 100%
-  );
+  background: #000000;
   z-index: 0;
   pointer-events: none;
 }
 
-.cin-bg::after {
-  content: '';
+/* ─── Video Layout and Vignette ─────────────────────────────────────────── */
+.cin-video-container {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 40%;
-  background: radial-gradient(
-    ellipse at bottom center,
-    rgba(10, 28, 55, 0.12) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-/* ─── Scene 0: Approved Small Logo Top Center ─────────────────────────────── */
-
-.cin-logo {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  width: 200px;
-  will-change: opacity, transform;
-  pointer-events: none;
-  user-select: none;
-}
-
-.cin-logo img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ─── Scene 0: Center Composition Text ────────────────────────────────────── */
-
-.cin-center-block {
-  position: relative;
-  z-index: 10;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  transition: transform 4.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  text-align: center;
-  margin-top: -4vh;
-  will-change: opacity, transform;
-  pointer-events: none;
-}
-
-.cin-eyebrow {
-  display: block;
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(0.55rem, 0.85vw, 0.70rem);
-  font-weight: 400;
-  letter-spacing: 0.42em;
-  color: rgba(255, 255, 255, 0.28);
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  will-change: opacity;
-}
-
-.cin-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(2.4rem, 5.8vw, 5.4rem);
-  font-weight: 900;
-  letter-spacing: 0.20em;
-  color: #ffffff;
-  line-height: 1.0;
-  margin: 0 0 24px 0;
-  will-change: opacity, transform, letter-spacing;
-}
-
-.cin-divider {
-  width: 80px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.16);
-  margin: 0 auto 22px auto;
-  transform-origin: center;
+  justify-content: center;
   will-change: transform, opacity;
 }
 
-.cin-tagline {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(0.60rem, 1.10vw, 0.90rem);
-  font-weight: 300;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.42);
-  text-transform: uppercase;
-  margin: 0;
-  will-change: opacity, transform;
+.cin-video-container.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* ─── Full-Screen Logo Canvas Wrapper ─────────────────────────────────────── */
-
-.cin-logo-canvas-wrap {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 7;
+.cin-video-container.hidden {
   opacity: 0;
-  will-change: opacity;
-  background: transparent;
-}
-
-/* ─── Tagline (reveal under Logo 1) ───────────────────────────────────────── */
-
-.cin-logo-tagline-wrap {
-  position: absolute;
-  bottom: 9%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 13;
-  text-align: center;
-  width: 90%;
-  opacity: 0;
-  will-change: opacity, transform, filter;
   pointer-events: none;
-  user-select: none;
 }
 
-.cin-tagline-reveal-heavy {
-  font-family: 'Oxanium', sans-serif;
-  font-size: clamp(22px, 2.0vw, 36px);
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
-  text-transform: uppercase;
-  margin: 0;
-  white-space: nowrap;
-  line-height: 1.2;
-}
-
-/* ─── Full-Screen Vehicle Frames Canvas Wrapper ────────────────────────────── */
-
-.cin-vehicle-wrap {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 8;
-  opacity: 0;
-  will-change: opacity, scale;
-  background: transparent;
-  transform-origin: center center;
+.cin-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .cin-video-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 50%,
-    transparent 55%,
-    rgba(0, 2, 10, 0.28) 100%
-  );
+  background: radial-gradient(ellipse at 50% 50%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.60) 100%);
   pointer-events: none;
-  z-index: 2;
+  z-index: 6;
   will-change: background;
+  transition: background 0.8s ease;
 }
 
-.cin-transition-glow {
+/* ─── Redesigned Editorial Spaced Center Tagline ─────────────────────────── */
+.cin-tagline-wrap {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  text-align: center;
+  width: 90%;
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1.5;
+  will-change: opacity, transform, letter-spacing, filter;
+}
+
+/* ─── Climax Overlays (Lower-Left Quadrant) ────────────────────────────── */
+.cin-climax-overlay {
   position: absolute;
   inset: 0;
-  z-index: 9;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(0, 240, 255, 0.20) 0%,
-    rgba(255, 110, 0, 0.08) 45%,
-    transparent 70%
-  );
-  mix-blend-mode: screen;
-  opacity: 0;
-  pointer-events: none;
-  will-change: opacity;
-}
-
-/* ─── Dramatic Cinematic Text Container ───────────────────────────────────── */
-
-.cin-dramatic-text-container {
-  position: absolute;
-  top: 43%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 15;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  width: 90%;
+  justify-content: center;
+  background: transparent;
   pointer-events: none;
-  user-select: none;
-  opacity: 0;
-  will-change: opacity, scale, letter-spacing, transform, filter;
 }
 
-.cin-dramatic-text-box {
+.cin-climax-editorial-block {
+  position: absolute;
+  bottom: 20%;
+  left: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  pointer-events: none;
+}
+
+/* micro-brand group (TEAM AVERERA + Tricolor Underline) */
+.cin-brand-group {
   position: relative;
-  padding: 8px 0;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding-left: 14px;
 }
 
-/* Bright white text with warm/cyan edge glow */
-.cin-dramatic-text {
+.cin-brand-accent-line {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 6px;
+  width: 1.5px;
+  background: linear-gradient(180deg, #00f0ff 0%, rgba(0, 240, 255, 0.1) 100%);
+  transform-origin: top;
+  will-change: transform;
+}
+
+.cin-brand-team {
   font-family: 'Oxanium', sans-serif;
-  font-size: clamp(48px, 4.4vw, 76px);
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.22em;
-  color: #ffffff;
-  text-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.6), 
-    -2px 0 8px rgba(0, 240, 255, 0.25),
-    2px 0 8px rgba(255, 100, 0, 0.2);
-  margin: 0;
+  letter-spacing: 0.45em;
+  color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
-  line-height: 1.15;
+  will-change: opacity, transform, letter-spacing;
 }
 
-/* Volumetric horizontal sweep line across dramatic text */
-.cin-dramatic-text-sweep {
+.cin-brand-name {
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.1;
+  will-change: opacity, transform, letter-spacing, clip-path;
+}
+
+.cin-tricolor-line {
+  display: flex;
+  height: 1.5px;
+  width: 120px;
+  transform-origin: left;
+  margin-top: 6px;
+  will-change: transform;
+}
+
+.cin-tricol-orange {
+  flex: 1;
+  background: #ff9933;
+}
+
+.cin-tricol-white {
+  flex: 1;
+  background: #ffffff;
+}
+
+.cin-tricol-green {
+  flex: 1;
+  background: #138808;
+}
+
+/* statement group */
+.cin-statement-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cin-statement-primary {
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.25;
+  letter-spacing: 0.14em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  will-change: opacity, transform, letter-spacing, filter, clip-path;
+}
+
+.cin-statement-secondary {
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  color: rgba(200, 218, 230, 0.75);
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  will-change: opacity, transform, letter-spacing, filter;
+}
+
+.cin-accent-tomorrow {
+  color: #10b981;
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.45);
+  font-weight: 600;
+}
+
+.cin-statement-sweep {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: #00f0ff;
-  box-shadow: 
-    0 0 8px #00f0ff,
-    0 0 16px rgba(0, 240, 255, 0.6);
+  width: 80px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(16, 185, 129, 0.15) 50%,
+      transparent 100%);
   pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: screen;
   opacity: 0;
   will-change: left, opacity;
-  transform: translateX(-50%);
 }
 
-.cin-dramatic-sub-line-wrap {
-  position: relative;
-  padding: 4px 18px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 0, 0, 0.55) 20%,
-    rgba(0, 0, 0, 0.55) 80%,
-    transparent
-  );
-  border-radius: 4px;
-}
-
-/* High contrast supporting text, clearly readable */
-.cin-dramatic-sub-line {
+.cin-tech-details {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(14px, 1.1vw, 20px);
-  font-weight: 600;
-  letter-spacing: 0.38em;
-  color: #ffffff;
-  opacity: 1;
-  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.35);
   text-transform: uppercase;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+  margin-top: 6px;
+  will-change: opacity;
 }
 
-/* ─── Heavy Control Gateway CTA (ENTER THE REALM) ─────────────────────────── */
-
-.cin-enter-stage {
+/* ─── Expanding Horizontal Center Line (CTA Reveal Transition) ────────── */
+.cin-enter-stage-container {
   position: absolute;
-  bottom: 8%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 20;
-  opacity: 0;
-  will-change: opacity, transform;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  pointer-events: auto;
+  z-index: 20;
+  will-change: opacity;
 }
 
-/* Custom premium architectural / control panel gateway button design */
+.cin-enter-expanding-line {
+  position: absolute;
+  width: 120px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 10;
+  will-change: scale, opacity;
+  pointer-events: none;
+}
+
+/* ─── Control Panel Gateway Button Design (Pill Shape) ─── */
 .cin-heavy-gateway-btn {
-  --border-glow-opacity: 0;
-  background: linear-gradient(135deg, rgba(2, 8, 18, 0.96) 0%, rgba(1, 4, 10, 0.98) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 4px;
-  width: clamp(360px, 28vw, 480px);
-  height: clamp(74px, 6vw, 92px);
+  background: rgba(2, 8, 18, 0.65);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  /* Pill-Shaped border */
+  width: clamp(260px, 20vw, 340px);
+  height: clamp(52px, 4.2vw, 60px);
   cursor: pointer;
   outline: none;
   position: relative;
@@ -340,139 +286,188 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.95),
-    inset 0 0 0 1.5px rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   transition:
-    border-color 0.28s ease,
-    box-shadow 0.28s ease,
-    transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform, box-shadow, border-color;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, box-shadow, border-color, scale;
   -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  /* Animated in via GSAP timeline */
 }
 
-/* LED Dot status accent (Green Brand Accent) */
 .cin-btn-led-dot {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  width: 5px;
-  height: 5px;
-  background: #39ff14;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #10b981;
   border-radius: 50%;
-  box-shadow: 0 0 8px #39ff14;
+  box-shadow: 0 0 6px #10b981;
   z-index: 3;
   opacity: 0.85;
 }
 
-/* Thin blue edge lighting and glow border */
+/* Tricolor theme animated perimeter pulse border */
 .cin-btn-glow-border {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1.5px solid rgba(0, 240, 255, 0.4);
-  opacity: calc(var(--border-glow-opacity) * 0.7);
-  box-shadow: 
-    inset 0 0 12px rgba(0, 240, 255, 0.15),
-    0 0 20px rgba(0, 240, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   pointer-events: none;
   z-index: 2;
-  transition: opacity 0.25s ease;
-  will-change: opacity;
+  animation: perimeterPulse 6s infinite linear;
+  will-change: border-color;
 }
 
-/* Slow animated inner glint sweep */
+@keyframes perimeterPulse {
+
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  25% {
+    border-color: rgba(255, 153, 51, 0.22);
+  }
+
+  50% {
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  75% {
+    border-color: rgba(16, 185, 129, 0.22);
+  }
+}
+
 .cin-btn-inner-glint {
   position: absolute;
   top: 0;
   left: -150%;
-  width: 55%;
+  width: 45%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 240, 255, 0.06) 30%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(0, 240, 255, 0.06) 70%,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent);
   transform: skewX(-20deg);
   pointer-events: none;
-  animation: cinBtnSweep 6.5s ease-in-out infinite;
   z-index: 1;
+  will-change: left;
 }
 
+/* Shimmer pass across the text inside the button */
 .cin-heavy-btn-text {
   position: relative;
   z-index: 4;
   font-family: 'Oxanium', sans-serif;
-  font-size: clamp(20px, 1.6vw, 26px);
+  font-size: clamp(12px, 1vw, 14px);
   font-weight: 700;
-  letter-spacing: 0.32em;
-  color: #ffffff;
-  text-shadow: 
-    0 0 12px rgba(255, 255, 255, 0.75), 
-    0 0 24px rgba(0, 240, 255, 0.35);
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  animation: textShimmer 8s infinite ease-in-out;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 255, 255, 0.85) 42%,
+      #ffffff 50%,
+      rgba(255, 255, 255, 0.85) 58%,
+      rgba(255, 255, 255, 0.85) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  will-change: background-position;
 }
 
-/* Interactive Hover States */
+@keyframes textShimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Hover States — Restrained scale 1.01 and border glow pass */
 .cin-heavy-gateway-btn:hover,
 .cin-heavy-gateway-btn:focus-visible {
-  transform: scale(1.025);
-  border-color: rgba(0, 240, 255, 0.95);
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.95),
-    0 0 32px rgba(0, 240, 255, 0.65),
-    inset 0 0 18px rgba(0, 240, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.8),
+    inset 0 0 10px rgba(255, 255, 255, 0.06);
 }
 
 .cin-heavy-gateway-btn:hover .cin-btn-glow-border {
-  opacity: 1;
-}
-
-.cin-heavy-gateway-btn:hover .cin-heavy-btn-text {
-  color: #ffffff;
-  text-shadow: 
-    0 0 18px #ffffff, 
-    0 0 12px rgba(0, 240, 255, 0.8);
+  border-color: rgba(0, 240, 255, 0.35);
+  animation-play-state: paused;
 }
 
 .cin-heavy-gateway-btn:active {
-  transform: scale(0.96);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
   transition: transform 0.08s ease;
 }
 
 /* ─── Skip Intro CTA ──────────────────────────────────────────────────────── */
-
 .cin-skip {
   position: absolute;
   top: 32px;
   right: 28px;
   z-index: 9100;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  color: rgba(255, 255, 255, 0.32);
+  background: rgba(4, 10, 22, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
   font-family: 'Outfit', sans-serif;
-  font-size: 0.54rem;
-  font-weight: 400;
-  letter-spacing: 0.24em;
-  padding: 7px 14px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 4px;
   text-transform: uppercase;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: all 0.3s ease;
   min-height: 36px;
 }
 
 .cin-skip:hover {
-  color: rgba(255, 255, 255, 0.70);
+  color: #ffffff;
   border-color: rgba(255, 255, 255, 0.24);
 }
 
-/* ─── App Reveal States & Light Transition ────────────────────────────────── */
+/* ─── Audio Toggle Button ───────────────────────────────────────────────── */
+.cin-audio-toggle {
+  position: absolute;
+  bottom: 32px;
+  left: 28px;
+  z-index: 9100;
+  background: rgba(4, 10, 22, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.cin-audio-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+}
 
 .cin-gateway-flash {
   position: absolute;
@@ -480,10 +475,11 @@
   z-index: 100;
   pointer-events: none;
   opacity: 0;
-  background: radial-gradient(circle at 50% 88%, rgba(255, 255, 255, 1) 0%, rgba(2, 17, 36, 0) 0%);
+  background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 1) 0%, rgba(2, 17, 36, 0) 0%);
   will-change: opacity, background;
 }
 
+/* ─── App Reveal States ─────────────────────────────────────────────────── */
 .app-behind-intro {
   position: fixed;
   inset: 0;
@@ -502,13 +498,11 @@
   pointer-events: none;
 }
 
-/* Slide down navigation header */
 .app-revealing header,
 .app-revealed header {
   animation: navRevealIn 1.0s cubic-bezier(0.25, 1, 0.36, 1) forwards;
 }
 
-/* Slide up page contents */
 .app-revealing .home-hero,
 .app-revealing .about-us,
 .app-revealing .sponsor-page,
@@ -531,6 +525,7 @@
     opacity: 0;
     transform: translateY(-8px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -542,137 +537,104 @@
     opacity: 0;
     transform: translateY(8px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* ─── Responsive Styles ───────────────────────────────────────────────────── */
-
-@media (max-width: 1024px) {
-  .cin-logo-tagline-wrap {
-    bottom: 8%;
-  }
-
-  .cin-tagline-reveal-heavy {
-    font-size: clamp(20px, 2.2vw, 28px);
-  }
-
-  .cin-dramatic-text {
-    font-size: clamp(36px, 4.0vw, 56px);
-  }
-}
-
+/* ─── Responsive Adjustments ────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .cin-logo {
-    width: 140px;
-    top: 22px;
-  }
-
-  .cin-title {
-    font-size: clamp(1.9rem, 8.5vw, 3.2rem);
-    letter-spacing: 0.14em;
-  }
-
-  .cin-tagline {
-    font-size: 0.58rem;
-    letter-spacing: 0.20em;
-    padding: 0 12px;
-  }
-
-  .cin-logo-tagline-wrap {
-    bottom: 6%;
-  }
-
-  .cin-tagline-reveal-heavy {
-    font-size: clamp(14px, 3.5vw, 20px);
-    letter-spacing: 0.18em;
-    white-space: normal;
-    padding: 0 16px;
-    line-height: 1.4;
-  }
-
-  .cin-dramatic-text {
-    font-size: clamp(30px, 5.0vw, 42px);
-    letter-spacing: 0.18em;
-    line-height: 1.35;
-  }
-
-  .cin-dramatic-sub-line {
-    font-size: clamp(12px, 1.8vw, 16px);
-    letter-spacing: 0.28em;
-  }
-
-  .cin-dramatic-text-container {
-    top: 41%;
-  }
-
-  .cin-heavy-gateway-btn {
-    width: min(88vw, 360px);
-    height: clamp(66px, 12vh, 80px);
-  }
-
-  .cin-heavy-btn-text {
-    font-size: clamp(17px, 4vw, 21px);
-    letter-spacing: 0.26em;
-  }
-
-  .cin-skip {
-    top: 18px;
-    right: 16px;
-    font-size: 0.50rem;
-    padding: 6px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .cin-title {
-    font-size: clamp(1.6rem, 9.5vw, 2.6rem);
-    letter-spacing: 0.10em;
-  }
-
-  .cin-divider {
-    width: 52px;
-  }
-
-  .cin-logo-tagline-wrap {
-    bottom: 5%;
-  }
-}
-
-@media (max-height: 480px) and (orientation: landscape) {
-  .cin-logo-tagline-wrap {
-    bottom: 4%;
-  }
-
-  .cin-tagline-reveal-heavy {
-    font-size: clamp(12px, 3.0vw, 18px);
-  }
-
-  .cin-dramatic-text-container {
-    top: 36%;
+  .cin-tagline-container {
+    bottom: 8%;
+    left: 6%;
     gap: 8px;
   }
 
-  .cin-dramatic-text {
-    font-size: clamp(20px, 4vw, 28px);
+  .cin-tagline-primary {
+    font-size: clamp(12px, 4.5vw, 17px);
+    letter-spacing: 0.12em;
+  }
+
+  .cin-tagline-secondary {
+    font-size: clamp(9px, 3.5vw, 12px);
+    letter-spacing: 0.16em;
+    margin-top: 3px;
+  }
+
+  .cin-climax-editorial-block {
+    bottom: 20%;
+    left: 6%;
+    gap: 12px;
+  }
+
+  .cin-brand-group {
+    padding-left: 10px;
+  }
+
+  .cin-brand-team {
+    font-size: 8px;
+    letter-spacing: 0.35em;
+  }
+
+  .cin-brand-name {
+    font-size: clamp(16px, 4.5vw, 22px);
+    letter-spacing: 0.2em;
+  }
+
+  .cin-tricolor-line {
+    width: 90px;
+  }
+
+  .cin-climax-brand {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    margin-bottom: 3px;
+  }
+
+  .cin-statement-primary {
+    font-size: clamp(18px, 5.5vw, 24px);
+    letter-spacing: 0.10em;
+  }
+
+  .cin-statement-secondary {
+    font-size: clamp(14px, 4.5vw, 18px);
+    letter-spacing: 0.12em;
+    margin-top: 3px;
+  }
+
+  .cin-tech-details {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+  }
+
+  .cin-audio-toggle {
+    bottom: 24px;
+    left: 20px;
+    padding: 6px 12px;
+    font-size: 0.6rem;
+  }
+
+  .cin-skip {
+    top: 24px;
+    right: 20px;
+    padding: 6px 12px;
+    font-size: 0.6rem;
   }
 
   .cin-heavy-gateway-btn {
+    width: min(85vw, 260px);
     height: 52px;
+    padding: 0 16px;
   }
 
   .cin-heavy-btn-text {
-    font-size: 15px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
   }
 
-  .cin-title {
-    font-size: clamp(1.4rem, 5vw, 2.4rem);
+  .cin-enter-stage-container {
+    bottom: 8%;
   }
-}
-
-/* ─── Reduced Motion ─── */
-@media (prefers-reduced-motion: reduce) {
-  .cin-root { display: none; }
 }

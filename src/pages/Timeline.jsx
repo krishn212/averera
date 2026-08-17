@@ -360,9 +360,20 @@ export default function Timeline() {
     };
 
     updatePath();
+
+    const ro = new ResizeObserver(() => {
+      updatePath();
+    });
+    if (containerRef.current) {
+      ro.observe(containerRef.current);
+    }
+
     const handleResize = () => updatePath();
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
   }, [timelineEvents.length]);
 
   // Scroll Animation Loop for Car & Checkpoints using RAF

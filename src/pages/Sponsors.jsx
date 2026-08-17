@@ -39,7 +39,7 @@ export default function Sponsors() {
       {/* Sponsor Tiers Grid */}
       <section className="pricing-section">
         <div className="pricing-grid">
-          
+
           {/* Bronze Tier */}
           <div
             className="pricing-card"
