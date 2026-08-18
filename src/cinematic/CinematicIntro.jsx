@@ -51,6 +51,13 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
 
   /* ── Initial Configuration & Autoplay Fallback ────────────────────────── */
   useEffect(() => {
+    if (preloadVehicle) {
+      const img = new Image();
+      img.src = "/frame_149.webp";
+    }
+  }, [preloadVehicle]);
+
+  useEffect(() => {
     // Lock page scrolling
     document.body.style.overflow = 'hidden';
 
@@ -59,7 +66,23 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
     if (logoVideo) {
       logoVideo.muted = true;
       logoVideo.playbackRate = 1.5;
-      logoVideo.play().catch(e => console.error("Muted playback failed", e));
+      logoVideo.play()
+        .then(() => {
+          setPreloadVehicle(true);
+          gsap.fromTo(logoContainerRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5, ease: 'power2.out' }
+          );
+        })
+        .catch(e => {
+          console.error("Muted playback failed", e);
+          // Fallback fade in so page never remains blank
+          setPreloadVehicle(true);
+          gsap.fromTo(logoContainerRef.current,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5, ease: 'power2.out' }
+          );
+        });
     }
 
     return () => {
@@ -85,36 +108,41 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
     }
   };
 
-  const handleLogoPlay = () => {
-    // Preload vehicle video in background once logo starts playing
-    setPreloadVehicle(true);
-  };
-
   const handleLogoEnded = () => {
-    // 0.4s atmospheric darkening transition
-    const tl = gsap.timeline({
-      onComplete: () => {
-        setStep('vehicle-video');
-        const vehicleVideo = vehicleVideoRef.current;
-        if (vehicleVideo) {
-          vehicleVideo.muted = isMuted;
-          vehicleVideo.playbackRate = 1.5;
-          vehicleVideo.play().catch((err) => {
-            console.warn("Vehicle video autoplay blocked. Retrying muted.", err);
-            vehicleVideo.muted = true;
-            setIsMuted(true);
-            vehicleVideo.playbackRate = 1.5;
-            vehicleVideo.play().catch(e => console.error("Vehicle playback failed", e));
-          });
-        }
-      }
-    });
+    setStep('transitioning-to-vehicle');
+    const vehicleVideo = vehicleVideoRef.current;
+    if (vehicleVideo) {
+      vehicleVideo.muted = isMuted;
+      vehicleVideo.playbackRate = 1.5;
+      
+      const transitionToVehicleVideo = () => {
+        gsap.to(logoContainerRef.current, {
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            setStep('vehicle-video');
+          }
+        });
+      };
 
-    tl.to(logoContainerRef.current, {
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power2.inOut'
-    });
+      vehicleVideo.play()
+        .then(transitionToVehicleVideo)
+        .catch((err) => {
+          console.warn("Vehicle video autoplay blocked. Retrying muted.", err);
+          vehicleVideo.muted = true;
+          setIsMuted(true);
+          vehicleVideo.playbackRate = 1.5;
+          vehicleVideo.play()
+            .then(transitionToVehicleVideo)
+            .catch(e => {
+              console.error("Vehicle playback failed", e);
+              setStep('vehicle-video');
+            });
+        });
+    } else {
+      setStep('vehicle-video');
+    }
   };
 
   const handleVehicleEnded = () => {
@@ -343,6 +371,9 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
     if (isTransitioningRef.current) return;
     isTransitioningRef.current = true;
 
+    // Trigger transition start so the app is mounted and visible underneath
+    onTransitionStart?.();
+
     // Stop videos
     if (logoVideoRef.current) logoVideoRef.current.pause();
     if (vehicleVideoRef.current) vehicleVideoRef.current.pause();
@@ -359,7 +390,7 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
         onComplete?.();
       }
     });
-  }, [onComplete]);
+  }, [onComplete, onTransitionStart]);
 
   const toggleMute = () => {
     const nextMuted = !isMuted;
@@ -389,7 +420,11 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
       {/* STAGE 1: Logo Reveal Stage with Left-Aligned Tagline */}
       <div
         ref={logoContainerRef}
-        className={`cin-video-container ${step === 'logo-video' ? 'active' : 'hidden'}`}
+        className={`cin-video-container ${(step === 'logo-video' || step === 'transitioning-to-vehicle') ? 'active' : 'hidden'}`}
+        style={{
+          opacity: 0,
+          zIndex: (step === 'logo-video' || step === 'transitioning-to-vehicle') ? 7 : 5
+        }}
       >
         <video
           ref={logoVideoRef}
@@ -399,7 +434,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
           autoPlay
           muted={isMuted}
           preload="metadata"
-          onPlay={handleLogoPlay}
           onTimeUpdate={handleLogoTimeUpdate}
           onEnded={handleLogoEnded}
         />
@@ -418,23 +452,35 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
       {/* STAGE 2: Vehicle 360 Video / Climax Stage */}
       <div
         ref={vehicleContainerRef}
-        className={`cin-video-container ${(step === 'vehicle-video' || step === 'climax') ? 'active' : 'hidden'}`}
+        className={`cin-video-container ${(step === 'vehicle-video' || step === 'climax' || step === 'transitioning-to-vehicle') ? 'active' : 'hidden'}`}
       >
-        {step !== 'climax' ? (
-          <video
-            ref={vehicleVideoRef}
-            src="/erasio_main_360.mp4"
-            className="cin-video-element"
-            playsInline
-            muted={isMuted}
-            preload={preloadVehicle ? "auto" : "metadata"}
-            onEnded={handleVehicleEnded}
-          />
-        ) : (
+        <video
+          ref={vehicleVideoRef}
+          src="/erasio_main_360.mp4"
+          className="cin-video-element"
+          playsInline
+          muted={isMuted}
+          preload={preloadVehicle ? "auto" : "metadata"}
+          onEnded={handleVehicleEnded}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: step === 'climax' ? 0 : 1,
+            zIndex: step === 'climax' ? 5 : 6
+          }}
+        />
+        {(preloadVehicle || step === 'climax') && (
           <img
             src="/frame_149.webp"
             alt="Vehicle Climax Frame"
             className="cin-video-element"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: step === 'climax' ? 1 : 0,
+              zIndex: step === 'climax' ? 6 : 5,
+              pointerEvents: 'none'
+            }}
           />
         )}
         <div className="cin-video-vignette" />
