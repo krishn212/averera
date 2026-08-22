@@ -22,18 +22,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
 
   const vehicleContainerRef = useRef(null);
 
-  // Brand Mark Refs
-  const brandGroupRef = useRef(null);
-  const brandLineRef = useRef(null);
-  const brandTeamRef = useRef(null);
-  const brandNameRef = useRef(null);
-  const tricolorLineRef = useRef(null);
-
-  // Statement Refs
-  const statementPrimaryRef = useRef(null);
-  const statementSecondaryRef = useRef(null);
-  const statementSweepRef = useRef(null);
-
   // CTA Refs
   const enterStageRef = useRef(null);
   const enterLineRef = useRef(null);
@@ -158,62 +146,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
     );
 
     tl.set({}, {}, "+=0.15");
-
-    // Phase 2: Brand marker reveal (1.0s - 2.0s)
-    tl.add(() => {
-      const brandTl = gsap.timeline();
-
-      // Vertical line appears
-      brandTl.fromTo(brandLineRef.current,
-        { scaleY: 0 },
-        { scaleY: 1, duration: 0.25, ease: 'power3.out' }
-      );
-
-      // TEAM marker fades in
-      brandTl.fromTo(brandTeamRef.current,
-        { opacity: 0, y: 5, letterSpacing: '0.55em' },
-        { opacity: 0.5, y: 0, letterSpacing: '0.45em', duration: 0.25, ease: 'power3.out' },
-        '-=0.15'
-      );
-
-      // AVERERA resolves with horizontal mask
-      brandTl.fromTo(brandNameRef.current,
-        { opacity: 0, clipPath: 'polygon(0 0, 0 100%, 0 100%, 0 0)', letterSpacing: '0.36em' },
-        { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', letterSpacing: '0.28em', duration: 0.35, ease: 'power3.out' },
-        '-=0.2'
-      );
-
-      // Tricolor line draws from left to right
-      brandTl.fromTo(tricolorLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.3, ease: 'power2.out' },
-        '-=0.15'
-      );
-    });
-
-    // Phase 3: Statement Line 1 resolves (1.6s - 2.8s)
-    tl.fromTo(statementPrimaryRef.current,
-      { opacity: 0, clipPath: 'polygon(0 0, 0 100%, 0 100%, 0 0)', filter: 'blur(6px)', letterSpacing: '0.22em' },
-      { opacity: 0.95, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', filter: 'blur(0px)', letterSpacing: '0.14em', duration: 0.55, ease: 'power3.out' },
-      '+=0.1'
-    );
-
-    // Horizontal sweep behind statement
-    tl.fromTo(statementSweepRef.current,
-      { left: '-100%', opacity: 0 },
-      { left: '100%', opacity: 0.16, duration: 0.4, ease: 'power2.inOut' },
-      '-=0.45'
-    );
-
-    // Phase 4: Statement Line 2 resolves (2.1s - 3.2s)
-    tl.fromTo(statementSecondaryRef.current,
-      { opacity: 0, y: 10, filter: 'blur(6px)', letterSpacing: '0.18em' },
-      { opacity: 0.75, y: 0, filter: 'blur(0px)', letterSpacing: '0.12em', duration: 0.5, ease: 'power3.out' },
-      '-=0.35'
-    );
-
-    // Phase 5: Delay -> Vignette darkens -> Horizontal line draws -> CTA draws/reveals (2.8s - 4.0s)
-    tl.set({}, {}, "+=0.05");
 
     tl.to('.cin-video-vignette', {
       background: 'radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.8) 100%)',
@@ -480,37 +412,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
         {/* CLIMAX OVERLAYS */}
         {step === 'climax' && (
           <div className="cin-climax-overlay">
-
-            {/* Lower-Left Editorial layout */}
-            <div className="cin-climax-editorial-block">
-              {/* Eyebrow & Accent Line */}
-              <div ref={brandGroupRef} className="cin-brand-group">
-                <div ref={brandLineRef} className="cin-brand-accent-line" />
-                <div className="cin-brand-text-wrap">
-                  <div ref={brandTeamRef} className="cin-brand-team">TEAM</div>
-                  <div ref={brandNameRef} className="cin-brand-name">AVERERA</div>
-                </div>
-                {/* Tricolor underline strip (orange - white - green) */}
-                <div ref={tricolorLineRef} className="cin-tricolor-line">
-                  <span className="cin-tricol-orange" />
-                  <span className="cin-tricol-white" />
-                  <span className="cin-tricol-green" />
-                </div>
-              </div>
-
-              {/* Main Statements */}
-              <div className="cin-statement-group">
-                <div ref={statementPrimaryRef} className="cin-statement-primary">
-                  ENGINEERED <br />FOR EFFICIENCY.
-                </div>
-                <div ref={statementSecondaryRef} className="cin-statement-secondary">
-                  BUILT FOR <span className="cin-accent-tomorrow">TOMORROW.</span>
-                </div>
-                {/* Volumetric horizontal sweep line */}
-                <div ref={statementSweepRef} className="cin-statement-sweep" />
-              </div>
-
-            </div>
 
             {/* Phase E: ENTER THE REALM Gateway Inviter */}
             <div ref={enterStageRef} className="cin-enter-stage-container" style={{ opacity: 0 }}>
