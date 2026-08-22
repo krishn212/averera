@@ -33,7 +33,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
   const statementPrimaryRef = useRef(null);
   const statementSecondaryRef = useRef(null);
   const statementSweepRef = useRef(null);
-  const techDetailsRef = useRef(null);
 
   // CTA Refs
   const enterStageRef = useRef(null);
@@ -211,13 +210,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
       { opacity: 0, y: 10, filter: 'blur(6px)', letterSpacing: '0.18em' },
       { opacity: 0.75, y: 0, filter: 'blur(0px)', letterSpacing: '0.12em', duration: 0.5, ease: 'power3.out' },
       '-=0.35'
-    );
-
-    // Fade in small technical details
-    tl.fromTo(techDetailsRef.current,
-      { opacity: 0 },
-      { opacity: 0.35, duration: 0.35, ease: 'power2.out' },
-      '-=0.25'
     );
 
     // Phase 5: Delay -> Vignette darkens -> Horizontal line draws -> CTA draws/reveals (2.8s - 4.0s)
@@ -518,10 +510,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
                 <div ref={statementSweepRef} className="cin-statement-sweep" />
               </div>
 
-              {/* Barely noticeable technical tags */}
-              <div ref={techDetailsRef} className="cin-tech-details">
-                VEHICLE DESIGN &bull; EMBEDDED SYSTEMS &bull; AUTONOMOUS SYSTEMS
-              </div>
             </div>
 
             {/* Phase E: ENTER THE REALM Gateway Inviter */}
