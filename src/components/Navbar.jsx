@@ -51,10 +51,15 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
             <li>
               <a
                 href="#timeline"
-                className={activePage === 'timeline' ? 'active' : ''}
+                className={activePage === 'home' ? 'active' : ''}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick('timeline');
+                  if (activePage === 'home') {
+                    document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    sessionStorage.setItem('scrollToTimeline', 'true');
+                    handleNavClick('home');
+                  }
                 }}
               >
                 Legacy
@@ -231,10 +236,17 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
           <li className="mobile-nav-item">
             <a
               href="#timeline"
-              className={`mobile-nav-link ${activePage === 'timeline' ? 'active' : ''}`}
+              className={`mobile-nav-link ${activePage === 'home' ? 'active' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick('timeline');
+                if (activePage === 'home') {
+                  document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' });
+                  setMobileMenuOpen(false);
+                  setNavActive(false);
+                } else {
+                  sessionStorage.setItem('scrollToTimeline', 'true');
+                  handleNavClick('home');
+                }
               }}
             >
               Legacy
