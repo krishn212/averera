@@ -1,8 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Member } from "../../data/team";
 import MemberCard from "./MemberCard";
+import { GlobalSpotlight } from "../MagicBento";
 
 export default function ExpandableGeneration({
   isOpen,
@@ -13,6 +15,8 @@ export default function ExpandableGeneration({
   members: Member[];
   onSelect: (m: Member) => void;
 }) {
+  const gridRef = useRef<HTMLDivElement>(null);
+
   return (
     <AnimatePresence initial={false}>
       {isOpen && (
@@ -23,7 +27,8 @@ export default function ExpandableGeneration({
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           style={{ overflow: 'hidden', width: '100%' }}
         >
-          <div className="about-grid" style={{ marginTop: '24px', width: '100%', boxSizing: 'border-box' }}>
+          <div ref={gridRef} className="about-grid" style={{ marginTop: '24px', width: '100%', boxSizing: 'border-box' }}>
+            <GlobalSpotlight gridRef={gridRef} glowColor="24, 208, 219" spotlightRadius={350} />
             {members.map((m, i) => (
               <MemberCard key={m.id} member={m} index={i} onClick={() => onSelect(m)} />
             ))}

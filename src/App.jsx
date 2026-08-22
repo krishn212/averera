@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Vehicles from './pages/Vehicles';
+import Timeline from './pages/Timeline';
 import Sponsors from './pages/Sponsors';
 import AboutUs from './pages/AboutUs';
 import Team from './pages/Team';
@@ -16,16 +17,20 @@ export default function App({ introDone }) {
     const path = window.location.pathname;
     if (path === '/team') return 'team';
     if (path === '/alumni') return 'alumni';
+    if (path === '/legacy' || path === '/timeline') return 'legacy';
+    if (path === '/' || path === '') return 'home';
     const savedPage = localStorage.getItem('activePage');
     return savedPage || 'home';
   });
 
+  const initialTargetPage = useRef(activePage);
   const wasInitiallyBehindIntro = useRef(!introDone);
 
   useEffect(() => {
     if (introDone && wasInitiallyBehindIntro.current) {
-      setActivePage('home');
-      window.history.pushState(null, '', '/');
+      setActivePage(initialTargetPage.current);
+      const targetPath = initialTargetPage.current === 'home' ? '/' : `/${initialTargetPage.current}`;
+      window.history.pushState(null, '', targetPath);
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [introDone]);
@@ -78,9 +83,21 @@ export default function App({ introDone }) {
     if (window.location.pathname !== path) {
       window.history.pushState(null, '', path);
     }
+    
+    // When navigating to legacy (Legacy), trigger a single-pass window reload
+    if (activePage === 'legacy') {
+      const hasReloaded = sessionStorage.getItem('legacyReloaded');
+      if (!hasReloaded) {
+        sessionStorage.setItem('legacyReloaded', 'true');
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        window.location.reload();
+        return;
+      }
+    } else {
+      sessionStorage.removeItem('legacyReloaded');
+    }
 
     const shouldScroll = sessionStorage.getItem('scrollToContact');
-    const shouldScrollTimeline = sessionStorage.getItem('scrollToTimeline');
     if (shouldScroll === 'true') {
       let attempts = 0;
       const interval = setInterval(() => {
@@ -93,21 +110,6 @@ export default function App({ introDone }) {
           ScrollTrigger.refresh();
         } else if (attempts > 30) {
           sessionStorage.removeItem('scrollToContact');
-          clearInterval(interval);
-        }
-      }, 50);
-    } else if (shouldScrollTimeline === 'true') {
-      let attempts = 0;
-      const interval = setInterval(() => {
-        const timeline = document.getElementById('timeline');
-        attempts++;
-        if (timeline) {
-          timeline.scrollIntoView({ behavior: 'instant' });
-          sessionStorage.removeItem('scrollToTimeline');
-          clearInterval(interval);
-          ScrollTrigger.refresh();
-        } else if (attempts > 30) {
-          sessionStorage.removeItem('scrollToTimeline');
           clearInterval(interval);
         }
       }, 50);
@@ -127,6 +129,7 @@ export default function App({ introDone }) {
       if (path === '/team') setActivePage('team');
       else if (path === '/alumni') setActivePage('alumni');
       else if (path === '/vehicles') setActivePage('vehicles');
+      else if (path === '/timeline') setActivePage('timeline');
       else if (path === '/sponsors') setActivePage('sponsors');
       else if (path === '/about') setActivePage('about');
       else setActivePage('home');
@@ -156,6 +159,8 @@ export default function App({ introDone }) {
         return <AboutUs />;
       case 'vehicles':
         return <Vehicles setActivePage={setActivePage} />;
+      case 'legacy':
+        return <Timeline />;
       case 'sponsors':
         return <Sponsors setActivePage={setActivePage} />;
       case 'team':

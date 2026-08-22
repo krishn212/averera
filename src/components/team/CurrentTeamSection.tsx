@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Member } from "../../data/team";
 import { currentGenerations } from "../../data/team";
 import SectionHeading from "./SectionHeading";
 import GenerationTabs from "./GenerationTabs";
 import MemberCard from "./MemberCard";
+import { GlobalSpotlight } from "../MagicBento";
 
 export default function CurrentTeamSection({
   members,
@@ -18,6 +19,7 @@ export default function CurrentTeamSection({
   searchActive: boolean;
 }) {
   const [activeGen, setActiveGen] = useState(currentGenerations[0]);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const visible = useMemo(() => {
     if (searchActive) return members;
@@ -26,7 +28,8 @@ export default function CurrentTeamSection({
 
   return (
     <section id="current-members" style={{ padding: '60px 0', borderTop: '1px solid var(--border-color)' }}>
-      <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
+      <div ref={gridRef} className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
+        <GlobalSpotlight gridRef={gridRef} glowColor="24, 208, 219" spotlightRadius={350} />
         <SectionHeading
           eyebrow="Active Roster"
           title="Current Team"

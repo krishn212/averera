@@ -684,7 +684,6 @@ export const filterChips = [
   "All",
   "Leadership",
   "Current Team",
-  "Alumni",
   // "Technical",
   // "Electronics",
   // "Mechanical",

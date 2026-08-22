@@ -101,7 +101,7 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
     if (vehicleVideo) {
       vehicleVideo.muted = isMuted;
       vehicleVideo.playbackRate = 1.5;
-      
+
       const transitionToVehicleVideo = () => {
         gsap.to(logoContainerRef.current, {
           opacity: 0,
@@ -147,6 +147,7 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
 
     tl.set({}, {}, "+=0.15");
 
+    // Climax Delay & Vignette Overlay transition
     tl.to('.cin-video-vignette', {
       background: 'radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.8) 100%)',
       duration: 0.25,

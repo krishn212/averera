@@ -2,7 +2,6 @@ import { useMemo, useState, useEffect } from "react";
 import {
   leadership,
   currentTeam,
-  legacyGenerations,
   allMembers,
   matchesFilter,
 } from "../data/team";
@@ -36,7 +35,7 @@ export default function Team({ setActivePage }) {
 
   // Filter only current team and leadership for current team page
   const filteredCurrentMembers = useMemo(() => {
-    const currentList = allMembers;
+    const currentList = [...leadership, ...currentTeam];
     return currentList.filter(
       (m) => matchesFilter(m, filter) && memberMatchesQuery(m, query.trim())
     );
@@ -106,7 +105,6 @@ export default function Team({ setActivePage }) {
             searchActive={false}
           />
           <StatsCounter />
-          <LegacySection generations={legacyGenerations} onSelect={setSelected} />
         </>
       )}
 

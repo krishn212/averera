@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
   const [navActive, setNavActive] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
 
   const handleNavClick = (page) => {
     setActivePage(page);
@@ -17,6 +19,26 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) return;
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 30) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollYRef.current && currentScrollY > 120) {
+        setVisible(false);
+      } else if (currentScrollY < lastScrollYRef.current) {
+        setVisible(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -28,7 +50,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
   }, [mobileMenuOpen]);
 
   return (
-    <header>
+    <header className={visible ? 'nav-visible' : 'nav-hidden'}>
       <div className="navbar-glass">
         <div className="logo" onClick={() => handleNavClick('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
           <img src="/TEAM AVERERA logo.avif" alt="Team Averera Logo" className="navbar-logo-img" />
@@ -50,16 +72,11 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
 
             <li>
               <a
-                href="#timeline"
-                className={activePage === 'home' ? 'active' : ''}
+                href="#legacy"
+                className={activePage === 'legacy' ? 'active' : ''}
                 onClick={(e) => {
                   e.preventDefault();
-                  if (activePage === 'home') {
-                    document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' });
-                  } else {
-                    sessionStorage.setItem('scrollToTimeline', 'true');
-                    handleNavClick('home');
-                  }
+                  handleNavClick('legacy');
                 }}
               >
                 Legacy
@@ -234,20 +251,13 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
           </li>
 
           <li className="mobile-nav-item">
-            <a
-              href="#timeline"
-              className={`mobile-nav-link ${activePage === 'home' ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
-                if (activePage === 'home') {
-                  document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' });
-                  setMobileMenuOpen(false);
-                  setNavActive(false);
-                } else {
-                  sessionStorage.setItem('scrollToTimeline', 'true');
-                  handleNavClick('home');
-                }
-              }}
+              <a
+                href="#legacy"
+                className={`mobile-nav-link ${activePage === 'legacy' ? 'active' : ''}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('legacy');
+                }}
             >
               Legacy
             </a>
