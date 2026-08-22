@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -6,15 +6,30 @@ import Vehicles from './pages/Vehicles';
 import Timeline from './pages/Timeline';
 import Sponsors from './pages/Sponsors';
 import AboutUs from './pages/AboutUs';
+import Team from './pages/Team';
+import Alumni from './pages/Alumni';
 import SideRays from './components/SideRays';
 import wireframeImg from './assets/wireframe_car.png';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function App({ introDone }) {
   const [activePage, setActivePage] = useState(() => {
+    const path = window.location.pathname;
+    if (path === '/team') return 'team';
+    if (path === '/alumni') return 'alumni';
     const savedPage = localStorage.getItem('activePage');
     return savedPage || 'home';
   });
+
+  const wasInitiallyBehindIntro = useRef(!introDone);
+
+  useEffect(() => {
+    if (introDone && wasInitiallyBehindIntro.current) {
+      setActivePage('home');
+      window.history.pushState(null, '', '/');
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [introDone]);
 
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
@@ -59,6 +74,12 @@ export default function App({ introDone }) {
   useEffect(() => {
     localStorage.setItem('activePage', activePage);
     
+    // Sync browser URL paths
+    const path = activePage === 'home' ? '/' : `/${activePage}`;
+    if (window.location.pathname !== path) {
+      window.history.pushState(null, '', path);
+    }
+    
     // When navigating to timeline (Legacy), trigger a single-pass window reload
     if (activePage === 'timeline') {
       const hasReloaded = sessionStorage.getItem('legacyReloaded');
@@ -72,14 +93,46 @@ export default function App({ introDone }) {
       sessionStorage.removeItem('legacyReloaded');
     }
 
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    
-    // Let DOM settle and images load, then refresh ScrollTrigger
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
-    return () => clearTimeout(timer);
+    const shouldScroll = sessionStorage.getItem('scrollToContact');
+    if (shouldScroll === 'true') {
+      let attempts = 0;
+      const interval = setInterval(() => {
+        const contact = document.getElementById('contact');
+        attempts++;
+        if (contact) {
+          contact.scrollIntoView({ behavior: 'instant' });
+          sessionStorage.removeItem('scrollToContact');
+          clearInterval(interval);
+          ScrollTrigger.refresh();
+        } else if (attempts > 30) {
+          sessionStorage.removeItem('scrollToContact');
+          clearInterval(interval);
+        }
+      }, 50);
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+      return () => clearTimeout(timer);
+    }
   }, [activePage]);
+
+  // Support browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === '/team') setActivePage('team');
+      else if (path === '/alumni') setActivePage('alumni');
+      else if (path === '/vehicles') setActivePage('vehicles');
+      else if (path === '/timeline') setActivePage('timeline');
+      else if (path === '/sponsors') setActivePage('sponsors');
+      else if (path === '/about') setActivePage('about');
+      else setActivePage('home');
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,7 +158,11 @@ export default function App({ introDone }) {
       case 'timeline':
         return <Timeline />;
       case 'sponsors':
-        return <Sponsors />;
+        return <Sponsors setActivePage={setActivePage} />;
+      case 'team':
+        return <Team setActivePage={setActivePage} />;
+      case 'alumni':
+        return <Alumni setActivePage={setActivePage} />;
       default:
         return <Home setActivePage={setActivePage} />;
     }

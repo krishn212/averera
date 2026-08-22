@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
 /* Reset and Core Variables */
 * {
   margin: 0;
@@ -167,6 +170,7 @@
   --form-input-focus-shadow: 0 0 15px rgba(11, 61, 46, 0.18);
   --footer-bg: #102A43;
   --sim-border-color: #D9E5EC;
+  --drawer-overlay: rgba(16, 42, 67, 0.08);
 
   --vehicle-img-bg: #FCFDFD;
   --vehicle-img-border: #D9E5EC;
@@ -239,6 +243,7 @@
   --bg-overlay-95: rgba(4, 13, 15, 0.96);
   --bg-overlay-50: rgba(4, 13, 15, 0.5);
   --bg-overlay-40: rgba(4, 13, 15, 0.4);
+  --drawer-overlay: rgba(4, 13, 15, 0.55);
   --bg-img-brightness: 1.8;
   --bg-img-contrast: 1.4;
   --bg-img-opacity: 0.85;
@@ -3095,4 +3100,84 @@ footer .footer-content .socials a {
 [data-theme='light'] .spec-metric-value.highlight-green {
   color: #059669 !important;
   /* emerald-600 */
+}
+
+/* Redesigned Team Page styling rules */
+.team-search-section {
+  position: relative;
+  background: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding: 20px 0;
+  transition: all 0.35s ease;
+}
+
+.search-bar-input {
+  width: 100%;
+  background: var(--form-input-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 9999px;
+  padding: 12px 20px 12px 45px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-bar-input:focus {
+  border-color: var(--accent-cyan, #1AFFFF) !important;
+  box-shadow: 0 0 15px rgba(24, 208, 220, 0.25) !important;
+}
+
+[data-theme='light'] .search-bar-input:focus {
+  border-color: var(--accent-green, #10B981) !important;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2) !important;
+}
+
+.filter-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color) !important;
+  background: transparent !important;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.filter-chip:hover {
+  background: var(--glass-bg-hover, rgba(255, 255, 255, 0.1)) !important;
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.filter-chip.active {
+  background: var(--accent-cyan, #1AFFFF) !important;
+  color: #040d0f !important;
+  border-color: var(--accent-cyan, #1AFFFF) !important;
+}
+
+[data-theme='light'] .filter-chip.active {
+  background: var(--primary-green, #0B3D2E) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-green, #0B3D2E) !important;
+}
+
+.drawer-close-btn {
+  left: -55px; /* Floating left outside on desktop */
+}
+
+@media (max-width: 640px) {
+  .drawer-close-btn {
+    left: auto !important;
+    right: 20px !important; /* Floating right inside on mobile */
+  }
 }

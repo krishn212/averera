@@ -186,7 +186,7 @@ export default function Timeline() {
     },
     {
       year: "2022",
-      title: "GLOBAL PODIUM RANK #3",
+      title: "GLOBAL RANK #3",
       description: "3rd overall global rank with Shivaay Urban Concept; 2 off-track awards, 1st place in quiz events.",
       side: "right",
       highlight: true,
@@ -224,7 +224,7 @@ export default function Timeline() {
     // --- 2013-19 | The Prototype Era: Alterno ---
     {
       year: "2019",
-      title: "PEAK ALTERNO PERFORMANCE (V4)",
+      title: "GLOBAL RANK #2",
       description: "2nd rank at Shell Eco-Marathon Asia-Pacific & Middle East with the Alterno v4, top efficiency: 465.1 km/kWh.",
       side: "right",
       tag: "AVG_ALT4_2019",
@@ -240,7 +240,7 @@ export default function Timeline() {
     },
     {
       year: "2018",
-      title: "PODIUM FINISH (ALTERNO V3)",
+      title: "GLOBAL RANK #3",
       description: "3rd place at Shell Eco-Marathon Asia-Pacific & Middle East with the Alterno v3, efficiency: 349.6km/kWh.",
       side: "left",
       tag: "AVG_ALT3_2018",

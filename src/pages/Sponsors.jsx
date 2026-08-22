@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { initSponsorsAnimations } from '../utils/animations';
 
-export default function Sponsors() {
+export default function Sponsors({ setActivePage }) {
   const mainRef = useRef(null);
 
   useEffect(() => {
@@ -57,7 +57,21 @@ export default function Sponsors() {
               <li className="disabled"><i className="fa-solid fa-xmark" style={{ marginRight: '8px' }}></i> Logo on vehicle chassis</li>
               <li className="disabled"><i className="fa-solid fa-xmark" style={{ marginRight: '8px' }}></i> Recruitment access</li>
             </ul>
-            <a href="#contact" className="btn btn-secondary btn-full">Partner With Us</a>
+            <a
+              href="#contact"
+              className="btn btn-secondary btn-full"
+              onClick={(e) => {
+                e.preventDefault();
+                if (setActivePage) {
+                  sessionStorage.setItem('scrollToContact', 'true');
+                  setActivePage('home');
+                } else {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              Partner With Us
+            </a>
           </div>
 
           {/* Platinum Tier (Highlighted) */}
@@ -79,7 +93,21 @@ export default function Sponsors() {
               <li><i className="fa-solid fa-check text-glow" style={{ marginRight: '8px' }}></i> Invite to vehicle rollouts</li>
               <li><i className="fa-solid fa-check text-glow" style={{ marginRight: '8px' }}></i> Tech exchange opportunities</li>
             </ul>
-            <a href="#contact" className="btn btn-glow btn-full">Become Strategic Partner</a>
+            <a
+              href="#contact"
+              className="btn btn-glow btn-full"
+              onClick={(e) => {
+                e.preventDefault();
+                if (setActivePage) {
+                  sessionStorage.setItem('scrollToContact', 'true');
+                  setActivePage('home');
+                } else {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              Become Strategic Partner
+            </a>
           </div>
 
           {/* Gold Tier */}
@@ -99,7 +127,21 @@ export default function Sponsors() {
               <li><i className="fa-solid fa-check text-glow" style={{ marginRight: '8px' }}></i> Dedicated recruitment files</li>
               <li className="disabled"><i className="fa-solid fa-xmark" style={{ marginRight: '8px' }}></i> Custom tech exchanges</li>
             </ul>
-            <a href="#contact" className="btn btn-secondary btn-full">Choose Gold</a>
+            <a
+              href="#contact"
+              className="btn btn-secondary btn-full"
+              onClick={(e) => {
+                e.preventDefault();
+                if (setActivePage) {
+                  sessionStorage.setItem('scrollToContact', 'true');
+                  setActivePage('home');
+                } else {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              Choose Gold
+            </a>
           </div>
 
         </div>

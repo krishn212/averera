@@ -33,6 +33,16 @@ import {
 } from '../utils/animations';
 
 export default function Home({ setActivePage, introDone }) {
+  useEffect(() => {
+    const shouldScroll = sessionStorage.getItem('scrollToContact');
+    if (shouldScroll === 'true') {
+      sessionStorage.removeItem('scrollToContact');
+      const timer = setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // --- 1. Typewriter Effect ---
   const [typedText, setTypedText] = useState('');
@@ -267,7 +277,7 @@ export default function Home({ setActivePage, introDone }) {
                   download="SWARUP_AVERERA_BROCHURE_FINAL14.pdf"
                   className="btn btn-glow"
                 >
-                  GET THE AVERERA PROSPECTUS <i className="fa-solid fa-download"></i>
+                  Partnership Prospectus <i className="fa-solid fa-download"></i>
                 </a>
                 <a
                   href="#about"

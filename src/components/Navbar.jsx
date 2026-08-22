@@ -72,16 +72,42 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
                 Vehicles
               </a>
             </li>
+            <li>
+              <a
+                href="#team"
+                className={activePage === 'team' ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('team');
+                }}
+              >
+                Team
+              </a>
+            </li>
+            <li>
+              <a
+                href="#alumni"
+                className={activePage === 'alumni' ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('alumni');
+                }}
+              >
+                Alumni
+              </a>
+            </li>
             <li className="mobile-cta-li">
               <a
                 href="#contact"
                 className="btn btn-primary"
                 onClick={(e) => {
-                  // Direct to contact form on home page
-                  handleNavClick('home');
-                  setTimeout(() => {
+                  e.preventDefault();
+                  if (activePage === 'home') {
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
+                  } else {
+                    sessionStorage.setItem('scrollToContact', 'true');
+                    handleNavClick('home');
+                  }
                 }}
               >
                 Connect With Us
@@ -172,10 +198,12 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
               className="btn btn-primary"
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick('home');
-                setTimeout(() => {
+                if (activePage === 'home') {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
+                } else {
+                  sessionStorage.setItem('scrollToContact', 'true');
+                  handleNavClick('home');
+                }
               }}
             >
               Connect With Us
@@ -224,16 +252,42 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
               Vehicles
             </a>
           </li>
+          <li className="mobile-nav-item">
+            <a
+              href="#team"
+              className={`mobile-nav-link ${activePage === 'team' ? 'active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('team');
+              }}
+            >
+              Team
+            </a>
+          </li>
+          <li className="mobile-nav-item">
+            <a
+              href="#alumni"
+              className={`mobile-nav-link ${activePage === 'alumni' ? 'active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('alumni');
+              }}
+            >
+              Alumni
+            </a>
+          </li>
           <li className="mobile-nav-item" style={{ marginTop: '20px' }}>
             <a
               href="#contact"
               className="btn btn-primary"
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick('home');
-                setTimeout(() => {
+                if (activePage === 'home') {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }, 200);
+                } else {
+                  sessionStorage.setItem('scrollToContact', 'true');
+                  handleNavClick('home');
+                }
               }}
             >
               Connect With Us
