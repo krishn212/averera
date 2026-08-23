@@ -27,7 +27,7 @@ export default function Alumni({ setActivePage }) {
   const [selected, setSelected] = useState(null);
 
   return (
-    <main style={{ paddingTop: '130px', boxSizing: 'border-box' }}>
+    <main className="page-main" style={{ boxSizing: 'border-box' }}>
 
       {/* 1. HERO / INTRODUCTION */}
       <section
@@ -44,9 +44,8 @@ export default function Alumni({ setActivePage }) {
           <i className="fa-solid fa-graduation-cap" style={{ marginRight: '6px' }}></i> Averera Legacy
         </div>
 
-        <h1 style={{
+        <h1 className="alumni-hero-h1" style={{
           fontFamily: 'var(--font-title)',
-          fontSize: '3.2rem',
           fontWeight: '800',
           lineHeight: '1.15',
           marginBottom: '20px',
@@ -110,7 +109,7 @@ export default function Alumni({ setActivePage }) {
       {/* 2. ALUMNI IMPACT STATS DASHBOARD (Including collective startup count) */}
       <section className="stats-section" style={{ borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)', padding: '60px 0', background: 'transparent' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
-          <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+          <div className="stats-grid">
             {alumniStats.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -149,7 +148,7 @@ export default function Alumni({ setActivePage }) {
           <div className="badge-glass" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center' }}>
             <i className="fa-solid fa-handshake" style={{ marginRight: '6px' }}></i> Alumni Relations / Networks
           </div>
-          <h2 style={{
+          <h2 className="responsive-section-heading" style={{
             fontFamily: 'var(--font-title)',
             color: 'var(--text-primary)',
             fontSize: '2.2rem',

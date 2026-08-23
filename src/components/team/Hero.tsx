@@ -18,9 +18,8 @@ export default function Hero() {
         <i className="fa-solid fa-users" style={{ marginRight: '6px' }}></i> TEAM AVERERA · IIT BHU
       </div>
 
-      <h1 style={{
+      <h1 className="alumni-hero-h1" style={{
         fontFamily: 'var(--font-title)',
-        fontSize: '3.2rem',
         fontWeight: '800',
         lineHeight: '1.15',
         marginBottom: '20px',

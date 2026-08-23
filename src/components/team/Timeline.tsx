@@ -16,21 +16,9 @@ export default function Timeline({
   const [openYear, setOpenYear] = useState<string | null>(generations[0]?.year ?? null);
 
   return (
-    <div style={{ margin: '0 auto', width: '100%', maxWidth: '900px', position: 'relative' }}>
+    <div className="team-timeline-root" style={{ margin: '0 auto', width: '100%', maxWidth: '900px', position: 'relative' }}>
       {/* Centered timeline spine */}
-      <div
-        style={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          top: 0,
-          height: '100%',
-          width: '2px',
-          background: 'linear-gradient(to bottom, transparent, var(--border-color) 5%, var(--border-color) 95%, transparent)',
-          zIndex: 1,
-          pointerEvents: 'none',
-        }}
-      >
+      <div className="team-timeline-spine">
         <motion.div
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
@@ -71,21 +59,6 @@ export default function Timeline({
           );
         })}
       </div>
-
-      {/* Responsive: Stack cards centered on mobile */}
-      <style>{`
-        @media (max-width: 768px) {
-          /* Override alternating layout on small screens */
-          div[style*="flex-start"], div[style*="flex-end"] {
-            justify-content: center !important;
-          }
-          /* Make cards full width on mobile */
-          button[style*="calc(50% - 40px)"] {
-            width: 85% !important;
-            max-width: 100% !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }

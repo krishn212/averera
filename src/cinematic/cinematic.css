@@ -5,8 +5,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -28,8 +28,8 @@
 .cin-video-container {
   position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   z-index: 5;
   transition: transform 4.8s cubic-bezier(0.25, 1, 0.5, 1);
   display: flex;
@@ -635,6 +635,43 @@
   }
 
   .cin-enter-stage-container {
-    bottom: 8%;
+    bottom: 24% !important; /* Move button significantly up near the video frame bottom */
+  }
+
+  .cin-climax-editorial-block {
+    bottom: auto !important;
+    top: 14% !important; /* Positioned directly above the video */
+    left: 6%;
+    right: 6%;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .cin-brand-group {
+    align-items: center !important;
+    padding-left: 0 !important;
+  }
+
+  .cin-brand-accent-line {
+    display: none !important; /* Remove line to center text clean */
+  }
+
+  .cin-tagline-wrap {
+    bottom: 22% !important; /* Position tagline higher up near the center video frame logo */
+  }
+
+  /* Show the widescreen cinematic video completely on mobile portrait screens without cropping */
+  .cin-video-element {
+    object-fit: contain !important;
+    transform: none !important;
+  }
+
+  /* Make background overlay container inherit the premium radial aura instead of solid black */
+  .cin-bg-black {
+    background: radial-gradient(circle at 50% 50%, rgba(6, 40, 48, 0.75) 0%, #000000 85%) !important;
+  }
+
+  .cin-stage-fixed {
+    background: radial-gradient(circle at 50% 50%, rgba(6, 40, 48, 0.75) 0%, #000000 85%) !important;
   }
 }

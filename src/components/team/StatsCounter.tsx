@@ -27,7 +27,7 @@ export default function StatsCounter() {
   return (
     <section className="stats-section" style={{ borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)', padding: '60px 0', background: 'transparent' }}>
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
-        <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '20px' }}>
+        <div className="stats-grid">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

@@ -52,7 +52,7 @@ export default function Team({ setActivePage }) {
   );
 
   return (
-    <main style={{ paddingTop: '130px', boxSizing: 'border-box' }}>
+    <main className="page-main" style={{ boxSizing: 'border-box' }}>
       {/* 1. HERO SECTION */}
       <Hero />
 
@@ -62,7 +62,7 @@ export default function Team({ setActivePage }) {
           <div className="badge-glass" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center' }}>
             <i className="fa-solid fa-circle-nodes" style={{ marginRight: '6px' }}></i> Engineering Excellence
           </div>
-          <h2 style={{ 
+          <h2 className="responsive-section-heading" style={{ 
             fontFamily: 'var(--font-title)', 
             color: 'var(--text-primary)', 
             fontSize: '1.8rem', 
@@ -114,7 +114,7 @@ export default function Team({ setActivePage }) {
           <div className="badge-glass" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center' }}>
             <i className="fa-solid fa-handshake" style={{ marginRight: '6px' }}></i> Join The Team / Collaborate
           </div>
-          <h2 style={{ 
+          <h2 className="responsive-section-heading" style={{ 
             fontFamily: 'var(--font-title)', 
             color: 'var(--text-primary)', 
             fontSize: '2.2rem', 

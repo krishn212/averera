@@ -23,7 +23,7 @@ export default function SectionHeading({
       <div className="badge-glass" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center' }}>
         <i className="fa-solid fa-gears" style={{ marginRight: '6px' }}></i> {eyebrow}
       </div>
-      <h2 style={{ 
+      <h2 className="responsive-section-heading" style={{ 
         fontFamily: 'var(--font-title)', 
         color: 'var(--text-primary)', 
         textTransform: 'uppercase',

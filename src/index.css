@@ -3196,3 +3196,1194 @@ footer .footer-content .socials a {
     right: 20px !important; /* Floating right inside on mobile */
   }
 }
+
+/* ==========================================================================
+   NAVBAR — Clean Responsive System
+   Desktop: pill nav links visible. Mobile: hamburger + fullscreen overlay.
+   ========================================================================== */
+
+/* ── Shared navbar control buttons ── */
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-icon-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.navbar-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ── Desktop nav ── */
+.desktop-nav {
+  display: flex;
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 6px;
+}
+
+/* ── Hamburger button — hidden on desktop ── */
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar-hamburger:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger-bar.mid {
+  width: 14px;
+}
+
+/* Animate to X when open */
+.hamburger-bar.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  width: 18px;
+}
+
+.hamburger-bar.mid.open {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-bar.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 18px;
+}
+
+/* ── Mobile fullscreen overlay ── */
+.mobile-nav-overlay {
+  display: none; /* Hidden on desktop */
+}
+
+/* ── Nav CTA — visible on desktop ── */
+.nav-cta {
+  display: inline-flex;
+}
+
+/* ==========================================================================
+   NAVBAR — Mobile ≤768px
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Hide desktop nav */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* Hide desktop CTA */
+  .nav-cta {
+    display: none !important;
+  }
+
+  /* Show hamburger */
+  .navbar-hamburger {
+    display: flex !important;
+  }
+
+  /* Tighten navbar padding */
+  .navbar-glass {
+    padding: 10px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Logo slightly smaller */
+  .navbar-logo-img {
+    height: 30px;
+  }
+
+  /* Show mobile overlay */
+  .mobile-nav-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 13, 18, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 90px;
+    padding-bottom: 40px;
+    overflow-y: auto;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .mobile-nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Close button inside overlay */
+  .mobile-nav-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    z-index: 10002;
+  }
+
+  .mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Nav menu list */
+  .mobile-nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Each nav item — staggered slide-up */
+  .mobile-nav-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: center;
+    width: 100%;
+  }
+
+  .mobile-nav-overlay.open .mobile-nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Nav link styling */
+  .mobile-nav-link {
+    font-family: var(--font-title);
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease, letter-spacing 0.25s ease;
+    display: inline-block;
+    padding: 10px 20px;
+    min-height: 54px;
+    line-height: 1.2;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: #1AFFFF;
+    letter-spacing: 0.14em;
+  }
+
+
+  [data-theme='light'] .mobile-nav-link:hover,
+  [data-theme='light'] .mobile-nav-link.active {
+    color: #06B6D4;
+  }
+
+  [data-theme='light'] .mobile-nav-overlay {
+    background: rgba(6, 22, 28, 0.97);
+  }
+}
+
+/* ── Small mobile: slightly tighter gap ── */
+@media (max-width: 480px) {
+  .mobile-nav-menu {
+    gap: 4px;
+  }
+
+  .mobile-nav-link {
+    font-size: clamp(1.3rem, 8vw, 1.7rem);
+    padding: 8px 16px;
+  }
+}
+
+/* ==========================================================================
+   CINEMATIC — Mobile responsive fixes
+   ========================================================================== */
+
+/* Gateway button on very small screens */
+@media (max-width: 480px) {
+  .cin-heavy-gateway-btn {
+    width: min(88vw, 260px) !important;
+    height: 50px !important;
+  }
+
+  .cin-climax-editorial-block {
+    bottom: 22% !important;
+    left: 5% !important;
+    right: 5% !important;
+    gap: 10px !important;
+    max-width: 90vw;
+  }
+
+  .cin-statement-primary {
+    font-size: clamp(16px, 5vw, 22px) !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .cin-statement-secondary {
+    font-size: clamp(12px, 4vw, 16px) !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .cin-brand-name {
+    font-size: clamp(14px, 4vw, 20px) !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .cin-skip {
+    top: 16px !important;
+    right: 16px !important;
+    padding: 6px 10px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .cin-audio-toggle {
+    bottom: 16px !important;
+    left: 16px !important;
+    padding: 6px 10px !important;
+    font-size: 0.58rem !important;
+  }
+
+  .cin-enter-stage-container {
+    bottom: 6% !important;
+  }
+
+  /* Tagline wrap positioning */
+  .cin-tagline-wrap {
+    bottom: 6% !important;
+    width: 95% !important;
+    font-size: clamp(10px, 3vw, 14px) !important;
+    letter-spacing: 0.25em !important;
+  }
+}
+
+/* ── Alumni hero h1 — fluid typography ── */
+
+.alumni-hero-h1 {
+  font-size: clamp(1.7rem, 6vw, 3.2rem);
+}
+
+/* Generic responsive section heading (replaces hardcoded 1.8rem / 2.2rem inline styles) */
+.responsive-section-heading {
+  font-size: clamp(1.2rem, 4vw, 2.2rem) !important;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   Team Timeline — CSS classes (replaces inline styles for responsive control)
+   ========================================================================== */
+
+.team-timeline-root {
+  position: relative;
+}
+
+.team-timeline-spine {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--border-color) 5%, var(--border-color) 95%, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.timeline-node-row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.timeline-arm {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.5;
+  transform: translateY(-50%);
+}
+
+.timeline-card-btn {
+  min-height: 44px; /* touch target */
+}
+
+/* Mobile: collapse zigzag to single centered column */
+@media (max-width: 768px) {
+  .team-timeline-spine {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-node-row {
+    justify-content: flex-start !important;
+    padding-left: 48px;
+  }
+
+  .timeline-arm {
+    display: none !important;
+  }
+
+  .timeline-card-btn {
+    width: calc(100% - 16px) !important;
+    max-width: 100% !important;
+  }
+}
+
+
+/* ==========================================================================
+   AVERERA — COMPREHENSIVE RESPONSIVE DESIGN OVERHAUL
+   Breakpoints: ≤1280px | ≤1024px | ≤768px | ≤480px | ≤360px
+   Strategy: reflow-first, fluid typography, no blind overrides
+   ========================================================================== */
+
+/* ── Responsive CSS Variables ──────────────────────────────────────────── */
+:root {
+  --page-top-pad-desktop: 130px;
+  --page-top-pad-tablet:  100px;
+  --page-top-pad-mobile:  90px;
+  --section-pad-desktop:  80px;
+  --section-pad-tablet:   50px;
+  --section-pad-mobile:   36px;
+}
+
+/* ── Responsive page top padding utility class ─────────────────────────── */
+.page-main {
+  padding-top: var(--page-top-pad-desktop);
+  box-sizing: border-box;
+}
+
+/* ── Global: images never overflow ────────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Prevent ANY horizontal overflow globally ──────────────────────────── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+
+/* ==========================================================================
+   ≤1280px  Large-Laptop / small desktop
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .navbar-glass {
+    padding: 12px 24px;
+  }
+
+  .hero-container {
+    padding: 0 24px;
+  }
+
+  .hero-typed-heading {
+    font-size: 3.4rem;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* card-wide spans full row on 2-col grid */
+  .card-wide {
+    grid-column: span 2;
+  }
+
+  .contact-info {
+    padding: 48px;
+  }
+
+  .contact-form {
+    padding: 48px;
+  }
+}
+
+
+/* ==========================================================================
+   ≤1024px  Tablet / Laptop
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* -- Section spacing -- */
+  .about-section,
+  .vehicles-section,
+  .tech-section,
+  .contact-section,
+  .simulator-section {
+    padding: var(--section-pad-tablet) 0;
+  }
+
+  .stats-section {
+    padding: 40px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  /* -- Typography -- */
+  .hero-typed-heading {
+    font-size: 3rem;
+    min-height: 120px;
+  }
+
+  .section-header h2 {
+    font-size: 2.1rem;
+  }
+
+  .stat-card h3 {
+    font-size: 2.2rem;
+  }
+
+  /* -- Grids -- */
+  .about-grid,
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-wide {
+    grid-column: span 2;
+  }
+
+  .vehicles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* -- Contact -- */
+  .contact-card-glass {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    border-left: none;
+    border-top: 1px solid var(--glass-border);
+    padding: 40px;
+  }
+
+  .contact-info {
+    padding: 40px;
+  }
+
+  /* -- Simulator -- */
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* -- Vehicles pinned layout -- */
+  .pinned-vehicles-container {
+    flex-direction: column;
+  }
+
+  /* -- Vehicle detail grid -- */
+  .vehicle-detail-grid,
+  .vehicle-detail-grid.swap-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+
+/* ==========================================================================
+   ≤768px  Mobile
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Vehicle details specifications page padding fixes */
+  .vehicle-specs {
+    padding: 0 16px !important;
+    box-sizing: border-box;
+  }
+
+  .vehicle-detail-section {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .section-header {
+    padding: 0 16px !important;
+  }
+
+  /* Vehicle detail grid mobile margin spacing */
+  .vehicle-detail-grid {
+    gap: 36px !important;
+  }
+
+  /* Vehicle spec cards margins */
+  .spec-metric-card {
+    padding: 16px !important;
+  }
+
+  /* -- Page top padding -- */
+  .page-main {
+    padding-top: var(--page-top-pad-mobile);
+    padding-bottom: 120px !important; /* Prevents fixed bottom bars from hiding page content */
+  }
+
+  /* main inline paddingTop overrides for pages using style prop */
+  main[style*="paddingTop"] {
+    padding-top: var(--page-top-pad-mobile) !important;
+    padding-bottom: 120px !important;
+  }
+
+  /* -- Section spacing -- */
+  .about-section,
+  .vehicles-section,
+  .tech-section,
+  .contact-section,
+  .simulator-section {
+    padding: 50px 0; /* More spacious padding */
+  }
+
+  .stats-section {
+    padding: 36px 0;
+  }
+
+  main > section,
+  main > div {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* -- Navbar -- */
+  .navbar-glass {
+    padding: 12px 20px;
+    border-radius: 16px;
+  }
+
+  header {
+    top: 10px;
+    padding: 0 12px;
+  }
+
+  .navbar-logo-img {
+    height: 32px;
+  }
+
+  /* -- Hero Section -- */
+  .hero-section {
+    padding-top: 130px;
+    padding-bottom: 60px;
+    min-height: 80vh;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-container {
+    padding: 0 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    /* Disable float animation on mobile for performance */
+    animation: none;
+  }
+
+  .hero-typed-heading {
+    font-size: clamp(1.7rem, 6vw, 2.6rem);
+    min-height: auto;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* -- Section headers -- */
+  .section-header {
+    margin-bottom: 28px;
+    padding: 0 4px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+  }
+
+  /* -- Typography: inline heading sizes in JSX -- */
+  /* These cover the hardcoded fontSize inline styles */
+  h1, h2, h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* -- Stats grid -- */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 20px 14px;
+  }
+
+  .stat-card h3 {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+  }
+
+  .stat-card p {
+    font-size: 0.8rem;
+  }
+
+  /* -- About/member grids -- */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card-wide {
+    grid-column: span 1;
+  }
+
+  .about-card {
+    padding: 22px 18px;
+  }
+
+  /* -- Vehicles -- */
+  .vehicles-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .vehicle-img-wrapper {
+    height: 180px;
+  }
+
+  .vehicle-info {
+    padding: 20px;
+  }
+
+  /* -- Tech grid -- */
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tech-card {
+    padding: 24px 20px;
+  }
+
+  /* -- Sponsor marquee -- */
+  .sponsor-logo-card img {
+    height: 36px;
+  }
+
+  /* -- Closing section -- */
+  .closing-section {
+    padding: 60px 16px !important;
+  }
+
+  /* -- Contact -- */
+  .contact-info,
+  .contact-form {
+    padding: 28px 20px;
+  }
+
+  .contact-info h2 {
+    font-size: 1.8rem;
+  }
+
+  /* -- Form elements -- */
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 14px;
+    font-size: 1rem; /* prevents iOS auto-zoom */
+  }
+
+  /* -- Footer -- */
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .socials {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .socials a {
+    font-size: 1.4rem; /* larger touch targets */
+    padding: 4px;
+  }
+
+  /* -- Legacy / Timeline page bottom bar -- */
+
+  /* -- Timeline (Legacy page alternating cards) -- */
+  .timeline-line,
+  .timeline-progress-bar {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 52px;
+    padding-right: 16px;
+  }
+
+  .timeline-item.left {
+    text-align: left;
+    left: 0;
+  }
+
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-item.left .timeline-dot,
+  .timeline-item.left .timeline-dot-highlight {
+    left: 12px;
+    right: auto;
+  }
+
+  .timeline-item.left .timeline-dot-highlight {
+    left: 8px;
+    right: auto;
+  }
+
+  .timeline-item.right .timeline-dot,
+  .timeline-item.right .timeline-dot-highlight {
+    left: 12px;
+  }
+
+  .timeline-item.right .timeline-dot-highlight {
+    left: 8px;
+  }
+}
+
+
+/* ==========================================================================
+   ≤480px  Small Mobile
+   ========================================================================== */
+@media (max-width: 480px) {
+  /* -- Hero typography -- */
+  .hero-typed-heading {
+    font-size: clamp(1.5rem, 7.5vw, 2rem);
+    min-height: auto;
+  }
+
+  .hero-content p {
+    font-size: 0.88rem;
+  }
+
+  /* -- Section headers -- */
+  .section-header h2 {
+    font-size: clamp(1.25rem, 6vw, 1.65rem);
+  }
+
+  /* -- Stats: single column at very small sizes -- */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 18px 14px;
+  }
+
+  .stat-card h3 {
+    font-size: 1.8rem;
+  }
+
+  /* -- Buttons: full width -- */
+  .btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  /* -- Badge glass: allow wrapping -- */
+  .badge-glass {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  /* -- About/mentor card images -- */
+  .mentor-img-wrapper {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* -- Team page inline headings -- */
+  .team-page-heading {
+    font-size: 1.4rem;
+  }
+
+  /* -- Sponsor marquee: slow on tiny screens -- */
+  .sponsor-marquee-track {
+    animation-duration: 40s !important;
+  }
+
+  /* -- Profile drawer -- */
+  .mobile-drawer-bottom {
+    height: 96dvh !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+
+  /* -- Legacy page bottom bar -- */
+  .legacy-bottom-progress-bar {
+    padding: 8px 10px;
+  }
+
+  .legacy-progress-badge {
+    font-size: 0.72rem;
+    padding: 2px 6px;
+  }
+
+  /* -- Legacy mini cards: scrollable strip -- */
+  .legacy-mini-cards-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .legacy-mini-cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .legacy-mini-card {
+    flex: 0 0 90px;
+  }
+
+  /* -- Speedometer HUD: hide on tiny screens to save space -- */
+  .speedometer-hud {
+    display: none;
+  }
+}
+
+
+/* ==========================================================================
+   ≤360px  Very Small Phones (320–360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .hero-typed-heading {
+    font-size: 1.4rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .navbar-glass {
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+
+  header {
+    padding: 0 8px;
+    top: 8px;
+  }
+
+  .contact-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .stat-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .about-card {
+    padding: 18px 14px;
+  }
+
+  .mobile-cta-li .btn {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+}
+
+
+/* ==========================================================================
+   Alumni + Team page: responsive inline-style overrides
+   These target the hardcoded font sizes used in JSX inline styles
+   ========================================================================== */
+
+/* Hero headings used across Team/Alumni/sections */
+@media (max-width: 768px) {
+  /* Section page H1 (3.2rem inline) */
+  .section-header h1,
+  main .section-header h1 {
+    font-size: clamp(1.7rem, 6vw, 2.4rem) !important;
+  }
+
+  /* Inline h2 headings in Team/Alumni CTAs (1.8rem, 2.2rem) */
+  main section h2[style],
+  main div h2[style] {
+    font-size: clamp(1.3rem, 4.5vw, 1.8rem) !important;
+  }
+
+  /* Inline p large text */
+  main section p[style],
+  main div p[style] {
+    font-size: 0.9rem !important;
+  }
+
+  /* Alumni stats section */
+  .stats-section .stats-grid {
+    padding: 0 4px;
+  }
+
+  /* Sponsor section  */
+  .sponsors-section {
+    margin-top: 36px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Closing section */
+  main .closing-section {
+    padding: 48px 16px !important;
+  }
+}
+
+
+/* ==========================================================================
+   Team alternating Timeline (Alumni page) — Mobile collapse
+   Makes the zigzag alternating layout collapse to single-center column
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Override TimelineNode alternating flex direction */
+  div[style*="justify-content: flex-start"],
+  div[style*="justify-content: flex-end"] {
+    justify-content: center !important;
+  }
+
+  /* Make timeline card buttons full-width on mobile */
+  div[style*="justify-content: center"] > button[style*="calc(50%"] {
+    width: 90% !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide connecting arms on mobile */
+  div[style*="linear-gradient(to left"],
+  div[style*="linear-gradient(to right"] {
+    display: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   Performance: reduce expensive effects on mobile
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Disable continuous float animation on hero */
+  .hero-content {
+    animation: none !important;
+  }
+
+  /* Reduce backdrop-filter blur on low-end devices — keep glass look, cheaper render */
+  .navbar-glass,
+  .about-card,
+  .stat-card,
+  .vehicle-card,
+  .tech-card {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Disable particle animations on mobile via disableAnimations prop handled in JS,
+     but also disable any leftover CSS transform animations */
+  .magic-particle-container > .magic-particle {
+    display: none !important;
+  }
+
+  /* Reduce hero image zoom animation */
+  .page-bg-img {
+    animation: blueprint-draw 4.8s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+  }
+}
+
+
+/* ==========================================================================
+   Touch targets: ensure minimum 44px on all interactive elements
+   ========================================================================== */
+@media (max-width: 768px) {
+  button,
+  a.btn,
+  nav ul li a,
+  .theme-toggle-btn,
+  .nav-toggle-btn,
+  .filter-chip {
+    min-height: 44px;
+  }
+}
+
+
+/* ==========================================================================
+   Sponsor marquee: no overflow on any screen
+   ========================================================================== */
+.sponsor-marquee-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.sponsor-logo-card img {
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .sponsor-logo-card img {
+    max-height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-logo-card img {
+    max-height: 28px;
+  }
+}
+
+
+/* ==========================================================================
+   About-grid member cards: graceful 3→2→1 column reflow
+   ========================================================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* 2-col member card grid where space allows */
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+
+/* ==========================================================================
+   Tables: horizontal scroll on mobile rather than overflow
+   ========================================================================== */
+@media (max-width: 768px) {
+  .specs-table-glass {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .specs-table-glass th,
+  .specs-table-glass td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
+
+
+/* ==========================================================================
+   Vehicle detail page: responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+  .vehicle-detail-grid,
+  .vehicle-detail-grid.swap-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .image-glass-container {
+    padding: 18px;
+  }
+
+  .vehicle-card h3 {
+    font-size: 1.4rem;
+  }
+}

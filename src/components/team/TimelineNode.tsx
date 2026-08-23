@@ -19,15 +19,13 @@ export default function TimelineNode({
   const isLeft = align === "left";
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        display: 'flex',
-        width: '100%',
-        justifyContent: isLeft ? 'flex-start' : 'flex-end',
-        alignItems: 'center',
-      }}
-    >
+    <div className="timeline-node-row" style={{
+      position: 'relative',
+      display: 'flex',
+      width: '100%',
+      justifyContent: isLeft ? 'flex-start' : 'flex-end',
+      alignItems: 'center',
+    }}>
       {/* Dot on the spine */}
       <span
         style={{
@@ -39,7 +37,7 @@ export default function TimelineNode({
           height: '16px',
           width: '16px',
           borderRadius: '50%',
-          background: isOpen ? 'var(--accent-cyan)' : 'var(--accent-cyan)',
+          background: 'var(--accent-cyan)',
           border: '3px solid var(--bg-color)',
           boxShadow: isOpen
             ? '0 0 12px rgba(24, 208, 220, 0.5), 0 0 4px rgba(24, 208, 220, 0.3)'
@@ -49,8 +47,9 @@ export default function TimelineNode({
         }}
       />
 
-      {/* Horizontal connecting arm from spine to card */}
+      {/* Horizontal connecting arm — hidden on mobile via CSS */}
       <div
+        className="timeline-arm"
         style={{
           position: 'absolute',
           top: '50%',
@@ -71,6 +70,7 @@ export default function TimelineNode({
         onClick={onClick}
         whileHover={{ y: -3, boxShadow: '0 8px 24px rgba(24, 208, 220, 0.15)' }}
         whileTap={{ scale: 0.97 }}
+        className="timeline-card-btn"
         style={{
           background: 'var(--glass-bg)',
           border: isOpen ? '1px solid var(--accent-cyan)' : '1px solid var(--border-color)',

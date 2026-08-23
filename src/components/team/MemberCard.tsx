@@ -16,17 +16,19 @@ export default function MemberCard({
 }) {
   const isLeadership = variant === "leadership";
 
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+
   return (
     <ParticleCard
       className="about-card"
-      enableTilt={true}
-      enableMagnetism={true}
+      enableTilt={!isMobile}
+      enableMagnetism={!isMobile}
       clickEffect={true}
-      enableBorderGlow={true}
-      particleCount={8}
+      enableBorderGlow={!isMobile}
+      particleCount={isMobile ? 0 : 8}
       glowColor="24, 208, 219"
       style={{
-        padding: '30px 24px',
+        padding: isMobile ? '20px 16px' : '30px 24px',
         cursor: 'pointer',
         textAlign: 'center',
         display: 'flex',
