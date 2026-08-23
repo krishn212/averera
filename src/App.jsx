@@ -77,13 +77,13 @@ export default function App({ introDone }) {
 
   useEffect(() => {
     localStorage.setItem('activePage', activePage);
-    
+
     // Sync browser URL paths
     const path = activePage === 'home' ? '/' : `/${activePage}`;
     if (window.location.pathname !== path) {
       window.history.pushState(null, '', path);
     }
-    
+
     // When navigating to legacy (Legacy), trigger a single-pass window reload
     if (activePage === 'legacy') {
       const hasReloaded = sessionStorage.getItem('legacyReloaded');
@@ -104,7 +104,9 @@ export default function App({ introDone }) {
         const contact = document.getElementById('contact');
         attempts++;
         if (contact) {
-          contact.scrollIntoView({ behavior: 'instant' });
+          setTimeout(() => {
+            contact.scrollIntoView({ behavior: 'smooth' });
+          }, 150);
           sessionStorage.removeItem('scrollToContact');
           clearInterval(interval);
           ScrollTrigger.refresh();

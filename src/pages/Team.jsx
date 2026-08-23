@@ -41,15 +41,7 @@ export default function Team({ setActivePage }) {
     );
   }, [query, filter]);
 
-  const filteredLeadership = useMemo(
-    () => leadership.filter((m) => memberMatchesQuery(m, query.trim()) && matchesFilter(m, filter)),
-    [query, filter]
-  );
-  
-  const filteredCurrent = useMemo(
-    () => currentTeam.filter((m) => memberMatchesQuery(m, query.trim()) && matchesFilter(m, filter)),
-    [query, filter]
-  );
+
 
   return (
     <main className="page-main" style={{ boxSizing: 'border-box' }}>
@@ -88,8 +80,6 @@ export default function Team({ setActivePage }) {
         <SearchSection
           query={query}
           onQueryChange={setQuery}
-          activeFilter={filter}
-          onFilterChange={setFilter}
         />
       </div>
 
@@ -98,9 +88,8 @@ export default function Team({ setActivePage }) {
         <SearchResultsSection members={filteredCurrentMembers} onSelect={setSelected} />
       ) : (
         <>
-          <LeadershipSection members={filteredLeadership} onSelect={setSelected} />
           <CurrentTeamSection
-            members={filteredCurrent}
+            members={filteredCurrentMembers}
             onSelect={setSelected}
             searchActive={false}
           />
@@ -122,7 +111,7 @@ export default function Team({ setActivePage }) {
             textTransform: 'uppercase', 
             margin: '0 0 15px 0' 
           }}>
-            Build The Future With Us
+            Explore Our Legacy
           </h2>
           <p style={{ 
             fontSize: '0.95rem', 
@@ -131,28 +120,18 @@ export default function Team({ setActivePage }) {
             maxWidth: '600px',
             margin: '0 auto 30px auto'
           }}>
-            Whether you want to sponsor our vehicle development, collaborate on research, or apply to join our engineering rosters, we want to hear from you.
+            Discover our competitive timeline, past achievements, vehicle iterations, and major milestones since inception.
           </p>
           <div>
             <a
-              href="#contact"
-              className="btn btn-primary"
+              href="/legacy"
+              className="btn btn-glow"
               onClick={(e) => {
                 e.preventDefault();
-                if (setActivePage) {
-                  sessionStorage.setItem('scrollToContact', 'true');
-                  setActivePage("home");
-                } else {
-                  const contact = document.getElementById("contact");
-                  if (contact) {
-                    contact.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-                  }
-                }
+                setActivePage?.('legacy');
               }}
             >
-              Connect With Us <i className="fa-solid fa-paper-plane" style={{ marginLeft: '6px' }}></i>
+              Explore Our Legacy <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }}></i>
             </a>
           </div>
         </div>

@@ -206,11 +206,11 @@ export default function Vehicles({ setActivePage }) {
             ENGINEERING NEVER STANDS STILL.
           </p>
           <a
-            href="#timeline"
+            href="/legacy"
             className="btn btn-glow"
             onClick={(e) => {
               e.preventDefault();
-              setActivePage?.('timeline');
+              setActivePage?.('legacy');
             }}
             style={{ fontSize: '1.05rem', letterSpacing: '0.1em' }}
           >

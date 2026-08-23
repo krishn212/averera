@@ -564,11 +564,11 @@ export default function Home({ setActivePage, introDone }) {
               TEAM AVERERA • IIT (BHU), VARANASI
             </p>
             <a
-              href="#timeline"
+              href="/legacy"
               className="btn btn-glow"
               onClick={(e) => {
                 e.preventDefault();
-                setActivePage('timeline');
+                setActivePage('legacy');
               }}
             >
               EXPLORE OUR LEGACY
@@ -580,7 +580,7 @@ export default function Home({ setActivePage, introDone }) {
         <section id="contact" className="contact-section">
           <div className="contact-card-glass">
             <div className="contact-info">
-              <h2>Accelerate With Us</h2>
+              <h2>Contact Us</h2>
               <p>Partner with us, sponsor our projects, or join the team to build the future of sustainable mobility.</p>
               <div className="contact-details">
                 <p><i className="fa-solid fa-envelope" style={{ marginRight: '8px' }}></i> averera@iitbhu.ac.in</p>

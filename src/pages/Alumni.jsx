@@ -156,7 +156,7 @@ export default function Alumni({ setActivePage }) {
             textTransform: 'uppercase',
             margin: '0 0 15px 0'
           }}>
-            Collaborate With Alumni
+            Explore Our Legacy
           </h2>
           <p style={{
             fontSize: '0.95rem',
@@ -165,28 +165,18 @@ export default function Alumni({ setActivePage }) {
             maxWidth: '600px',
             margin: '0 auto 30px auto'
           }}>
-            If you are an Averera alumnus looking to mentor current members, collaborate on research initiatives, or support our vehicle programs, please get in touch.
+            Discover our competitive timeline, past achievements, vehicle iterations, and major milestones since inception.
           </p>
           <div>
             <a
-              href="#contact"
-              className="btn btn-primary"
+              href="/legacy"
+              className="btn btn-glow"
               onClick={(e) => {
                 e.preventDefault();
-                if (setActivePage) {
-                  sessionStorage.setItem('scrollToContact', 'true');
-                  setActivePage("home");
-                } else {
-                  const contact = document.getElementById("contact");
-                  if (contact) {
-                    contact.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-                  }
-                }
+                setActivePage?.('legacy');
               }}
             >
-              Connect With Us <i className="fa-solid fa-paper-plane" style={{ marginLeft: '6px' }}></i>
+              Explore Our Legacy <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }}></i>
             </a>
           </div>
         </div>

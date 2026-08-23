@@ -682,14 +682,7 @@ export const allMembers: Member[] = [...leadership, ...currentTeam, ...alumni];
 
 export const filterChips = [
   "All",
-  "Leadership",
   "Current Team",
-  // "Technical",
-  // "Electronics",
-  // "Mechanical",
-  // "Design",
-  // "Research",
-  // "Management",
 ] as const;
 
 export type FilterChip = (typeof filterChips)[number];
@@ -698,14 +691,10 @@ export function matchesFilter(member: Member, chip: FilterChip): boolean {
   switch (chip) {
     case "All":
       return true;
-    case "Leadership":
-      return member.isLeadership;
     case "Current Team":
-      return member.isCurrent && !member.isLeadership;
-    case "Alumni":
-      return !member.isCurrent;
+      return member.isCurrent;
     default:
-      return member.team === chip;
+      return true;
   }
 }
 
