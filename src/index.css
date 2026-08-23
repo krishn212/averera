@@ -3912,8 +3912,9 @@ html, body {
 
   /* -- About/member grids -- */
   .about-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 0 16px !important;
   }
 
   .card-wide {
@@ -3921,7 +3922,8 @@ html, body {
   }
 
   .about-card {
-    padding: 22px 18px;
+    padding: 24px 20px !important;
+    margin-bottom: 0 !important; /* Ensure uniform gaps are driven by the grid gap */
   }
 
   /* -- Vehicles -- */
