@@ -177,52 +177,36 @@ export default function ProfileDrawer({
                 {member.bio}
               </p>
 
-              {/* Technical Details segments */}
-              <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
-                <h3 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10.5px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-primary)',
-                  marginBottom: '12px',
-                  borderBottom: '1px solid var(--border-color)',
-                  paddingBottom: '6px'
+              {/* Contact Info Block */}
+              {(member.social.email || member.social.phone) && (
+                <div style={{
+                  width: '100%',
+                  textAlign: 'left',
+                  marginTop: '20px',
+                  paddingTop: '15px',
+                  borderTop: '1px dashed var(--border-color)',
+                  fontSize: '0.82rem',
+                  color: 'var(--text-secondary)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '6px'
                 }}>
-                  Projects
-                </h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                  {member.projects.map((p) => (
-                    <li key={p} style={{ display: 'flex', alignItems: 'start', gap: '8px', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '6px' }}>
-                      <span style={{ height: '5px', width: '5px', borderRadius: '50%', background: 'var(--accent-cyan)', marginTop: '6px', shrink: '0' }} />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  {member.social.email && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.72rem', textTransform: 'uppercase', width: '60px', display: 'inline-block' }}>Email:</span>
+                      <a href={`mailto:${member.social.email}`} style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}>{member.social.email}</a>
+                    </div>
+                  )}
+                  {member.social.phone && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.72rem', textTransform: 'uppercase', width: '60px', display: 'inline-block' }}>Phone:</span>
+                      <span style={{ color: 'var(--text-primary)' }}>{member.social.phone}</span>
+                    </div>
+                  )}
+                </div>
+              )}
 
-              <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
-                <h3 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10.5px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-primary)',
-                  marginBottom: '12px',
-                  borderBottom: '1px solid var(--border-color)',
-                  paddingBottom: '6px'
-                }}>
-                  Achievements
-                </h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                  {member.achievements.map((a) => (
-                    <li key={a} style={{ display: 'flex', alignItems: 'start', gap: '8px', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '6px' }}>
-                      <span style={{ height: '5px', width: '5px', borderRadius: '50%', background: 'var(--accent-green, #10B981)', marginTop: '6px', shrink: '0' }} />
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
 
               <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
                 <h3 style={{

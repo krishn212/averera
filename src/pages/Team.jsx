@@ -7,12 +7,8 @@ import {
 } from "../data/team";
 
 import Hero from "../components/team/Hero";
-import SearchSection from "../components/team/SearchSection";
-import LeadershipSection from "../components/team/LeadershipSection";
 import CurrentTeamSection from "../components/team/CurrentTeamSection";
 import StatsCounter from "../components/team/StatsCounter";
-import LegacySection from "../components/team/LegacySection";
-import SearchResultsSection from "../components/team/SearchResultsSection";
 import ProfileDrawer from "../components/team/ProfileDrawer";
 
 function memberMatchesQuery(m, query) {
@@ -27,19 +23,12 @@ function memberMatchesQuery(m, query) {
 }
 
 export default function Team({ setActivePage }) {
-  const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("All");
   const [selected, setSelected] = useState(null);
 
-  const isSearchActive = query.trim().length > 0 || filter !== "All";
-
   // Filter only current team and leadership for current team page
-  const filteredCurrentMembers = useMemo(() => {
-    const currentList = [...leadership, ...currentTeam];
-    return currentList.filter(
-      (m) => matchesFilter(m, filter) && memberMatchesQuery(m, query.trim())
-    );
-  }, [query, filter]);
+  const allCurrentMembers = useMemo(() => {
+    return [...leadership, ...currentTeam];
+  }, []);
 
 
 
@@ -75,27 +64,13 @@ export default function Team({ setActivePage }) {
         </div>
       </section>
 
-      {/* 3. SEARCH & FILTERS */}
-      <div id="team-showcase">
-        <SearchSection
-          query={query}
-          onQueryChange={setQuery}
-        />
-      </div>
-
-      {/* 4. TEAM MEMBERS */}
-      {isSearchActive ? (
-        <SearchResultsSection members={filteredCurrentMembers} onSelect={setSelected} />
-      ) : (
-        <>
-          <CurrentTeamSection
-            members={filteredCurrentMembers}
-            onSelect={setSelected}
-            searchActive={false}
-          />
-          <StatsCounter />
-        </>
-      )}
+      {/* 3. TEAM MEMBERS */}
+      <CurrentTeamSection
+        members={allCurrentMembers}
+        onSelect={setSelected}
+        searchActive={false}
+      />
+      <StatsCounter />
 
 
 

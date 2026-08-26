@@ -46,6 +46,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
     { label: 'Vehicles', key: 'vehicles' },
     { label: 'Team',     key: 'team' },
     { label: 'Alumni',   key: 'alumni' },
+    { label: 'Sponsors', key: 'sponsors' },
   ];
 
   const socialItems = [

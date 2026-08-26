@@ -278,17 +278,19 @@ export default function MemberCard({
             </h4>
 
             {/* Role Position */}
-            <div className="badge-glass" style={{
-              fontSize: '0.68rem',
-              padding: '2px 10px',
-              marginBottom: '10px',
-              borderColor: 'var(--glass-border)',
-              fontFamily: 'var(--font-mono)',
-              letterSpacing: '0.05em',
-              display: 'inline-block',
-            }}>
-              {member.position}
-            </div>
+            {isLeadership && (
+              <div className="badge-glass" style={{
+                fontSize: '0.68rem',
+                padding: '2px 10px',
+                marginBottom: '10px',
+                borderColor: 'var(--glass-border)',
+                fontFamily: 'var(--font-mono)',
+                letterSpacing: '0.05em',
+                display: 'inline-block',
+              }}>
+                {member.position}
+              </div>
+            )}
 
             {/* Department / Gen */}
             <p style={{
@@ -300,22 +302,7 @@ export default function MemberCard({
               {member.department}
             </p>
 
-            {isLeadership && member.bio && (
-              <p style={{
-                fontSize: '0.78rem',
-                color: 'var(--text-secondary)',
-                margin: '0 0 15px 0',
-                lineHeight: '1.45',
-                opacity: 0.85,
-                display: '-webkit-box',
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}>
-                {member.bio}
-              </p>
-            )}
+
           </div>
 
           {/* Social Links / Action footer inside card */}
@@ -336,7 +323,10 @@ export default function MemberCard({
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
             }}>
-              Gen {member.generation}
+              {member.generation === "12" ? "2024-25" :
+               member.generation === "13" ? "2025-26" :
+               member.generation === "14" ? "2026-27" :
+               `Gen ${member.generation}`}
             </span>
             <SocialLinks social={member.social} />
           </div>

@@ -381,7 +381,7 @@ export default function Home({ setActivePage, introDone }) {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              <i className="fa-solid fa-layer-group"></i>
+              <i className="fa-solid fa-car-side"></i>
               <h4>Vehicle Design</h4>
               <p>Aerodynamics, lightweight structures, efficiency-focused vehicle architecture and mechanical design.</p>
             </div>
@@ -528,33 +528,7 @@ IIT (BHU) Varanasi
           </div>
         </section>
 
-        {/* Infinite Horizontal Sponsor Logo Marquee */}
-        <section id="sponsors" className="sponsors-section" style={{ marginTop: '70px', marginBottom: '40px' }}>
-          <div className="section-header">
-            <h2>Our Trusted Partners & Sponsors</h2>
-            <p>Empowering student innovation, green energy research, and engineering excellence.</p>
-          </div>
 
-          <div className="sponsor-marquee-container">
-            {/* Row 1: Left Infinite Scroll */}
-            <div className="sponsor-marquee-track track-left">
-              {[spTata, spIitbhu, spCerd, sp1, sp2, sp3, sp4, sp5, sp6, sp7, sp8, sp9, sp10, sp11, sp12, sp13, sp14, spMain, spTata, spIitbhu, spCerd, sp1, sp2, sp3, sp4, sp5, sp6, sp7, sp8, sp9, sp10, sp11, sp12, sp13, sp14, spMain].map((imgSrc, i) => (
-                <div className="sponsor-logo-card" key={`sp-l-${i}`}>
-                  <img src={imgSrc} alt={`Sponsor logo ${i + 1}`} />
-                </div>
-              ))}
-            </div>
-
-            {/* Row 2: Right Infinite Scroll */}
-            <div className="sponsor-marquee-track track-right" style={{ marginTop: '20px' }}>
-              {[sp14, sp13, sp12, sp11, sp10, sp9, sp8, sp7, sp6, sp5, sp4, sp3, sp2, sp1, spCerd, spIitbhu, spTata, spMain, sp14, sp13, sp12, sp11, sp10, sp9, sp8, sp7, sp6, sp5, sp4, sp3, sp2, sp1, spCerd, spIitbhu, spTata, spMain].map((imgSrc, i) => (
-                <div className="sponsor-logo-card" key={`sp-r-${i}`}>
-                  <img src={imgSrc} alt={`Sponsor logo ${i + 1}`} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Spacious Closing Statement Section */}
         <section className="closing-section" style={{ padding: '120px 20px', textAlign: 'center', borderTop: '1px solid var(--glass-border)' }}>

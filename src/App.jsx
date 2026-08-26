@@ -18,6 +18,7 @@ export default function App({ introDone }) {
     if (path === '/team') return 'team';
     if (path === '/alumni') return 'alumni';
     if (path === '/legacy' || path === '/timeline') return 'legacy';
+    if (path === '/sponsors') return 'sponsors';
     if (path === '/' || path === '') return 'home';
     const savedPage = localStorage.getItem('activePage');
     return savedPage || 'home';

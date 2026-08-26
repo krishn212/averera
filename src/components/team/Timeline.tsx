@@ -23,17 +23,17 @@ export default function Timeline({
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.4, ease: "easeOut" }}
+          transition={{ duration: 1.6, ease: "easeOut" }}
           style={{
             transformOrigin: "top",
             height: '100%',
             width: '100%',
-            background: 'linear-gradient(to bottom, transparent, var(--accent-cyan) 5%, var(--accent-cyan) 95%, transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(24, 208, 220, 0.4) 5%, rgba(24, 208, 220, 0.3) 95%, transparent)',
           }}
         />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '50px', position: 'relative', zIndex: 2 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', position: 'relative', zIndex: 2 }}>
         {generations.map((g, i) => {
           const isOpen = openYear === g.year;
           const align = i % 2 === 0 ? "left" : "right";
@@ -41,10 +41,10 @@ export default function Timeline({
           return (
             <motion.div
               key={g.year}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              transition={{ duration: 0.45, delay: i * 0.05 }}
               style={{ width: '100%' }}
             >
               <TimelineNode

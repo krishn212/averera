@@ -528,10 +528,6 @@ export default function Timeline() {
             {passedCheckpointsCount} / {timelineEvents.length}
           </div>
           <div className="speedometer-lbl">CHECKPOINTS</div>
-          <div style={{ fontSize: '0.66rem', color: 'var(--accent-green, #16A34A)', fontFamily: 'var(--font-mono)', marginTop: '2px' }}>
-            <i className="fa-solid fa-gauge-high" style={{ marginRight: '4px' }}></i>
-            {currentSpeed > 0 ? `${currentSpeed} KM/H` : 'CRUISING'}
-          </div>
         </div>
       </div>
 

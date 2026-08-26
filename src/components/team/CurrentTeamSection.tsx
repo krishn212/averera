@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Member } from "../../data/team";
 import SectionHeading from "./SectionHeading";
 import MemberCard from "./MemberCard";
 import { GlobalSpotlight } from "../MagicBento";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function CurrentTeamSection({
   members,
@@ -16,6 +17,11 @@ export default function CurrentTeamSection({
   searchActive: boolean;
 }) {
   const gridRef = useRef<HTMLDivElement>(null);
+  const [expandedKey, setExpandedKey] = useState<string | null>(null);
+
+  const toggleVertical = (key: string) => {
+    setExpandedKey((prev) => (prev === key ? null : key));
+  };
 
   // De-duplicate the input members list by name to avoid duplicates between leadership and vertical lists
   const uniqueMembers = useMemo(() => {
@@ -48,8 +54,8 @@ export default function CurrentTeamSection({
   const verticals = [
     { key: "Mechanical", label: "Vehicle Design" },
     { key: "Technical", label: "Autonomy" },
-    { key: "Electronics", label: "Embedded" },
-    { key: "Management", label: "Marketing & Management" },
+    { key: "Electronics", label: "Embedded Systems" },
+    { key: "Management", label: "Branding & Outreach" },
   ];
 
   // Group members into their respective verticals (and sort senior to junior: 12 -> 13 -> 14)
@@ -104,32 +110,139 @@ export default function CurrentTeamSection({
           />
           <div className="about-grid" style={{ marginTop: '30px' }}>
             {pors.map((m, i) => (
-              <MemberCard key={`por-${m.id}`} member={m} index={i} onClick={() => onSelect(m)} />
+              <MemberCard key={`por-${m.id}`} member={m} index={i} variant="leadership" onClick={() => onSelect(m)} />
             ))}
           </div>
         </div>
 
-        {/* 2. VERTICAL WISE SUBDIVISIONS (Seniors to Juniors) */}
-        {verticalGroups.map((v) => {
-          if (v.members.length === 0) return null;
-          return (
-            <div key={v.key} style={{ marginTop: '50px', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '40px' }}>
-              <div style={{ marginBottom: '25px' }}>
-                <div className="badge-glass" style={{ display: 'inline-flex', padding: '4px 10px', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>
-                  {v.label} Vertical
+        {/* 2. VERTICAL WISE SUBDIVISIONS */}
+        <div style={{ marginTop: '60px', borderTop: '1px solid var(--border-color)', paddingTop: '50px' }}>
+          <div style={{ marginBottom: '36px' }}>
+            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.8rem', fontWeight: '800', color: 'var(--text-primary)', textTransform: 'uppercase', margin: 0, letterSpacing: '-0.02em' }}>
+              Team Verticals
+            </h3>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {verticalGroups.map((v) => {
+              if (v.members.length === 0) return null;
+              const isExpanded = expandedKey === v.key;
+
+              const accentColors: Record<string, string> = {
+                Mechanical: '6, 182, 212',   // cyan
+                Technical:  '99, 102, 241',  // indigo
+                Electronics:'16, 185, 129',  // emerald
+                Management: '245, 158, 11',  // amber
+              };
+              const accent = accentColors[v.key] || '24, 208, 219';
+
+              return (
+                <div key={v.key} style={{
+                  borderRadius: '14px',
+                  border: `1px solid ${isExpanded ? `rgba(${accent}, 0.35)` : 'var(--border-color)'}`,
+                  background: isExpanded ? `rgba(${accent}, 0.04)` : 'var(--glass-bg)',
+                  overflow: 'hidden',
+                  transition: 'border-color 0.25s ease, background 0.25s ease',
+                  boxShadow: isExpanded ? `0 0 0 1px rgba(${accent},0.1), 0 4px 24px rgba(${accent},0.06)` : 'none'
+                }}>
+                  {/* Header */}
+                  <div
+                    onClick={() => toggleVertical(v.key)}
+                    style={{
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '18px',
+                      padding: '20px 24px',
+                      userSelect: 'none',
+                    }}
+                  >
+                    {/* Left accent bar */}
+                    <div style={{
+                      width: '3px',
+                      height: '40px',
+                      borderRadius: '2px',
+                      background: `rgb(${accent})`,
+                      flexShrink: 0,
+                      opacity: isExpanded ? 1 : 0.5,
+                      transition: 'opacity 0.25s ease'
+                    }} />
+
+                    {/* Text */}
+                    <div style={{ flex: 1 }}>
+                      <div style={{
+                        fontFamily: 'var(--font-title)',
+                        fontSize: '1.45rem',
+                        fontWeight: '800',
+                        color: 'var(--text-primary)',
+                        marginBottom: '3px',
+                        letterSpacing: '-0.019em'
+                      }}>
+                        {v.label}
+                      </div>
+                      <div style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.7rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.07em',
+                        color: `rgb(${accent})`,
+                        opacity: 0.8
+                      }}>
+                        {v.members.length} member{v.members.length !== 1 ? 's' : ''}
+                      </div>
+                    </div>
+
+                    {/* Chevron */}
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '8px',
+                      border: `1px solid rgba(${accent}, ${isExpanded ? '0.4' : '0.15'})`,
+                      background: `rgba(${accent}, ${isExpanded ? '0.12' : '0.05'})`,
+                      color: `rgb(${accent})`,
+                      transition: 'all 0.25s ease',
+                      flexShrink: 0
+                    }}>
+                      <motion.i
+                        className="fa-solid fa-chevron-down"
+                        style={{ fontSize: '0.72rem' }}
+                        animate={{ rotate: isExpanded ? 180 : 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <div style={{
+                          padding: '0 24px 24px 24px',
+                          borderTop: `1px solid rgba(${accent}, 0.12)`
+                        }}>
+                          <div className="about-grid" style={{ marginTop: '20px' }}>
+                            {v.members.map((m, i) => (
+                              <MemberCard key={`vert-${v.key}-${m.id}`} member={m} index={i} onClick={() => onSelect(m)} />
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.6rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>
-                  {v.label}
-                </h3>
-              </div>
-              <div className="about-grid">
-                {v.members.map((m, i) => (
-                  <MemberCard key={`vert-${v.key}-${m.id}`} member={m} index={i} onClick={() => onSelect(m)} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

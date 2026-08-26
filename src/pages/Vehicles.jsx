@@ -70,15 +70,15 @@ export default function Vehicles({ setActivePage }) {
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Curb Weight</div>
-                <div className="spec-metric-value highlight-green">25 kg Shell</div>
+                <div className="spec-metric-value highlight-green">30 kg</div>
+              </div>
+              <div className="spec-metric-card">
+                <div className="spec-metric-label">Vehicle Efficiency</div>
+                <div className="spec-metric-value highlight-green">883 km/kWh</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Motor Efficiency</div>
                 <div className="spec-metric-value">91% peak</div>
-              </div>
-              <div className="spec-metric-card">
-                <div className="spec-metric-label">Safety Status</div>
-                <div className="spec-metric-value">Cleared Technical (2023)</div>
               </div>
             </div>
           </div>
@@ -246,7 +246,7 @@ export default function Vehicles({ setActivePage }) {
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Timeline</div>
-                <div className="spec-metric-value">Developed 2014-2015</div>
+                <div className="spec-metric-value highlight-green">Made in only 21 days</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Pioneering Step</div>
@@ -300,42 +300,7 @@ export default function Vehicles({ setActivePage }) {
         </div>
       </section>
 
-      {/* Engineering Pillars */}
-      <section className="tech-pillars-section" style={{ marginTop: '40px' }}>
-        <div className="section-header">
-          <h2>Engineering Highlights</h2>
-          <p>Our components are pushed to the limit of thermal, mechanical, and aerodynamic forces.</p>
-        </div>
-        <div className="tech-grid">
-          <div
-            className="tech-card"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            <i className="fa-solid fa-wind"></i>
-            <h4>CFD & Aerodynamics</h4>
-            <p>Over 500 hours of Computational Fluid Dynamics simulations to minimize pressure drag and skin friction.</p>
-          </div>
-          <div
-            className="tech-card"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            <i className="fa-solid fa-circle-nodes"></i>
-            <h4>Custom Telemetry</h4>
-            <p>Live dashboard tracking battery temperature, motor RPM, speed, and driver biometrics over 4G LTE link.</p>
-          </div>
-          <div
-            className="tech-card"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            <i className="fa-solid fa-weight-hanging"></i>
-            <h4>Mass Optimization</h4>
-            <p>Using topology optimization algorithms to shave structural weight from aluminum uprights and carbon components.</p>
-          </div>
-        </div>
-      </section>
+
     </main>
   );
 }
