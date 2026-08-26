@@ -99,7 +99,7 @@ export default function TimelineNode({
               letterSpacing: '-0.01em',
             }}
           >
-            {year}
+            {year === "1" ? "FOUNDERS" : `GEN ${year}`}
           </div>
           <div
             style={{

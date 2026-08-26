@@ -1,7 +1,7 @@
-"use client";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import type { Member } from "../../data/team";
 import SocialLinks from "./SocialLinks";
 import SkillBadge from "./SkillBadge";
@@ -15,11 +15,11 @@ export default function ProfileDrawer({
   member: Member | null;
   onClose: () => void;
 }) {
-  const gallery = member
-    ? Array.from({ length: 3 }).map(
-        (_, i) => `https://api.dicebear.com/8.x/shapes/svg?seed=${member.id}-${i}&backgroundColor=131820`
-      )
-    : [];
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+
+  useEffect(() => {
+    setIsPhotoOpen(false);
+  }, [member]);
 
   return (
     <AnimatePresence>
@@ -35,48 +35,49 @@ export default function ProfileDrawer({
               position: 'fixed',
               inset: 0,
               zIndex: 9999,
-              background: 'var(--drawer-overlay, rgba(0, 0, 0, 0.45))',
+              background: 'var(--drawer-overlay, rgba(0, 0, 0, 0.65))',
               backdropFilter: 'blur(8px)',
               WebkitBackdropFilter: 'blur(8px)',
             }}
           />
 
-          {/* Drawer Panel */}
+          {/* Centered Modal Panel */}
           <motion.div
             role="dialog"
             aria-modal="true"
             aria-label={`${member.name} profile`}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 32 }}
+            initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
+            animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
+            exit={{ opacity: 0, scale: 0.95, x: "-50%", y: "-50%" }}
+            transition={{ type: "spring", stiffness: 350, damping: 30 }}
             style={{
               position: 'fixed',
-              right: 0,
-              top: 0,
-              bottom: 0,
+              left: '50%',
+              top: '50%',
               zIndex: 10000,
-              width: '100%',
-              maxWidth: '440px',
+              width: '90%',
+              maxWidth: '540px',
+              maxHeight: '85vh',
               display: 'flex',
               flexDirection: 'column',
               background: 'var(--glass-bg)',
               backdropFilter: 'blur(var(--blur-radius))',
-              borderLeft: '1px solid var(--border-color)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '24px',
               boxShadow: 'var(--card-shadow)',
               overflowY: 'auto',
               boxSizing: 'border-box',
             }}
-            className="mobile-drawer-bottom"
+            className="centered-profile-modal"
           >
-            {/* Exit button positioned outside box on desktop, inside on mobile */}
+            {/* Exit button */}
             <button
               onClick={onClose}
               aria-label="Close profile"
-              className="drawer-close-btn"
               style={{
                 position: 'absolute',
                 top: '20px',
+                right: '20px',
                 display: 'flex',
                 height: '36px',
                 width: '36px',
@@ -101,21 +102,28 @@ export default function ProfileDrawer({
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              padding: '0 24px 40px 24px',
+              padding: '40px 24px 40px 24px',
               textAlign: 'center',
               boxSizing: 'border-box',
             }}>
               {/* Profile Avatar */}
-              <div style={{
-                position: 'relative',
-                height: '110px',
-                width: '110px',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                border: '2px solid var(--glass-border)',
-                boxShadow: 'var(--card-shadow)',
-                marginBottom: '16px'
-              }}>
+              <div 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsPhotoOpen(true);
+                }}
+                style={{
+                  position: 'relative',
+                  height: '110px',
+                  width: '110px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid var(--glass-border)',
+                  boxShadow: 'var(--card-shadow)',
+                  marginBottom: '16px',
+                  cursor: 'zoom-in',
+                }}
+              >
                 <img src={member.photo} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
 
@@ -177,26 +185,6 @@ export default function ProfileDrawer({
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
                   color: 'var(--text-primary)',
-                  marginBottom: '10px',
-                  borderBottom: '1px solid var(--border-color)',
-                  paddingBottom: '6px'
-                }}>
-                  Skills
-                </h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {member.skills.map((s) => (
-                    <SkillBadge key={s}>{s}</SkillBadge>
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
-                <h3 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10.5px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-primary)',
                   marginBottom: '12px',
                   borderBottom: '1px solid var(--border-color)',
                   paddingBottom: '6px'
@@ -251,24 +239,120 @@ export default function ProfileDrawer({
                 </h3>
                 <ContributionTimeline entries={member.timeline} />
               </div>
-
-              <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
-                <h3 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10.5px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-primary)',
-                  marginBottom: '12px',
-                  borderBottom: '1px solid var(--border-color)',
-                  paddingBottom: '6px'
-                }}>
-                  Gallery
-                </h3>
-                <Gallery photos={gallery} />
-              </div>
             </div>
           </motion.div>
+          
+          {/* Photo Zoom Modal Overlay */}
+          {isPhotoOpen && typeof window !== 'undefined' && createPortal(
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsPhotoOpen(false);
+              }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                backgroundColor: 'rgba(10, 12, 16, 0.85)',
+                backdropFilter: 'blur(12px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 11000,
+                cursor: 'zoom-out',
+                animation: 'fadeIn 0.25s ease-out',
+              }}
+            >
+              <style>{`
+                @keyframes fadeIn {
+                  from { opacity: 0; }
+                  to { opacity: 1; }
+                }
+                @keyframes scaleUp {
+                  from { transform: scale(0.9); opacity: 0; }
+                  to { transform: scale(1); opacity: 1; }
+                }
+              `}</style>
+              <div 
+                onClick={(e) => e.stopPropagation()} 
+                style={{
+                  position: 'relative',
+                  maxWidth: '90%',
+                  maxHeight: '90%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  animation: 'scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                }}
+              >
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '75vh',
+                    borderRadius: '16px',
+                    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+                    objectFit: 'contain',
+                  }}
+                />
+                <h3 style={{
+                  marginTop: '20px',
+                  color: '#ffffff',
+                  fontFamily: 'var(--font-title)',
+                  fontSize: '1.4rem',
+                  fontWeight: '700',
+                  marginBottom: '4px',
+                  textAlign: 'center',
+                }}>
+                  {member.name}
+                </h3>
+                <p style={{
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  textAlign: 'center',
+                  margin: 0,
+                }}>
+                  {member.position}
+                </p>
+                
+                {/* Close Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPhotoOpen(false);
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: '-50px',
+                    right: '-50px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: 'none',
+                    color: '#fff',
+                    borderRadius: '50%',
+                    width: '40px',
+                    height: '40px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.2rem',
+                    transition: 'background-color 0.2s',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                >
+                  <i className="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+            </div>,
+            document.body
+          )}
         </>
       )}
     </AnimatePresence>

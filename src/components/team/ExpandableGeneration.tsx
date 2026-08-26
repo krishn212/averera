@@ -30,7 +30,7 @@ export default function ExpandableGeneration({
           <div ref={gridRef} className="about-grid" style={{ marginTop: '24px', width: '100%', boxSizing: 'border-box' }}>
             <GlobalSpotlight gridRef={gridRef} glowColor="24, 208, 219" spotlightRadius={350} />
             {members.map((m, i) => (
-              <MemberCard key={m.id} member={m} index={i} onClick={() => onSelect(m)} />
+              <MemberCard key={m.id} member={m} index={i} onClick={() => {}} variant="alumni" />
             ))}
           </div>
         </motion.div>

@@ -97,45 +97,7 @@ export default function Team({ setActivePage }) {
         </>
       )}
 
-      {/* 5. FINAL CTA SECTION */}
-      <section style={{ padding: '80px 0', borderTop: '1px solid var(--border-color)', background: 'transparent', textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '800px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
-          <div className="badge-glass" style={{ marginBottom: '15px', display: 'inline-flex', alignItems: 'center' }}>
-            <i className="fa-solid fa-handshake" style={{ marginRight: '6px' }}></i> Join The Team / Collaborate
-          </div>
-          <h2 className="responsive-section-heading" style={{ 
-            fontFamily: 'var(--font-title)', 
-            color: 'var(--text-primary)', 
-            fontSize: '2.2rem', 
-            fontWeight: '800', 
-            textTransform: 'uppercase', 
-            margin: '0 0 15px 0' 
-          }}>
-            Explore Our Legacy
-          </h2>
-          <p style={{ 
-            fontSize: '0.95rem', 
-            color: 'var(--text-secondary)', 
-            lineHeight: '1.6', 
-            maxWidth: '600px',
-            margin: '0 auto 30px auto'
-          }}>
-            Discover our competitive timeline, past achievements, vehicle iterations, and major milestones since inception.
-          </p>
-          <div>
-            <a
-              href="/legacy"
-              className="btn btn-glow"
-              onClick={(e) => {
-                e.preventDefault();
-                setActivePage?.('legacy');
-              }}
-            >
-              Explore Our Legacy <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }}></i>
-            </a>
-          </div>
-        </div>
-      </section>
+
 
       {/* Profile Details Drawer */}
       <ProfileDrawer member={selected} onClose={() => setSelected(null)} />

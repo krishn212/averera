@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import priyaImg from '../assets/priya_anand.png';
-import marcusImg from '../assets/marcus_webb.png';
-import liImg from '../assets/li_yuen.png';
-import prospectusPdf from '../assets/SWARUP_AVERERA BROCHURE_FINAL14.pdf';
+import priyaImg from '../assets/eee_faculty_shyam.avif';
+import marcusImg from '../assets/eee_faculty_sandip.avif';
+import liImg from '../assets/mec_faculty_amitesh.avif';
+import prospectusPdf from '../assets/PARTNERSHIP_PROSPECTUS_2026-27.pdf';
 
 // Sponsor Logos
 import spMain from '../assets/sponsors.avif';
@@ -274,7 +274,7 @@ export default function Home({ setActivePage, introDone }) {
               <div className="hero-buttons">
                 <a
                   href={prospectusPdf}
-                  download="SWARUP_AVERERA_BROCHURE_FINAL14.pdf"
+                  download="PARTNERSHIP_PROSPECTUS_2026-27.pdf"
                   className="btn btn-glow"
                 >
                   Partnership Prospectus <i className="fa-solid fa-download"></i>
@@ -431,7 +431,7 @@ export default function Home({ setActivePage, introDone }) {
               <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
                 <img
                   src={priyaImg}
-                  alt="Dr. Priya Anand"
+                  alt="Dr. Shyam Kamal"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -443,16 +443,17 @@ export default function Home({ setActivePage, introDone }) {
                 />
                 <div className="card-decor-corners" style={{ opacity: 1 }}></div>
               </div>
-              <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
-                Mechanical & Aerospace
-              </div>
-              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Priya Anand</h4>
+              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Shyam Kamal</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-                Specializes in structural composites and aerodynamic design optimization.
+                Associate Professor
+
+Dept. of Electrical Engg.
+
+IIT (BHU) Varanasi
               </p>
               <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
-                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
-                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/dr-shyam-kamal-9b750b98/" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:shyamkamal.eee@iitbhu.ac.in" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
               </div>
             </div>
 
@@ -465,7 +466,7 @@ export default function Home({ setActivePage, introDone }) {
               <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
                 <img
                   src={marcusImg}
-                  alt="Prof. Marcus Webb"
+                  alt="Dr. Sandip Ghosh"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -477,16 +478,17 @@ export default function Home({ setActivePage, introDone }) {
                 />
                 <div className="card-decor-corners" style={{ opacity: 1 }}></div>
               </div>
-              <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px', borderColor: 'rgba(16,185,129,0.2)', color: 'var(--accent-green)' }}>
-                Autonomous Systems
-              </div>
-              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Prof. Marcus Webb</h4>
+              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Sandip Ghosh</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-                Leads research in sensor fusion algorithms and vehicle autonomy.
+                Associate Professor
+
+Dept. of Electrical Engg.
+
+IIT (BHU) Varanasi
               </p>
               <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
-                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
-                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sandip-ghosh-b3269614/" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:sghosh.eee@iitbhu.ac.in" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
               </div>
             </div>
 
@@ -499,7 +501,7 @@ export default function Home({ setActivePage, introDone }) {
               <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
                 <img
                   src={liImg}
-                  alt="Dr. Li Yuen"
+                  alt="Dr. Amitesh Kumar"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -511,16 +513,16 @@ export default function Home({ setActivePage, introDone }) {
                 />
                 <div className="card-decor-corners" style={{ opacity: 1 }}></div>
               </div>
-              <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
-                Power & Battery systems
-              </div>
-              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Li Yuen</h4>
+              <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Amitesh Kumar</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-                Focuses on custom BMS safety circuits and electric powertrains.
+                Assistant Professor
+
+Dept. of Mechanical Engg.
+
+IIT (BHU) Varanasi
               </p>
               <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
-                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
-                <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+                <a href="mailto:amitesh.mec@iitbhu.ac.in" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
               </div>
             </div>
           </div>
