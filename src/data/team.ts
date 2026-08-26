@@ -109,7 +109,7 @@ function makeMember(opts: {
 export const leadership: Member[] = [
   makeMember({
     name: "Subhakanta Mohapatra",
-    photo: "/src/assets/team/subhakanta.jpg",
+    photo: "/assets/team/subhakanta.jpg",
     position: "Team Manager",
     department: "Mechanical Engineering",
     generation: "13",
@@ -126,7 +126,7 @@ export const leadership: Member[] = [
   }),
   makeMember({
     name: "Aryan Sharma",
-    photo: "/src/assets/team/aryan_sharma.jpg",
+    photo: "/assets/team/aryan_sharma.jpg",
     position: "Project Manager (Urban Concept EV)",
     department: "Mechanical Engineering",
     generation: "13",
@@ -143,7 +143,7 @@ export const leadership: Member[] = [
   }),
   makeMember({
     name: "Vasu Srivastava",
-    photo: "/src/assets/team/vasu_srivastava.jpg",
+    photo: "/assets/team/vasu_srivastava.jpg",
     position: "Vehicle Design Head",
     department: "Mechanical Engineering",
     generation: "13",
@@ -161,7 +161,7 @@ export const leadership: Member[] = [
   }),
   makeMember({
     name: "Keerthana Sri K M",
-    photo: "/src/assets/team/keerthana_sri_km.jpg",
+    photo: "/assets/team/keerthana_sri_km.jpg",
     position: "Vehicle Design Head",
     department: "Mechanical Engineering",
     generation: "13",
@@ -195,7 +195,7 @@ export const leadership: Member[] = [
   }),
   makeMember({
     name: "Raghav Sharma",
-    photo: "/src/assets/team/raghav_sharma.jpg",
+    photo: "/assets/team/raghav_sharma.jpg",
     position: "Autonomy Head",
     department: "Mechanical Engineering",
     generation: "13",
@@ -219,7 +219,7 @@ export const leadership: Member[] = [
 const gen2026 = [
   {
     name: "Siddh Sharma",
-    photo: "/src/assets/team/siddh_sharma.jpg",
+    photo: "/assets/team/siddh_sharma.jpg",
     position: "Autonomy Member (ML)",
     department: "Mechanical Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -230,7 +230,7 @@ const gen2026 = [
   },
   {
     name: "Divya Nand Sharma",
-    photo: "/src/assets/team/divya_nand_sharma.png",
+    photo: "/assets/team/divya_nand_sharma.png",
     position: "Autonomy Member (Computer Vision)",
     department: "Civil Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -241,7 +241,7 @@ const gen2026 = [
   },
   {
     name: "Narsepalli Sai Ashrith",
-    photo: "/src/assets/team/sai_ashrith.webp",
+    photo: "/assets/team/sai_ashrith.webp",
     position: "VD Member (Steering)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -252,7 +252,7 @@ const gen2026 = [
   },
   {
     name: "Parth Gupta",
-    photo: "/src/assets/team/parth_gupta.jpeg",
+    photo: "/assets/team/parth_gupta.jpeg",
     position: "Autonomy Member",
     department: "Mechanical Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -263,7 +263,7 @@ const gen2026 = [
   },
   {
     name: "MD AYAAN",
-    photo: "/src/assets/team/md_ayaan.jpeg",
+    photo: "/assets/team/md_ayaan.jpeg",
     position: "Autonomy Member",
     department: "Mining Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -274,7 +274,7 @@ const gen2026 = [
   },
   {
     name: "Ansh Mehrotra",
-    photo: "/src/assets/team/ansh_mehrotra.jpg",
+    photo: "/assets/team/ansh_mehrotra.jpg",
     position: "Technical Coordinator (Transmission)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -285,7 +285,7 @@ const gen2026 = [
   },
   {
     name: "V L Shivadhar",
-    photo: "/src/assets/team/vl_shivadhar.jpg",
+    photo: "/assets/team/vl_shivadhar.jpg",
     position: "Technical Coordinator (Embedded)",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -296,7 +296,7 @@ const gen2026 = [
   },
   {
     name: "Anvi Verma",
-    photo: "/src/assets/team/anvi_verma.jpg",
+    photo: "/assets/team/anvi_verma.jpg",
     position: "Technical Coordinator (Aerodynamics)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -307,7 +307,7 @@ const gen2026 = [
   },
   {
     name: "Peddada Shanmukh Sai Das Chakradar",
-    photo: "/src/assets/team/peddada_shanmukh.jpeg",
+    photo: "/assets/team/peddada_shanmukh.jpeg",
     position: "Web Developer",
     department: "Electronics Engineering" as Department,
     team: "Management" as TeamGroup,
@@ -318,7 +318,7 @@ const gen2026 = [
   },
   {
     name: "Pillitla Vennela",
-    photo: "/src/assets/team/pillitla_vennela.png",
+    photo: "/assets/team/pillitla_vennela.png",
     position: "Embedded Member",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -329,7 +329,7 @@ const gen2026 = [
   },
   {
     name: "Hemanth Sai",
-    photo: "/src/assets/team/hemanth_sai.jpg",
+    photo: "/assets/team/hemanth_sai.jpg",
     position: "VD Member (Transmission)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -340,7 +340,7 @@ const gen2026 = [
   },
   {
     name: "Anika Sachan",
-    photo: "/src/assets/team/anika_sachan.jpg",
+    photo: "/assets/team/anika_sachan.jpg",
     position: "Embedded Member",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -351,7 +351,7 @@ const gen2026 = [
   },
   {
     name: "Krishna Rao",
-    photo: "/src/assets/team/krishna_rao.png",
+    photo: "/assets/team/krishna_rao.png",
     position: "Embedded Member",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -362,7 +362,7 @@ const gen2026 = [
   },
   {
     name: "Prathmesh Jadhav",
-    photo: "/src/assets/team/prathmesh_jadhav.jpg",
+    photo: "/assets/team/prathmesh_jadhav.jpg",
     position: "Technical Coordinator (Transmission)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -373,7 +373,7 @@ const gen2026 = [
   },
   {
     name: "Mukunda H V",
-    photo: "/src/assets/team/mukunda_hv.jpg",
+    photo: "/assets/team/mukunda_hv.jpg",
     position: "Technical Coordinator (Embedded)",
     department: "Electrical Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -384,7 +384,7 @@ const gen2026 = [
   },
   {
     name: "A Krishnapadma",
-    photo: "/src/assets/team/a_krishnapadma.jpg",
+    photo: "/assets/team/a_krishnapadma.jpg",
     position: "Technical Coordinator (Embedded)",
     department: "Electrical Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -395,7 +395,7 @@ const gen2026 = [
   },
   {
     name: "Aisha Ambreen Hashmi",
-    photo: "/src/assets/team/aisha_ambreen_hashmi.jpg",
+    photo: "/assets/team/aisha_ambreen_hashmi.jpg",
     position: "Technical Coordinator (Braking)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -409,7 +409,7 @@ const gen2026 = [
 const gen2025 = [
   {
     name: "Subhakanta Mohapatra",
-    photo: "/src/assets/team/subhakanta.jpg",
+    photo: "/assets/team/subhakanta.jpg",
     position: "Team Manager",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -423,7 +423,7 @@ const gen2025 = [
   },
   {
     name: "Aryan Sharma",
-    photo: "/src/assets/team/aryan_sharma.jpg",
+    photo: "/assets/team/aryan_sharma.jpg",
     position: "Project Manager (Urban Concept EV)",
     department: "Mechanical Engineering" as Department,
     team: "Management" as TeamGroup,
@@ -450,7 +450,7 @@ const gen2025 = [
   },
   {
     name: "Vasu Srivastava",
-    photo: "/src/assets/team/vasu_srivastava.jpg",
+    photo: "/assets/team/vasu_srivastava.jpg",
     position: "VD Head",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -465,7 +465,7 @@ const gen2025 = [
   },
   {
     name: "Joshua Somabattula",
-    photo: "/src/assets/team/joshua_somabattula.jpeg",
+    photo: "/assets/team/joshua_somabattula.jpeg",
     position: "VD Engineer (Braking System)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -480,7 +480,7 @@ const gen2025 = [
   },
   {
     name: "Ishant Kanwat",
-    photo: "/src/assets/team/ishant_kanwat.jpeg",
+    photo: "/assets/team/ishant_kanwat.jpeg",
     position: "VD Engineer (Suspension)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -495,7 +495,7 @@ const gen2025 = [
   },
   {
     name: "Parth Burande",
-    photo: "/src/assets/team/parth_burande.jpg",
+    photo: "/assets/team/parth_burande.jpg",
     position: "Technical Coordinator (Autonomy)",
     department: "Mechanical Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -510,7 +510,7 @@ const gen2025 = [
   },
   {
     name: "Krish",
-    photo: "/src/assets/team/krish_kinra.jpeg",
+    photo: "/assets/team/krish_kinra.jpeg",
     position: "Technical Coordinator (Embedded)",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -525,7 +525,7 @@ const gen2025 = [
   },
   {
     name: "Varad Kulkarni",
-    photo: "/src/assets/team/varad_kulkarni.jpeg",
+    photo: "/assets/team/varad_kulkarni.jpeg",
     position: "VD Engineer (Aerodynamics)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -540,7 +540,7 @@ const gen2025 = [
   },
   {
     name: "Tejaswa Khare",
-    photo: "/src/assets/team/tejaswa_khare.jpg",
+    photo: "/assets/team/tejaswa_khare.jpg",
     position: "VD Engineer (Aerodynamics)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -555,7 +555,7 @@ const gen2025 = [
   },
   {
     name: "Pragya Rathal",
-    photo: "/src/assets/team/pragya_rathal.jpg",
+    photo: "/assets/team/pragya_rathal.jpg",
     position: "Technical Coordinator (Autonomy)",
     department: "Civil Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -570,7 +570,7 @@ const gen2025 = [
   },
   {
     name: "Keerthana Sri K M",
-    photo: "/src/assets/team/keerthana_sri_km.jpg",
+    photo: "/assets/team/keerthana_sri_km.jpg",
     position: "VD Head",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -585,7 +585,7 @@ const gen2025 = [
   },
   {
     name: "Akash",
-    photo: "/src/assets/team/akash.jpg",
+    photo: "/assets/team/akash.jpg",
     position: "Powertrain & Vehicle Dynamics Lead",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -600,7 +600,7 @@ const gen2025 = [
   },
   {
     name: "Arnab Chakraborty",
-    photo: "/src/assets/team/arnab_chakraborty.jpg",
+    photo: "/assets/team/arnab_chakraborty.jpg",
     position: "Content, Branding & Outreach",
     department: "Mechanical Engineering" as Department,
     team: "Management" as TeamGroup,
@@ -615,7 +615,7 @@ const gen2025 = [
   },
   {
     name: "Raghav Sharma",
-    photo: "/src/assets/team/raghav_sharma.jpg",
+    photo: "/assets/team/raghav_sharma.jpg",
     position: "Autonomy Head",
     department: "Mechanical Engineering" as Department,
     team: "Technical" as TeamGroup,
@@ -659,7 +659,7 @@ const gen2025 = [
 const gen2024 = [
   {
     name: "Ashwin R Venkateshwar",
-    photo: "/src/assets/team/ashwin_r_venkateshwar.png",
+    photo: "/assets/team/ashwin_r_venkateshwar.png",
     position: "Team Manager",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -674,7 +674,7 @@ const gen2024 = [
   },
   {
     name: "R S Panjabakesan",
-    photo: "/src/assets/team/panjabakesan_rs.jpeg",
+    photo: "/assets/team/panjabakesan_rs.jpeg",
     position: "Vehicle Design Engineer",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -689,7 +689,7 @@ const gen2024 = [
   },
   {
     name: "Thillak Devendran",
-    photo: "/src/assets/team/thillak_devendran.jpg",
+    photo: "/assets/team/thillak_devendran.jpg",
     position: "Vehicle Design Head",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
@@ -704,7 +704,7 @@ const gen2024 = [
   },
   {
     name: "Punit Makwana",
-    photo: "/src/assets/team/punit_makwana.jpg",
+    photo: "/assets/team/punit_makwana.jpg",
     position: "Embedded Head",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,

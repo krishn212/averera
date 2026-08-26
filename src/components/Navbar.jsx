@@ -49,9 +49,9 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
   ];
 
   const socialItems = [
-    { label: 'LinkedIn', link: 'https://linkedin.com/company/team-averera' },
-    { label: 'Instagram', link: 'https://instagram.com/team_averera' },
-    { label: 'Facebook', link: 'https://facebook.com/Averera' }
+    { label: 'LinkedIn', link: 'https://www.linkedin.com/company/team-averera-iit-bhu/' },
+    { label: 'Instagram', link: 'https://www.instagram.com/teamaverera?igsi=ZGZkdjlxbnV3aXJw' },
+    { label: 'YouTube', link: 'https://youtube.com/@teamaverera?si=JDa9ckiuXcZtjj0P' }
   ];
 
   if (isMobile) {
