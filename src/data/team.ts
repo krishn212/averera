@@ -126,7 +126,7 @@ export const leadership: Member[] = [
   }),
   makeMember({
     name: "Aryan Sharma",
-    photo: "/assets/team/aryan_sharma.webp",
+    photo: "/assets/team/aryan_sharma_fixed.webp",
     position: "Project Manager (Urban Concept EV)",
     department: "Mechanical Engineering",
     generation: "13",
@@ -285,7 +285,7 @@ const gen2026 = [
   },
   {
     name: "V L Shivadhar",
-    photo: "/assets/team/vl_shivadhar.webp",
+    photo: "/assets/team/vl_shivadhar_fixed.webp",
     position: "Technical Coordinator (Embedded)",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
@@ -423,7 +423,7 @@ const gen2025 = [
   },
   {
     name: "Aryan Sharma",
-    photo: "/assets/team/aryan_sharma.webp",
+    photo: "/assets/team/aryan_sharma_fixed.webp",
     position: "Project Manager (Urban Concept EV)",
     department: "Mechanical Engineering" as Department,
     team: "Management" as TeamGroup,
@@ -525,7 +525,7 @@ const gen2025 = [
   },
   {
     name: "Varad Kulkarni",
-    photo: "/assets/team/varad_kulkarni.webp",
+    photo: "/assets/team/varad_kulkarni_fixed.webp",
     position: "VD Engineer (Aerodynamics)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
