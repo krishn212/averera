@@ -70,11 +70,11 @@ export default function Vehicles({ setActivePage }) {
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Curb Weight</div>
-                <div className="spec-metric-value highlight-green">30 kg</div>
+                <div className="spec-metric-value">30 kg</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Vehicle Efficiency</div>
-                <div className="spec-metric-value highlight-green">883 km/kWh</div>
+                <div className="spec-metric-value">83 km/kWh</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Motor Efficiency</div>
@@ -98,7 +98,7 @@ export default function Vehicles({ setActivePage }) {
             <div className="premium-spec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginTop: '25px' }}>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Top Efficiency</div>
-                <div className="spec-metric-value highlight-green">465.1 km/kWh</div>
+                <div className="spec-metric-value">465.1 km/kWh</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">India Rank</div>
@@ -152,7 +152,7 @@ export default function Vehicles({ setActivePage }) {
             <div className="premium-spec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginTop: '25px' }}>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Efficiency</div>
-                <div className="spec-metric-value highlight-green">349.6 km/kWh</div>
+                <div className="spec-metric-value">349.6 km/kWh</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Chassis Weight</div>
@@ -246,7 +246,7 @@ export default function Vehicles({ setActivePage }) {
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Timeline</div>
-                <div className="spec-metric-value highlight-green">Made in only 21 days</div>
+                <div className="spec-metric-value">Made in only 21 days</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Pioneering Step</div>
@@ -270,7 +270,7 @@ export default function Vehicles({ setActivePage }) {
             <div className="premium-spec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginTop: '25px' }}>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Autonomy Level</div>
-                <div className="spec-metric-value highlight-green">SAE Level-2 Autonomy</div>
+                <div className="spec-metric-value">SAE Level-2 Autonomy</div>
               </div>
               <div className="spec-metric-card">
                 <div className="spec-metric-label">Perception Sensors</div>

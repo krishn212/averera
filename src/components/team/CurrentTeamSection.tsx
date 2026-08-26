@@ -106,7 +106,7 @@ export default function CurrentTeamSection({
           <SectionHeading
             eyebrow="Leadership Roster"
             title="Core Leadership"
-            subtitle="The managers and heads driving Team Averera's research directives."
+            subtitle="The managers and heads driving TEAM AVERERA's research directives."
           />
           <div className="about-grid" style={{ marginTop: '30px' }}>
             {pors.map((m, i) => (

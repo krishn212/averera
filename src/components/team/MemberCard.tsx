@@ -323,10 +323,7 @@ export default function MemberCard({
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
             }}>
-              {member.generation === "12" ? "2024-25" :
-               member.generation === "13" ? "2025-26" :
-               member.generation === "14" ? "2026-27" :
-               `Gen ${member.generation}`}
+              Gen {member.generation}
             </span>
             <SocialLinks social={member.social} />
           </div>

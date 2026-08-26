@@ -69,14 +69,14 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         style={{
-          maxWidth: '650px',
+          maxWidth: '750px',
           margin: '0 auto 30px auto',
           fontSize: '1.05rem',
           lineHeight: '1.6',
           color: 'var(--text-secondary)'
         }}
       >
-        Engineers, designers, builders, and visionaries shaping the future of sustainable mobility.
+        TEAM AVERERA is a group of student innovators from IIT (BHU) Varanasi. We design, simulate, and manufacture highly efficient eco-vehicles, pushing the boundaries of automotive engineering, smart battery architectures, and autonomous navigation system stacks.
       </motion.p>
 
       <motion.div

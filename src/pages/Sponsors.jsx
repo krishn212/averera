@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import prospectusPdf from '../assets/PARTNERSHIP_PROSPECTUS_2026-27.pdf';
+import BounceCards from '../components/BounceCards';
 
 import spMain  from '../assets/sponsors.avif';
 import sp1     from '../assets/sponsors1.avif';
@@ -30,7 +31,7 @@ export default function Sponsors({ setActivePage }) {
     <main className="page-main" style={{ boxSizing: 'border-box', overflow: 'hidden' }}>
 
       {/* ─── HERO ────────────────────────────────────────────── */}
-      <section style={{ padding: '90px 24px 60px', textAlign: 'center', position: 'relative' }}>
+      <section style={{ padding: '90px 24px 60px', position: 'relative' }}>
         {/* Decorative glow blob */}
         <div style={{
           position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
@@ -39,145 +40,138 @@ export default function Sponsors({ setActivePage }) {
           pointerEvents: 'none', zIndex: 0,
         }} />
 
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="badge-glass"
-            style={{ marginBottom: '22px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-          >
-            <i className="fa-solid fa-handshake" style={{ fontSize: '0.75rem' }}></i>
-            Our Partners & Sponsors
-          </motion.div>
+        <div className="container" style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '40px'
+        }}>
+          {/* Left Text */}
+          <div style={{ flex: '1 1 500px', textAlign: 'left' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="badge-glass"
+              style={{ marginBottom: '22px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+            >
+              <i className="fa-solid fa-handshake" style={{ fontSize: '0.75rem' }}></i>
+              Our Partners & Sponsors
+            </motion.div>
 
-          <div style={{ overflow: 'hidden', marginBottom: '10px' }}>
-            <motion.h1
-              initial={{ y: '110%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            <div style={{ overflow: 'hidden', marginBottom: '10px' }}>
+              <motion.h1
+                initial={{ y: '110%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  fontFamily: 'var(--font-title)',
+                  fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
+                  fontWeight: '900',
+                  lineHeight: '1.05',
+                  letterSpacing: '-0.03em',
+                  color: 'var(--text-primary)',
+                  textTransform: 'uppercase',
+                  margin: 0,
+                }}
+              >
+                TRUSTED BY
+              </motion.h1>
+            </div>
+            <div style={{ overflow: 'hidden', marginBottom: '28px' }}>
+              <motion.h1
+                initial={{ y: '110%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  fontFamily: 'var(--font-title)',
+                  fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
+                  fontWeight: '900',
+                  lineHeight: '1.05',
+                  letterSpacing: '-0.03em',
+                  textTransform: 'uppercase',
+                  margin: 0,
+                }}
+                className="logo-accent"
+              >
+                INDUSTRY LEADERS.
+              </motion.h1>
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
               style={{
-                fontFamily: 'var(--font-title)',
-                fontSize: 'clamp(2.8rem, 7vw, 5rem)',
-                fontWeight: '900',
-                lineHeight: '1.05',
-                letterSpacing: '-0.03em',
-                color: 'var(--text-primary)',
-                textTransform: 'uppercase',
-                margin: 0,
+                maxWidth: '560px',
+                fontSize: '1.05rem',
+                lineHeight: '1.65',
+                color: 'var(--text-secondary)',
               }}
             >
-              TRUSTED BY
-            </motion.h1>
-          </div>
-          <div style={{ overflow: 'hidden', marginBottom: '28px' }}>
-            <motion.h1
-              initial={{ y: '110%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                fontFamily: 'var(--font-title)',
-                fontSize: 'clamp(2.8rem, 7vw, 5rem)',
-                fontWeight: '900',
-                lineHeight: '1.05',
-                letterSpacing: '-0.03em',
-                textTransform: 'uppercase',
-                margin: 0,
-              }}
-              className="logo-accent"
-            >
-              INDUSTRY LEADERS.
-            </motion.h1>
+              These organisations have backed TEAM AVERERA's push for sustainable mobility — from lab to global stage. Hover over the cards to interact.
+            </motion.p>
           </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            style={{
-              maxWidth: '560px', margin: '0 auto',
-              fontSize: '1rem', lineHeight: '1.65',
-              color: 'var(--text-secondary)',
-            }}
-          >
-            These organisations have backed Team Averera's push for sustainable mobility — from lab to global stage.
-          </motion.p>
+          {/* Right BounceCards */}
+          <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center' }}>
+            <BounceCards
+              images={[spTata, spIitbhu, spCerd, sp13, sp5]}
+              containerWidth={400}
+              containerHeight={380}
+              enableHover={true}
+            />
+          </div>
         </div>
       </section>
 
-      {/* ─── MARQUEE ROWS ────────────────────────────────────── */}
-      <section style={{ padding: '70px 0 60px', overflow: 'hidden' }}>
-        <div style={{ marginBottom: '12px' }}>
-          <div className="badge-glass" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '6px',
-            padding: '4px 14px', fontFamily: 'var(--font-mono)', fontSize: '0.7rem',
-            textTransform: 'uppercase', letterSpacing: '0.08em',
-            margin: '0 0 28px 40px'
-          }}>
-            <i className="fa-solid fa-star" style={{ fontSize: '0.6rem', color: 'var(--accent-cyan)' }}></i>
-            Our sponsors
+      {/* ─── SPONSORS GRID ────────────────────────────────────── */}
+      <section style={{ padding: '60px 0 80px 0', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', boxSizing: 'border-box' }}>
+          <div style={{ marginBottom: '40px', textAlign: 'center' }}>
+            <div className="badge-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 14px', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              <i className="fa-solid fa-star" style={{ fontSize: '0.65rem', color: 'var(--accent-cyan)' }}></i>
+              Our Sponsors & Partners
+            </div>
           </div>
-        </div>
 
-        {/* Row 1 — scrolls left */}
-        <div style={{ overflow: 'hidden', marginBottom: '18px' }}>
-          <motion.div
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 38, repeat: Infinity, ease: 'linear' }}
-            style={{ display: 'flex', gap: '16px', width: 'max-content' }}
-          >
-            {row1.map((img, i) => (
-              <div
-                key={`r1-${i}`}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+            gap: '24px',
+            justifyContent: 'center',
+          }}>
+            {logos.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.45, delay: i * 0.04 }}
+                whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(24, 208, 220, 0.15)', borderColor: 'rgba(24, 208, 220, 0.4)' }}
                 style={{
-                  flexShrink: 0,
-                  width: '190px',
-                  height: '100px',
                   background: 'var(--glass-bg)',
                   border: '1px solid var(--border-color)',
-                  borderRadius: '14px',
+                  borderRadius: '16px',
+                  height: '130px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  padding: '18px 20px',
+                  padding: '24px 28px',
                   backdropFilter: 'blur(10px)',
-                  transition: 'border-color 0.2s',
+                  transition: 'border-color 0.25s, box-shadow 0.25s, transform 0.25s',
                 }}
               >
-                <img src={img} alt="Sponsor" style={{ maxWidth: '100%', maxHeight: '54px', objectFit: 'contain' }} />
-              </div>
+                <img src={img} alt="Sponsor Logo" style={{ maxWidth: '100%', maxHeight: '72px', objectFit: 'contain' }} />
+              </motion.div>
             ))}
-          </motion.div>
-        </div>
-
-        {/* Row 2 — scrolls right */}
-        <div style={{ overflow: 'hidden' }}>
-          <motion.div
-            animate={{ x: ['-50%', '0%'] }}
-            transition={{ duration: 44, repeat: Infinity, ease: 'linear' }}
-            style={{ display: 'flex', gap: '16px', width: 'max-content' }}
-          >
-            {row2.map((img, i) => (
-              <div
-                key={`r2-${i}`}
-                style={{
-                  flexShrink: 0,
-                  width: '190px',
-                  height: '100px',
-                  background: 'var(--glass-bg)',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: '14px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '18px 20px',
-                  backdropFilter: 'blur(10px)',
-                }}
-              >
-                <img src={img} alt="Sponsor" style={{ maxWidth: '100%', maxHeight: '54px', objectFit: 'contain' }} />
-              </div>
-            ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 

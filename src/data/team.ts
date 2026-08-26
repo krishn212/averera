@@ -105,18 +105,18 @@ function makeMember(opts: {
       const vert = getVerticalName(opts.team);
       if (opts.generation === "14") {
         return [
-          { year: "14", label: `Technical Coordinator (${vert})` }
+          { year: "2026-27", label: `Technical Coordinator (${vert})` }
         ];
       } else if (opts.generation === "13") {
         return [
-          { year: "13", label: `Technical Coordinator (${vert})` },
-          { year: "14", label: opts.position }
+          { year: "2025-26", label: `Technical Coordinator (${vert})` },
+          { year: "2026-27", label: opts.position }
         ];
       } else if (opts.generation === "12") {
         return [
-          { year: "12", label: `Technical Coordinator (${vert})` },
-          { year: "13", label: opts.position },
-          { year: "14", label: "Senior Advisor" }
+          { year: "2024-25", label: `Technical Coordinator (${vert})` },
+          { year: "2025-26", label: opts.position },
+          { year: "2026-27", label: "Senior Advisor" }
         ];
       }
       return [
@@ -183,7 +183,7 @@ export const leadership: Member[] = [
     bio: "Worked on design and aerodynamic analysis of outerbody of car, serving as Vehicle Design Head in 2026-27.",
     skills: [],
     projects: ["Aerodynamic Analysis of Car Outerbody","Outerbody Geometric CAD Design","Alterno Shell Design Redesign","Chassis Structural Testing"],
-    achievements: ["VD head in 2026-27"],
+    achievements: ["Vehicle Design Head in 2026-27"],
     social: {
       linkedin: "https://www.linkedin.com/in/vasu-srivastava-752291344/",
       email: "vasu.srivastava.cd.mec24@itbhu.ac.in",
@@ -202,7 +202,7 @@ export const leadership: Member[] = [
     bio: "Worked on designing the chassis, serving as Vehicle Design Head in 2026-27.",
     skills: [],
     projects: ["Chassis Structural Design & Finite Element Analysis","Suspension Mounting Refinement"],
-    achievements: ["VD head in 2026-27"],
+    achievements: ["Vehicle Design Head in 2026-27"],
     social: {
       linkedin: "https://www.linkedin.com/in/keerthana-moorthy-605736326",
       email: "keerthana.srikm.cd.mec24@itbhu.ac.in",
@@ -217,10 +217,10 @@ export const leadership: Member[] = [
     team: "Electronics",
     isCurrent: true,
     isLeadership: true,
-    bio: "Designed dual motor control PCB and its control logic, serving as Embedded Head in 2026-27.",
+    bio: "Designed dual motor control PCB and its control logic, serving as Embedded Systems Head in 2026-27.",
     skills: [],
     projects: ["Dual Motor Control PCB Layout", "Control Logic Firmware Stack"],
-    achievements: ["Embedded head in 26-27"],
+    achievements: ["Embedded Systems Head in 26-27"],
     social: {
       email: "jai.sharma.ece24@itbhu.ac.in",
     },
@@ -253,10 +253,10 @@ const gen2026 = [
   {
     name: "Arnab Chakraborty",
     photo: "/assets/team/arnab_chakraborty.webp",
-    position: "Content, Branding & Outreach",
+    position: "Marketing Coordinator",
     department: "Mechanical Engineering" as Department,
     team: "Management" as TeamGroup,
-    bio: "Content, Branding & Outreach Coordinator",
+    bio: "",
     achievements: [],
     skills: [],
     social: {
@@ -267,7 +267,7 @@ const gen2026 = [
   },
   {
     name: "Siddh Sharma",
-    bio: "Autonomy Member(ML) in 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/siddh_sharma.webp",
@@ -282,7 +282,7 @@ const gen2026 = [
   },
   {
     name: "Divya Nand Sharma",
-    bio: "Computer Vision under Autonomy in 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/divya_nand_sharma.webp",
@@ -297,7 +297,7 @@ const gen2026 = [
   },
   {
     name: "Narsepalli Sai Ashrith",
-    bio: "Steering 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/sai_ashrith.webp",
@@ -311,7 +311,7 @@ const gen2026 = [
   },
   {
     name: "Parth Gupta",
-    bio: "Autonomy member",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/parth_gupta.webp",
@@ -326,7 +326,7 @@ const gen2026 = [
   },
   {
     name: "MD AYAAN",
-    bio: "AUTONOMY TEAM MEMEBER IN 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/md_ayaan.webp",
@@ -341,7 +341,7 @@ const gen2026 = [
   },
   {
     name: "Ansh Mehrotra",
-    bio: "Technical Coordinator-Transmission in 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/ansh_mehrotra.webp",
@@ -356,7 +356,7 @@ const gen2026 = [
   },
   {
     name: "V L Shivadhar",
-    bio: "Technical Coordinator in Embedded 2026-27",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/vl_shivadhar_fixed2.webp",
@@ -371,7 +371,7 @@ const gen2026 = [
   },
   {
     name: "Anvi Verma",
-    bio: "Technical Coordinator - Aerodynamics",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/anvi_verma.webp",
@@ -386,7 +386,7 @@ const gen2026 = [
   },
   {
     name: "Peddada Shanmukh Sai Das Chakradar",
-    bio: "Web dev in 2026",
+    bio: "Web Developer.",
     achievements: [],
     skills: [],
     photo: "/assets/team/peddada_shanmukh.webp",
@@ -401,11 +401,11 @@ const gen2026 = [
   },
   {
     name: "Pillitla Vennela",
-    bio: "Member in Embedded Vertical",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/pillitla_vennela.webp",
-    position: "Embedded Member",
+    position: "Embedded Systems Member",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
     social: {
@@ -416,7 +416,7 @@ const gen2026 = [
   },
   {
     name: "Hemanth Sai",
-    bio: "Working on Transmission in 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/hemanth_sai.webp",
@@ -431,11 +431,11 @@ const gen2026 = [
   },
   {
     name: "Anika Sachan",
-    bio: "Embedded 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/anika_sachan.webp",
-    position: "Embedded Member",
+    position: "Embedded Systems Member",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
     social: {
@@ -446,11 +446,11 @@ const gen2026 = [
   },
   {
     name: "Krishna Rao",
-    bio: "Embedded Sophomore in 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/krishna_rao.webp",
-    position: "Embedded Member",
+    position: "Embedded Systems Member",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
     social: {
@@ -461,7 +461,7 @@ const gen2026 = [
   },
   {
     name: "Prathmesh Jadhav",
-    bio: "Technical coordinator - Transmission",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/prathmesh_jadhav.webp",
@@ -476,7 +476,7 @@ const gen2026 = [
   },
   {
     name: "Mukunda H V",
-    bio: "Technical coordinator - Embedded 2026",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/mukunda_hv.webp",
@@ -491,7 +491,7 @@ const gen2026 = [
   },
   {
     name: "A Krishnapadma",
-    bio: "Technical Coordinator- Embedded",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/a_krishnapadma.webp",
@@ -506,7 +506,7 @@ const gen2026 = [
   },
   {
     name: "Aisha Ambreen Hashmi",
-    bio: "Technical coordinator - Braking",
+    bio: "",
     achievements: [],
     skills: [],
     photo: "/assets/team/aisha_ambreen_hashmi.webp",
@@ -553,8 +553,8 @@ const gen2025 = [
     position: "Embedded Systems Head",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
-    bio: "Designed dual motor control PCB and its control logic, served as Embedded Head in 2025-26.",
-    achievements: ["Embedded head in 26-27"],
+    bio: "Designed dual motor control PCB and its control logic, served as Embedded Systems Head in 2025-26.",
+    achievements: ["Embedded Systems Head in 26-27"],
     skills: [],
     social: {
       email: "jai.sharma.ece24@itbhu.ac.in",
@@ -563,11 +563,11 @@ const gen2025 = [
   {
     name: "Vasu Srivastava",
     photo: "/assets/team/vasu_srivastava.webp",
-    position: "VD Head",
+    position: "Vehicle Design Head",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on design and aerodynamic analysis of outerbody of car",
-    achievements: ["VD head in 2026-27"],
+    achievements: ["Vehicle Design Head in 2026-27"],
     skills: [],
     social: {
       linkedin: "https://www.linkedin.com/in/vasu-srivastava-752291344/",
@@ -577,7 +577,7 @@ const gen2025 = [
   {
     name: "Joshua Somabattula",
     photo: "/assets/team/joshua_somabattula.webp",
-    position: "VD Engineer (Braking System)",
+    position: "Vehicle Design Engineer (Braking System)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on braking system",
@@ -592,7 +592,7 @@ const gen2025 = [
   {
     name: "Ishant Kanwat",
     photo: "/assets/team/ishant_kanwat.webp",
-    position: "VD Engineer (Suspension)",
+    position: "Vehicle Design Engineer (Suspension)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on suspension system",
@@ -607,7 +607,7 @@ const gen2025 = [
   {
     name: "Parth Burande",
     photo: "/assets/team/parth_burande.webp",
-    position: "Technical Coordinator (Autonomy)",
+    position: "RoS Engineer (Autonomy)",
     department: "Mechanical Engineering" as Department,
     team: "Technical" as TeamGroup,
     bio: "Worked on localisation and mapping",
@@ -622,7 +622,7 @@ const gen2025 = [
   {
     name: "Krish",
     photo: "/assets/team/krish_kinra.webp",
-    position: "Technical Coordinator (Embedded)",
+    position: "Embedded Systems Engineer",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
     bio: "Designed dual motor control PCB",
@@ -637,7 +637,7 @@ const gen2025 = [
   {
     name: "Varad Kulkarni",
     photo: "/assets/team/varad_kulkarni_fixed.webp",
-    position: "VD Engineer (Aerodynamics)",
+    position: "Vehicle Design Engineer (Aerodynamics)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on design and aerodynamic analysis of outerbody of car",
@@ -652,7 +652,7 @@ const gen2025 = [
   {
     name: "Tejaswa Khare",
     photo: "/assets/team/tejaswa_khare.webp",
-    position: "VD Engineer (Aerodynamics)",
+    position: "Vehicle Design Engineer (Aerodynamics)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on design and aerodynamic analysis of outerbody of car",
@@ -667,7 +667,7 @@ const gen2025 = [
   {
     name: "Pragya Rathal",
     photo: "/assets/team/pragya_rathal.webp",
-    position: "Technical Coordinator (Autonomy)",
+    position: "Perception Engineer (Autonomy)",
     department: "Civil Engineering" as Department,
     team: "Technical" as TeamGroup,
     bio: "Worked on Sensor Fusion",
@@ -682,11 +682,11 @@ const gen2025 = [
   {
     name: "Keerthana Sri K M",
     photo: "/assets/team/keerthana_sri_km.webp",
-    position: "VD Head",
+    position: "Vehicle Design Head",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on designing the chassis, served as Vehicle Design Head in 2025-26.",
-    achievements: ["VD head in 2026-27"],
+    achievements: ["Vehicle Design Head in 2026-27"],
     skills: [],
     social: {
       linkedin: "https://www.linkedin.com/in/keerthana-moorthy-605736326",
@@ -711,7 +711,7 @@ const gen2025 = [
   },
   {
     name: "Madhvendra",
-    position: "VD Engineer (Steering System)",
+    position: "Vehicle Design Engineer (Steering System)",
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on steering system",
@@ -788,7 +788,7 @@ const gen2024 = [
     department: "Mechanical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on designing the chassis",
-    achievements: ["VD head in 2025-26"],
+    achievements: ["Vehicle Design Head in 2025-26"],
     skills: [],
     social: {
       linkedin: "https://www.linkedin.com/in/thillak-devendran-51b61b289",
@@ -799,11 +799,11 @@ const gen2024 = [
   {
     name: "Punit Makwana",
     photo: "/assets/team/punit_makwana.webp",
-    position: "Embedded Head",
+    position: "Project Manager (Urban Concept Vehicle)",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
-    bio: "Designed dual motor control PCB and its control logic, serving as Embedded Head in 2025-26.",
-    achievements: ["Embedded head in 25-26"],
+    bio: "Designed dual motor control PCB and its control logic, served as Project Manager in 2025-26.",
+    achievements: ["Project Manager in 2025-26"],
     skills: [],
     social: {
       linkedin: "https://www.linkedin.com/in/punit-makwana-662814286",
@@ -825,11 +825,11 @@ const gen2024 = [
   },
   {
     name: "Ishant Arora",
-    position: "Embedded Systems Engineer",
+    position: "Embedded Systems Head",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
-    bio: "Worked on DNT, dual motor control PCB",
-    achievements: [],
+    bio: "Worked on DNT, dual motor control PCB, served as Embedded Systems Head in 2025-26.",
+    achievements: ["Embedded Systems Head in 2025-26"],
     skills: [],
     social: {
       email: "ishant.student.ece23@itbhu.ac.in",
@@ -837,11 +837,11 @@ const gen2024 = [
   },
   {
     name: "Ayush Yadav",
-    position: "Embedded Head",
+    position: "Embedded Systems Head",
     department: "Electronics Engineering" as Department,
     team: "Electronics" as TeamGroup,
-    bio: "Designed dual motor control PCB and its control logic, served as Embedded Head in 2025-26.",
-    achievements: ["Embedded head in 25-26"],
+    bio: "Designed dual motor control PCB and its control logic, served as Embedded Systems Head in 2025-26.",
+    achievements: ["Embedded Systems Head in 2025-26"],
     skills: [],
     social: {
       email: "ayush.student.ece23@itbhu.ac.in",
