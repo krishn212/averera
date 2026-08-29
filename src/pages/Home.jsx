@@ -575,7 +575,7 @@ export default function Home({ setActivePage, introDone }) {
                       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <span style={{
                           fontFamily: 'var(--font-mono, monospace)',
-                          color: 'var(--accent-cyan)',
+                          color: 'var(--badge-color)',
                           fontSize: '1.4rem',
                           fontWeight: '800'
                         }}>
@@ -594,9 +594,9 @@ export default function Home({ setActivePage, introDone }) {
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <span style={{
-                          background: 'rgba(24, 208, 219, 0.1)',
-                          color: 'var(--accent-cyan)',
-                          border: '1px solid rgba(24, 208, 219, 0.25)',
+                          background: 'var(--badge-bg)',
+                          color: 'var(--badge-color)',
+                          border: 'var(--badge-border)',
                           borderRadius: '100px',
                           padding: '6px 16px',
                           fontSize: '0.82rem',
@@ -639,7 +639,7 @@ export default function Home({ setActivePage, introDone }) {
                           marginBottom: '12px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.08em',
-                          color: 'var(--accent-cyan)'
+                          color: 'var(--badge-color)'
                         }}>
                           Key Deliverables
                         </div>
