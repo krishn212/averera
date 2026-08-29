@@ -6,7 +6,7 @@ import alternoV3Img from '../assets/vehicles/v3.jpg';
 import alternoV2Img from '../assets/vehicles/v2.jpg';
 import alternoV1Img from '../assets/vehicles/v1.jpg';
 import autoTestImg from '../assets/vehicles/autonomous_test_vehicle.webp';
-import golfCartImg from '../assets/vehicles/autonomus golf cart.jpg';
+import golfCartImg from '../assets/vehicles/autonomus_golf_cart.webp';
 import { initVehiclesPageAnimations } from '../utils/animations';
 
 export default function Vehicles({ setActivePage }) {
@@ -97,7 +97,7 @@ export default function Vehicles({ setActivePage }) {
   useEffect(() => {
     const cleanup = initVehiclesPageAnimations(mainRef.current);
     return () => cleanup && cleanup();
-  }, []);
+  }, [filterView]);
 
   const showVehicles = filterView === 'all' || filterView === 'vehicles';
   const showOngoing = filterView === 'all' || filterView === 'ongoing';
@@ -450,11 +450,7 @@ export default function Vehicles({ setActivePage }) {
 
       {/* ─── INTEGRATED ONGOING PROJECTS (MATCHING VEHICLE CARD STYLE) ─────────── */}
       {showOngoing && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-        >
+        <div style={{ width: '100%' }}>
           {/* Section Header */}
           <div className="section-header" style={{ marginTop: showVehicles ? '100px' : '30px', marginBottom: '60px' }}>
             <div className="badge-glass">
@@ -464,18 +460,17 @@ export default function Vehicles({ setActivePage }) {
             <p>Explore our active development platforms in autonomous systems and ultra-efficient urban electric mobility.</p>
           </div>
 
-          {/* Ongoing Project 01 — Autonomous Technology & Connected Vehicle */}
+          {/* Ongoing Project 01 — Autonomous Technology */}
           <section className="vehicle-detail-section">
             <div className="vehicle-detail-grid">
               <div className="vehicle-gallery">
                 <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
                   <img
                     src={golfCartImg}
-                    alt="Autonomous Technology & Connected Vehicle"
+                    alt="Autonomous Technology"
                     className="hero-car-img"
                     width="580"
                     height="360"
-                    loading="lazy"
                     decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
@@ -483,29 +478,39 @@ export default function Vehicles({ setActivePage }) {
                 </div>
               </div>
               <div className="vehicle-specs">
-                <div className="badge-glass">Ongoing Project 01 — Autonomous Systems</div>
-                <h3>AUTONOMOUS TECHNOLOGY & CONNECTED VEHICLE</h3>
-                <p className="lead-text">
-                  Developing Connected Vehicle Technology tailored to Indian road conditions. Incorporating multi-sensor perception with LiDAR, camera arrays, and IMUs, along with a full simulation-to-hardware testbench and drive-by-wire vehicle integration.
-                </p>
-
-                <div className="premium-spec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginTop: '25px' }}>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Target Architecture</div>
-                    <div className="spec-metric-value">SAE Level-2 Autonomy</div>
-                  </div>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Sensor Suite</div>
-                    <div className="spec-metric-value">LiDAR + Stereo Vision</div>
-                  </div>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Testbed Platform</div>
-                    <div className="spec-metric-value">Autonomous Golf Cart</div>
-                  </div>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Pipeline Status</div>
-                    <div className="spec-metric-value">Active Testbed Validation</div>
-                  </div>
+                <div className="badge-glass">Ongoing Project 01</div>
+                <h3>AUTONOMOUS TECHNOLOGY</h3>
+                
+                <div className="about-card" style={{
+                  background: 'var(--glass-bg)',
+                  border: '1px solid var(--glass-border)',
+                  borderRadius: '16px',
+                  padding: '24px 28px',
+                  marginTop: '20px'
+                }}>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '14px',
+                    color: 'var(--text-secondary)',
+                    fontSize: '0.98rem',
+                    lineHeight: '1.6'
+                  }}>
+                    <li>
+                      <strong style={{ color: 'var(--text-primary)' }}>Objective:</strong> Develop Connected Vehicle Technology for autonomous vehicles as per Indian road conditions
+                    </li>
+                    <li>
+                      Software drives the car by analyzing input from a set of sensors
+                    </li>
+                    <li>
+                      <strong style={{ color: 'var(--text-primary)' }}>Testing pipeline:</strong> Simulation &rarr; self-developed Test Bench &rarr; road-ready car using drive-by-wire mechanisms
+                    </li>
+                    <li>
+                      Autonomy further enhanced by designing a Connected Vehicle Infrastructure and integrating it with the autonomous car
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -515,29 +520,39 @@ export default function Vehicles({ setActivePage }) {
           <section className="vehicle-detail-section" style={{ marginTop: '100px', marginBottom: '80px' }}>
             <div className="vehicle-detail-grid swap-grid">
               <div className="vehicle-specs">
-                <div className="badge-glass">Ongoing Project 02 — Urban Concept Class</div>
+                <div className="badge-glass">Ongoing Project 02</div>
                 <h3>ELECTRIC VEHICLE EFFICIENCY: URBAN CONCEPT</h3>
-                <p className="lead-text">
-                  Engineering our next iteration single-seater Urban Concept vehicle targeting over 230 km/kWh for the Shell Eco-marathon. Features custom BLDC modular motor controller electronics, aerodynamic drag reduction (Cd = 0.106), and real-time cockpit telemetry.
-                </p>
-
-                <div className="premium-spec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginTop: '25px' }}>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Target Efficiency</div>
-                    <div className="spec-metric-value">&gt; 230 km/kWh</div>
-                  </div>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Target Competition</div>
-                    <div className="spec-metric-value">Shell Eco-marathon Qatar</div>
-                  </div>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Powertrain</div>
-                    <div className="spec-metric-value">In-House Modular BLDC</div>
-                  </div>
-                  <div className="spec-metric-card">
-                    <div className="spec-metric-label">Chassis</div>
-                    <div className="spec-metric-value">CFRP Monocoque (Cd 0.106)</div>
-                  </div>
+                
+                <div className="about-card" style={{
+                  background: 'var(--glass-bg)',
+                  border: '1px solid var(--glass-border)',
+                  borderRadius: '16px',
+                  padding: '24px 28px',
+                  marginTop: '20px'
+                }}>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '14px',
+                    color: 'var(--text-secondary)',
+                    fontSize: '0.98rem',
+                    lineHeight: '1.6'
+                  }}>
+                    <li>
+                      <strong style={{ color: 'var(--text-primary)' }}>Objective:</strong> Develop a near road-ready Urban Concept Vehicle for Shell Eco-Marathon
+                    </li>
+                    <li>
+                      Aerodynamic carbon fibre monocoque, light-weight transmission, steering and braking systems
+                    </li>
+                    <li>
+                      In-house built motor controller, highly efficient BLDC motors, low rolling-resistance tires
+                    </li>
+                    <li>
+                      User-interface for driver and telemetry system, all optimized and tuned for maximum energy efficiency
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div className="vehicle-gallery">
@@ -548,7 +563,6 @@ export default function Vehicles({ setActivePage }) {
                     className="hero-car-img"
                     width="580"
                     height="360"
-                    loading="lazy"
                     decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
@@ -557,7 +571,7 @@ export default function Vehicles({ setActivePage }) {
               </div>
             </div>
           </section>
-        </motion.div>
+        </div>
       )}
 
       {/* ─── UPCOMING PLANS & R&D ROADMAP ────────────────────────────────────────── */}

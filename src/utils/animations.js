@@ -323,15 +323,16 @@ export const initVehiclesPageAnimations = (vehiclesContainer) => {
       if (img) {
         gsap.fromTo(
           img,
-          { opacity: 0, x: -60 },
+          { opacity: 0, x: -40 },
           {
             opacity: 1,
             x: 0,
-            duration: 1.25,
+            duration: 0.8,
             ease: 'power2.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: sec,
-              start: 'top 82%',
+              start: 'top 95%',
               toggleActions: 'play none none none'
             }
           }
@@ -341,16 +342,17 @@ export const initVehiclesPageAnimations = (vehiclesContainer) => {
       if (specs) {
         gsap.fromTo(
           specs,
-          { opacity: 0, x: 45 },
+          { opacity: 0, x: 30 },
           {
             opacity: 1,
             x: 0,
-            duration: 1.25,
-            delay: 0.15,
+            duration: 0.8,
+            delay: 0.1,
             ease: 'power2.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: sec,
-              start: 'top 82%',
+              start: 'top 95%',
               toggleActions: 'play none none none'
             }
           }
