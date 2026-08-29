@@ -36,6 +36,7 @@
   --bg-color: var(--background);
   --text-primary: var(--foreground);
   --text-secondary: var(--body);
+  --text-muted: var(--caption);
   --accent-cyan: #1AFFFF;
   --accent-blue: #0a8a96;
   --accent-green: #0ea5b9;
@@ -73,7 +74,8 @@
   --surface-green: #166534;
   --accent-green: #22C55E;
   --technology-blue: #2563EB;
-  --accent-cyan: #06B6D4;
+  --accent-cyan: #0891B2;          /* cyan-600 – deep enough for light bg text */
+  --accent-cyan-text: #0891B2;     /* explicit text-on-light accent */
 
   --main-bg: #F6F8F7;
   --sec-bg: #EEF4F6;
@@ -88,6 +90,7 @@
   --bg-color: var(--main-bg);
   --text-primary: var(--dark-heading);
   --text-secondary: var(--body-text);
+  --text-muted: var(--muted-text);
   --accent-blue: #2563EB;
   --accent-purple: #8B5CF6;
 
@@ -197,7 +200,9 @@
   --bg-color: #040d0f;
   --text-primary: #ffffff;
   --text-secondary: #8da5a8;
+  --text-muted: #5c7d80;
   --accent-cyan: #1AFFFF;
+  --accent-cyan-text: #1AFFFF;     /* bright cyan looks great on dark bg */
   --accent-blue: #0ea5b9;
   --accent-green: #2be4bc;
   --accent-purple: #7c3aed;
@@ -306,6 +311,23 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Global Heading Typography ──────────────────────────────────────────── */
+/* Ensures all headings always use the theme's primary text color,
+   preventing any page from inheriting a different tint. */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-family: var(--font-title);
+  transition: color 0.3s ease;
+}
+
+/* ─── Global Paragraph Typography ──────────────────────────────────────── */
+/* All <p> elements default to --text-secondary for uniform body text.
+   Inline or class overrides can still change individual paragraphs. */
+p {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 [data-theme='light'] body {
@@ -994,6 +1016,7 @@ nav ul li a.active {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 15px;
+  color: var(--text-primary);
 }
 
 

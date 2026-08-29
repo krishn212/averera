@@ -11,9 +11,11 @@ import Gallery from "./Gallery";
 export default function ProfileDrawer({
   member,
   onClose,
+  simpleOnly = false,
 }: {
   member: Member | null;
   onClose: () => void;
+  simpleOnly?: boolean;
 }) {
   const [isPhotoOpen, setIsPhotoOpen] = useState(false);
 
@@ -102,7 +104,7 @@ export default function ProfileDrawer({
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              padding: '40px 24px 40px 24px',
+              padding: simpleOnly ? '40px 24px' : '40px 24px 40px 24px',
               textAlign: 'center',
               boxSizing: 'border-box',
             }}>
@@ -114,13 +116,13 @@ export default function ProfileDrawer({
                 }}
                 style={{
                   position: 'relative',
-                  height: '110px',
-                  width: '110px',
+                  height: simpleOnly ? '140px' : '110px',
+                  width: simpleOnly ? '140px' : '110px',
                   borderRadius: '50%',
                   overflow: 'hidden',
                   border: '2px solid var(--glass-border)',
                   boxShadow: 'var(--card-shadow)',
-                  marginBottom: '16px',
+                  marginBottom: '20px',
                   cursor: 'zoom-in',
                 }}
               >
@@ -133,96 +135,99 @@ export default function ProfileDrawer({
                 fontSize: '1.6rem',
                 fontWeight: '700',
                 color: 'var(--text-primary)',
-                margin: '0 0 4px 0',
+                margin: 0,
                 lineHeight: '1.2'
               }}>
                 {member.name}
               </h2>
               
-              <div 
-                className="badge-glass"
-                style={{
-                  fontSize: '0.68rem',
-                  fontFamily: 'var(--font-mono)',
-                  padding: '2px 10px',
-                  marginBottom: '6px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}
-              >
-                {member.position}
-              </div>
+              {!simpleOnly && (
+                <>
+                  <div 
+                    className="badge-glass"
+                    style={{
+                      fontSize: '0.68rem',
+                      fontFamily: 'var(--font-mono)',
+                      padding: '2px 10px',
+                      marginTop: '6px',
+                      marginBottom: '6px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    }}
+                  >
+                    {member.position}
+                  </div>
 
-              <p style={{
-                fontSize: '0.8rem',
-                color: 'var(--text-secondary)',
-                margin: '0 0 16px 0',
-                fontFamily: 'var(--font-body)'
-              }}>
-                {member.department} · Gen {member.generation}
-              </p>
+                  <p style={{
+                    fontSize: '0.8rem',
+                    color: 'var(--text-secondary)',
+                    margin: '0 0 16px 0',
+                    fontFamily: 'var(--font-body)'
+                  }}>
+                    {member.department} · Gen {member.generation}
+                  </p>
 
-              <SocialLinks social={member.social} style={{ marginBottom: '24px' }} />
+                  <SocialLinks social={member.social} style={{ marginBottom: '24px' }} />
 
-              <p style={{
-                fontSize: '0.88rem',
-                lineHeight: '1.5',
-                color: 'var(--text-secondary)',
-                textAlign: 'left',
-                margin: '24px 0 0 0',
-                borderTop: '1px solid var(--border-color)',
-                paddingTop: '20px',
-                width: '100%'
-              }}>
-                {member.bio}
-              </p>
+                  <p style={{
+                    fontSize: '0.88rem',
+                    lineHeight: '1.5',
+                    color: 'var(--text-secondary)',
+                    textAlign: 'left',
+                    margin: '24px 0 0 0',
+                    borderTop: '1px solid var(--border-color)',
+                    paddingTop: '20px',
+                    width: '100%'
+                  }}>
+                    {member.bio}
+                  </p>
 
-              {/* Contact Info Block */}
-              {(member.social.email || member.social.phone) && (
-                <div style={{
-                  width: '100%',
-                  textAlign: 'left',
-                  marginTop: '20px',
-                  paddingTop: '15px',
-                  borderTop: '1px dashed var(--border-color)',
-                  fontSize: '0.82rem',
-                  color: 'var(--text-secondary)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '6px'
-                }}>
-                  {member.social.email && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.72rem', textTransform: 'uppercase', width: '60px', display: 'inline-block' }}>Email:</span>
-                      <a href={`mailto:${member.social.email}`} style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}>{member.social.email}</a>
+                  {/* Contact Info Block */}
+                  {(member.social.email || member.social.phone) && (
+                    <div style={{
+                      width: '100%',
+                      textAlign: 'left',
+                      marginTop: '20px',
+                      paddingTop: '15px',
+                      borderTop: '1px dashed var(--border-color)',
+                      fontSize: '0.82rem',
+                      color: 'var(--text-secondary)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '6px'
+                    }}>
+                      {member.social.email && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.72rem', textTransform: 'uppercase', width: '60px', display: 'inline-block' }}>Email:</span>
+                          <a href={`mailto:${member.social.email}`} style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}>{member.social.email}</a>
+                        </div>
+                      )}
+                      {member.social.phone && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.72rem', textTransform: 'uppercase', width: '60px', display: 'inline-block' }}>Phone:</span>
+                          <span style={{ color: 'var(--text-primary)' }}>{member.social.phone}</span>
+                        </div>
+                      )}
                     </div>
                   )}
-                  {member.social.phone && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.72rem', textTransform: 'uppercase', width: '60px', display: 'inline-block' }}>Phone:</span>
-                      <span style={{ color: 'var(--text-primary)' }}>{member.social.phone}</span>
-                    </div>
-                  )}
-                </div>
+
+                  <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
+                    <h3 style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '10.5px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--text-primary)',
+                      marginBottom: '12px',
+                      borderBottom: '1px solid var(--border-color)',
+                      paddingBottom: '6px'
+                    }}>
+                      Contribution Timeline
+                    </h3>
+                    <ContributionTimeline entries={member.timeline} />
+                  </div>
+                </>
               )}
-
-
-
-              <div style={{ width: '100%', textAlign: 'left', marginTop: '24px' }}>
-                <h3 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10.5px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-primary)',
-                  marginBottom: '12px',
-                  borderBottom: '1px solid var(--border-color)',
-                  paddingBottom: '6px'
-                }}>
-                  Contribution Timeline
-                </h3>
-                <ContributionTimeline entries={member.timeline} />
-              </div>
             </div>
           </motion.div>
           
@@ -293,17 +298,6 @@ export default function ProfileDrawer({
                 }}>
                   {member.name}
                 </h3>
-                <p style={{
-                  color: 'var(--text-secondary)',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                  textAlign: 'center',
-                  margin: 0,
-                }}>
-                  {member.position}
-                </p>
                 
                 {/* Close Button */}
                 <button

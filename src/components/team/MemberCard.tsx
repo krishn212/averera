@@ -86,17 +86,6 @@ export default function MemberCard({
         }}>
           {member.name}
         </h3>
-        <p style={{
-          color: 'var(--text-secondary)',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.8rem',
-          letterSpacing: '0.05em',
-          textTransform: 'uppercase',
-          textAlign: 'center',
-          margin: 0,
-        }}>
-          {member.position}
-        </p>
         
         {/* Close Button */}
         <button

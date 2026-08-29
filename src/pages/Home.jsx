@@ -368,6 +368,340 @@ export default function Home({ setActivePage, introDone }) {
           </div>
         </section>
 
+        {/* Upcoming Projects & Research Proposal Section (Below About Us) */}
+        <section id="upcoming-projects" className="about-section" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '60px' }}>
+          <div className="section-header">
+            <div className="badge-glass">
+              <i className="fa-solid fa-compass-drafting" style={{ marginRight: '6px' }}></i> Future Horizon
+            </div>
+            <h2>UPCOMING PROJECTS</h2>
+            <p>Strategic research initiatives establishing permanent test facilities, custom motor dynos, and active battery balancing testbeds at IIT (BHU) Varanasi.</p>
+          </div>
+
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            {/* Project Proposal Banner */}
+            <div className="proposal-roadmap-banner">
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '24px'
+              }}>
+                <div style={{ maxWidth: '720px' }}>
+                  <div className="proposal-badge-tag" style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '0.85rem',
+                    fontWeight: '700',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px'
+                  }}>
+                    <i className="fa-solid fa-file-lines"></i> Official R&D Roadmap
+                  </div>
+                  <h3 style={{ fontSize: '2.2rem', marginBottom: '14px', lineHeight: '1.2' }}>
+                    Urban Concept Electric Vehicle <br />
+                    <span className="logo-accent">Project Proposal (2026–2028)</span>
+                  </h3>
+                  <p style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
+                    A research and development plan establishing testing facilities, dynamometer setups, battery characterization benches, and advanced thermoplastic composite manufacturing at IIT (BHU) Varanasi.
+                  </p>
+                </div>
+
+                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                  <a
+                    href="mailto:averera@iitbhu.ac.in?subject=Partnership%20Inquiry%20-%20Team%20AVERERA"
+                    className="btn btn-glow"
+                    style={{
+                      padding: '16px 28px',
+                      fontSize: '1.05rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '10px'
+                    }}
+                  >
+                    Partner with Us <i className="fa-solid fa-handshake"></i>
+                  </a>
+                  <a
+                    href="/documents/Project_Proposal_UC.pdf"
+                    download="Team_AVERERA_Project_Proposal_UC.pdf"
+                    className="btn"
+                    style={{
+                      padding: '16px 24px',
+                      fontSize: '1.05rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      border: '1px solid var(--glass-border)',
+                      color: 'var(--text-primary)'
+                    }}
+                  >
+                    Download Proposal <i className="fa-solid fa-file-pdf"></i>
+                  </a>
+                </div>
+              </div>
+
+              {/* Quick Metrics Bar - 3 core stats */}
+              <div className="proposal-divider" style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '20px',
+                marginTop: '35px',
+                paddingTop: '25px',
+                borderTop: '1px solid rgba(255, 255, 255, 0.1)'
+              }}>
+                <div>
+                  <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>Target Efficiency</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>&gt; 250 km/kWh</div>
+                </div>
+                <div>
+                  <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>R&D Scope</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>5 Core Verticals</div>
+                </div>
+                <div>
+                  <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>Timeline Horizon</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>24 Months (3 Phases)</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 5 R&D Research Verticals as Full Editorial Subsections */}
+            <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', gap: '35px' }}>
+              <div style={{ borderBottom: '1px solid var(--glass-border)', paddingBottom: '16px' }}>
+                <h3 style={{ fontSize: '2rem', marginBottom: '8px', letterSpacing: '-0.01em' }}>Strategic Research Verticals</h3>
+                <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '1rem' }}>
+                  Phase-by-phase experimental testbenches and technical focus areas from the official project proposal.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                {[
+                  {
+                    id: 'thermal',
+                    num: '01',
+                    title: 'Thermal Management Research',
+                    tag: 'Powertrain & Battery Reliability',
+                    icon: 'fa-fire-flame-curved',
+                    summary: 'Establishing a dedicated thermal characterization facility to prevent thermal hotspots, lower electrical resistance losses, and CFD-optimize submerged NACA cooling ducts without bluff-body aerodynamic drag penalties.',
+                    highlights: [
+                      'Custom insulated testbench & FLIR thermal imaging setup',
+                      'CFD & FEA airflow analysis across battery pack & motor controller',
+                      'Active/passive hybrid cooling and Peltier module characterization'
+                    ]
+                  },
+                  {
+                    id: 'bms',
+                    num: '02',
+                    title: 'Advanced Battery Management Systems',
+                    tag: 'Energy Storage Intelligence',
+                    icon: 'fa-battery-bolt',
+                    summary: 'Developing custom in-house BMS hardware featuring active inductive/capacitive cell balancing, STM32 real-time monitoring, and Kalman-filtered model-based SoC & SoH estimations to extract maximum energy from every watt-hour.',
+                    highlights: [
+                      'Multi-channel cell cycler dataset generation rig for cell characterization',
+                      'Transition from passive resistive bleed to high-efficiency active balancing',
+                      'CAN/UART telemetry pipeline streaming real-time metrics to pit crew dashboard'
+                    ]
+                  },
+                  {
+                    id: 'powertrain',
+                    num: '03',
+                    title: 'High-Efficiency Powertrain & Dyno',
+                    tag: 'Propulsion Optimization',
+                    icon: 'fa-gears',
+                    summary: 'Custom BLDC/PMSM motor design with optimized windings, coupled with an in-house motor dynamometer testbench to minimize switching, transmission, and rolling resistance losses.',
+                    highlights: [
+                      'Dedicated motor dynamometer testbench with torque/speed power analyzer',
+                      'Genetic algorithm optimization of gear ratios & track driving strategies in MATLAB/Simulink',
+                      'Hardware-in-the-loop (HIL) testing platform to isolate subsystem losses'
+                    ]
+                  },
+                  {
+                    id: 'suspension',
+                    num: '04',
+                    title: 'Quasi-Zero Stiffness (QZS) Suspension',
+                    tag: 'Vehicle Dynamics & Isolation',
+                    icon: 'fa-arrows-down-to-line',
+                    summary: 'Advanced vibration isolation research utilizing Quasi-Zero Stiffness (QZS) compliant mechanisms and eddy-current non-contact damping to reduce dynamic rolling friction and structural fatigue.',
+                    highlights: [
+                      'Quarter-car suspension test rig with actuator-based road excitation',
+                      'Dynamic stiffness modulation & vibration transmissibility optimization',
+                      'Lightweight flexure-based prototype fabrication for racing dynamics'
+                    ]
+                  },
+                  {
+                    id: 'composites',
+                    num: '05',
+                    title: 'Lightweight Thermoplastic Composites',
+                    tag: 'Advanced Materials & Aeroshell',
+                    icon: 'fa-layer-group',
+                    summary: 'Pioneering Out-of-Autoclave (OOA) thermal consolidation, ultrasonic & induction fusion welding for thermoplastic CFRP matrices, eliminating mechanical fasteners and parasitic structural adhesives.',
+                    highlights: [
+                      'Localized heat-press & ultrasonic welding infrastructure',
+                      'Aerogel & honeycomb core sandwich structures for extreme weight reduction',
+                      'Full-scale research-derived aerodynamic aeroshell integration'
+                    ]
+                  }
+                ].map((vert) => (
+                  <div
+                    key={vert.id}
+                    id={`vertical-${vert.id}`}
+                    className="about-card"
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    style={{
+                      width: '100%',
+                      padding: '36px 38px',
+                      borderRadius: '20px',
+                      textAlign: 'left',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '20px'
+                    }}
+                  >
+                    <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+
+                    <div style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: '16px',
+                      paddingBottom: '16px',
+                      borderBottom: '1px solid var(--glass-border)'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                        <span style={{
+                          fontFamily: 'var(--font-mono, monospace)',
+                          color: 'var(--accent-cyan)',
+                          fontSize: '1.4rem',
+                          fontWeight: '800'
+                        }}>
+                          {vert.num}
+                        </span>
+                        <h4 style={{
+                          fontSize: '1.5rem',
+                          margin: 0,
+                          fontWeight: '700',
+                          letterSpacing: '-0.01em',
+                          color: 'var(--text-primary)'
+                        }}>
+                          {vert.title}
+                        </h4>
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{
+                          background: 'rgba(24, 208, 219, 0.1)',
+                          color: 'var(--accent-cyan)',
+                          border: '1px solid rgba(24, 208, 219, 0.25)',
+                          borderRadius: '100px',
+                          padding: '6px 16px',
+                          fontSize: '0.82rem',
+                          fontWeight: '600',
+                          letterSpacing: '0.04em'
+                        }}>
+                          <i className={`fa-solid ${vert.icon}`} style={{ marginRight: '8px' }}></i>
+                          {vert.tag}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                      gap: '30px',
+                      alignItems: 'start'
+                    }}>
+                      <div>
+                        <p style={{
+                          fontSize: '1.02rem',
+                          lineHeight: '1.75',
+                          color: 'var(--text-secondary)',
+                          margin: 0
+                        }}>
+                          {vert.summary}
+                        </p>
+                      </div>
+
+                      <div style={{
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        border: '1px solid var(--glass-border)',
+                        borderRadius: '14px',
+                        padding: '22px 26px',
+                        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+                      }}>
+                        <div style={{
+                          fontSize: '0.85rem',
+                          fontWeight: '700',
+                          marginBottom: '12px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          color: 'var(--accent-cyan)'
+                        }}>
+                          Key Deliverables
+                        </div>
+                        <ul style={{
+                          paddingLeft: '18px',
+                          fontSize: '0.92rem',
+                          lineHeight: '1.65',
+                          margin: 0,
+                          color: 'var(--text-secondary)',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '10px'
+                        }}>
+                          {vert.highlights.map((h, i) => (
+                            <li key={i} style={{ listStyleType: 'disc' }}>{h}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Separate Autonomous Research Project Block */}
+            <div style={{ marginTop: '60px' }}>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '8px' }}>Autonomous Technology</h3>
+              <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>
+                Upcoming autonomous vehicle development initiatives and research tracks.
+              </p>
+
+              <div className="about-card autonomy-upcoming-card" style={{
+                background: 'linear-gradient(135deg, rgba(24, 208, 219, 0.04) 0%, rgba(10, 14, 23, 0.6) 100%)',
+                border: '1px solid rgba(24, 208, 219, 0.25)',
+                borderRadius: '20px',
+                padding: '30px 35px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
+                  <h4 style={{ fontSize: '1.35rem', margin: 0 }}>
+                    Autonomous Vehicle Project
+                  </h4>
+                  <span className="autonomy-stay-tuned-badge" style={{
+                    background: 'rgba(24, 208, 219, 0.12)',
+                    color: 'var(--accent-cyan)',
+                    border: '1px solid rgba(24, 208, 219, 0.35)',
+                    fontSize: '0.75rem',
+                    fontWeight: '700',
+                    padding: '4px 12px',
+                    borderRadius: '100px',
+                    letterSpacing: '0.05em'
+                  }}>
+                    STAY TUNED
+                  </span>
+                </div>
+                <p style={{ margin: 0, maxWidth: '850px', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                  Research and testing in intelligent mobility, drive-by-wire actuation, and autonomous vehicle technology.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Tech Stack */}
         <section id="tech" className="tech-section">
           <div className="section-header">
@@ -564,8 +898,50 @@ export default function Home({ setActivePage, introDone }) {
               <h2>Contact Us</h2>
               <p>Partner with us, sponsor our projects, or join the team to build the future of sustainable mobility.</p>
               <div className="contact-details">
-                <p><i className="fa-solid fa-envelope" style={{ marginRight: '8px' }}></i> averera@iitbhu.ac.in</p>
-                <p><i className="fa-solid fa-location-dot" style={{ marginRight: '8px' }}></i> IIT (BHU) Varanasi, India</p>
+                <p>
+                  <i className="fa-solid fa-user-tie" style={{ marginRight: '8px', color: 'var(--accent-cyan)' }}></i>
+                  <strong>Subhakanta Mohapatra:</strong>{' '}
+                  <a href="tel:+919007818674" style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}>
+                    (+91)-9007818674
+                  </a>
+                </p>
+                <p>
+                  <i className="fa-solid fa-envelope" style={{ marginRight: '8px', color: 'var(--accent-cyan)' }}></i>
+                  <a href="mailto:averera@iitbhu.ac.in" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    averera@iitbhu.ac.in
+                  </a>
+                </p>
+                <p>
+                  <i className="fa-solid fa-location-dot" style={{ marginRight: '8px', color: 'var(--accent-cyan)' }}></i>
+                  Team AVERERA Workshop, Indian Institute of Technology (BHU), Varanasi, Uttar Pradesh 221005, India
+                </p>
+              </div>
+
+              {/* Embedded Interactive Google Map */}
+              <div style={{
+                marginTop: '25px',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                border: '1px solid var(--glass-border)',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+                height: '240px',
+                width: '100%',
+                position: 'relative'
+              }}>
+                <iframe
+                  title="Team AVERERA IIT BHU Location Map"
+                  src="https://maps.google.com/maps?q=Indian%20Institute%20of%20Technology%20(BHU)%20Varanasi&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{
+                    border: 0,
+                    filter: 'invert(90%) hue-rotate(180deg) contrast(95%) saturate(80%)',
+                    display: 'block'
+                  }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
             <div className="contact-form">

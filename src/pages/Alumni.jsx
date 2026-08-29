@@ -144,7 +144,7 @@ export default function Alumni({ setActivePage }) {
 
 
       {/* Profile Details Drawer */}
-      <ProfileDrawer member={selected} onClose={() => setSelected(null)} />
+      <ProfileDrawer member={selected} onClose={() => setSelected(null)} simpleOnly={true} />
     </main>
   );
 }
