@@ -4372,8 +4372,72 @@ html, body {
 
 
 /* ==========================================================================
-   Vehicle detail page: responsive
+   Vehicle detail page: mobile responsive layout
    ========================================================================== */
+@media (max-width: 900px) {
+  .vehicle-detail-grid,
+  .vehicle-detail-grid.swap-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
+  .vehicle-detail-grid.swap-grid .vehicle-gallery {
+    order: -1 !important;
+  }
+
+  .image-glass-container {
+    padding: 16px !important;
+    max-width: 100% !important;
+  }
+
+  .image-glass-container img.hero-car-img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .premium-spec-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .spec-metric-card {
+    padding: 14px 16px !important;
+  }
+
+  .spec-metric-value {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .premium-spec-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .proposal-roadmap-banner {
+    padding: 24px 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .proposal-roadmap-banner h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .proposal-roadmap-banner p {
+    font-size: 0.9rem !important;
+  }
+
+  .proposal-divider {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .autonomy-upcoming-card {
+    padding: 22px 18px !important;
+  }
+}
 /* ==========================================================================
    Project Proposal Banner & R&D Cards Light Mode Styling
    ========================================================================== */

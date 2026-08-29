@@ -431,6 +431,10 @@ export default function Home({ setActivePage, introDone }) {
                 <img
                   src={priyaImg}
                   alt="Dr. Shyam Kamal"
+                  width="130"
+                  height="130"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -444,11 +448,9 @@ export default function Home({ setActivePage, introDone }) {
               </div>
               <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Shyam Kamal</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-                Associate Professor
-
-Dept. of Electrical Engg.
-
-IIT (BHU) Varanasi
+                Associate Professor<br />
+                Dept. of Electrical Engg.<br />
+                IIT (BHU) Varanasi
               </p>
               <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
                 <a href="https://www.linkedin.com/in/dr-shyam-kamal-9b750b98/" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
@@ -466,6 +468,10 @@ IIT (BHU) Varanasi
                 <img
                   src={marcusImg}
                   alt="Dr. Sandip Ghosh"
+                  width="130"
+                  height="130"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -479,11 +485,9 @@ IIT (BHU) Varanasi
               </div>
               <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Sandip Ghosh</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-                Associate Professor
-
-Dept. of Electrical Engg.
-
-IIT (BHU) Varanasi
+                Associate Professor<br />
+                Dept. of Electrical Engg.<br />
+                IIT (BHU) Varanasi
               </p>
               <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
                 <a href="https://www.linkedin.com/in/sandip-ghosh-b3269614/" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
@@ -501,6 +505,10 @@ IIT (BHU) Varanasi
                 <img
                   src={liImg}
                   alt="Dr. Amitesh Kumar"
+                  width="130"
+                  height="130"
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -514,11 +522,9 @@ IIT (BHU) Varanasi
               </div>
               <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Amitesh Kumar</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-                Assistant Professor
-
-Dept. of Mechanical Engg.
-
-IIT (BHU) Varanasi
+                Assistant Professor<br />
+                Dept. of Mechanical Engg.<br />
+                IIT (BHU) Varanasi
               </p>
               <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
                 <a href="mailto:amitesh.mec@iitbhu.ac.in" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>

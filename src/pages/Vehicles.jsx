@@ -173,6 +173,10 @@ export default function Vehicles({ setActivePage }) {
                     src={shivayImg}
                     alt="Shivaay Urban Concept"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
@@ -242,6 +246,10 @@ export default function Vehicles({ setActivePage }) {
                     src={alternoV4Img}
                     alt="Alterno V4 Prototype"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>
@@ -259,6 +267,10 @@ export default function Vehicles({ setActivePage }) {
                     src={alternoV3Img}
                     alt="Alterno V3 Prototype"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
@@ -328,6 +340,10 @@ export default function Vehicles({ setActivePage }) {
                     src={alternoV2Img}
                     alt="Alterno V2.0 Prototype"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>
@@ -345,6 +361,10 @@ export default function Vehicles({ setActivePage }) {
                     src={alternoV1Img}
                     alt="Alterno V1.0 Prototype"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
@@ -414,6 +434,10 @@ export default function Vehicles({ setActivePage }) {
                     src={autoTestImg}
                     alt="Autonomous Test Vehicle"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>
@@ -449,6 +473,10 @@ export default function Vehicles({ setActivePage }) {
                     src={golfCartImg}
                     alt="Autonomous Technology & Connected Vehicle"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
@@ -518,6 +546,10 @@ export default function Vehicles({ setActivePage }) {
                     src={shivayImg}
                     alt="Electric Vehicle Efficiency: Urban Concept"
                     className="hero-car-img"
+                    width="580"
+                    height="360"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                   />
                   <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>

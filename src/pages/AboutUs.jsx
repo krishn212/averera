@@ -150,6 +150,10 @@ export default function AboutUs() {
               <img
                 src={priyaImg}
                 alt="Dr. Priya Anand"
+                width="130"
+                height="130"
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -185,6 +189,10 @@ export default function AboutUs() {
               <img
                 src={marcusImg}
                 alt="Prof. Marcus Webb"
+                width="130"
+                height="130"
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -220,6 +228,10 @@ export default function AboutUs() {
               <img
                 src={liImg}
                 alt="Dr. Li Yuen"
+                width="130"
+                height="130"
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -264,7 +276,7 @@ export default function AboutUs() {
             style={{ borderRadius: '16px', overflow: 'hidden' }}
           >
             <div className="vehicle-img-wrapper" style={{ height: '220px', borderBottom: '1px solid var(--glass-border)' }}>
-              <img src={gytiImg} alt="GYTI Award 2023" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={gytiImg} alt="GYTI Award 2023" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div className="vehicle-info" style={{ padding: '25px' }}>
               <div className="vehicle-tag" style={{ background: 'rgba(0, 255, 255, 0.05)', color: 'var(--accent-cyan)' }}>National Recognition</div>
@@ -281,7 +293,7 @@ export default function AboutUs() {
             style={{ borderRadius: '16px', overflow: 'hidden' }}
           >
             <div className="vehicle-img-wrapper" style={{ height: '220px', borderBottom: '1px solid var(--glass-border)' }}>
-              <img src={semImg} alt="SEM Asia Championship" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={semImg} alt="SEM Asia Championship" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div className="vehicle-info" style={{ padding: '25px' }}>
               <div className="vehicle-tag" style={{ background: 'rgba(16, 185, 129, 0.05)', color: 'var(--accent-green)' }}>Asia Cup Finals</div>
@@ -298,7 +310,7 @@ export default function AboutUs() {
             style={{ borderRadius: '16px', overflow: 'hidden' }}
           >
             <div className="vehicle-img-wrapper" style={{ height: '220px', borderBottom: '1px solid var(--glass-border)' }}>
-              <img src={oimtImg} alt="OIMT Innovation Grant" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={oimtImg} alt="OIMT Innovation Grant" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div className="vehicle-info" style={{ padding: '25px' }}>
               <div className="vehicle-tag" style={{ background: 'rgba(0, 255, 255, 0.05)', color: 'var(--accent-cyan)' }}>Research Funding</div>
@@ -315,7 +327,7 @@ export default function AboutUs() {
             style={{ borderRadius: '16px', overflow: 'hidden' }}
           >
             <div className="vehicle-img-wrapper" style={{ height: '220px', borderBottom: '1px solid var(--glass-border)' }}>
-              <img src={saeImg} alt="SAE Collegiate Design" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={saeImg} alt="SAE Collegiate Design" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div className="vehicle-info" style={{ padding: '25px' }}>
               <div className="vehicle-tag" style={{ background: 'rgba(16, 185, 129, 0.05)', color: 'var(--accent-green)' }}>eV Challenge</div>

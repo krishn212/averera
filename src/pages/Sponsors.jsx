@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import BounceCards from '../components/BounceCards';
 
 import spMain  from '../assets/sponsors.avif';
 import sp1     from '../assets/sponsors1.avif';
@@ -40,93 +39,79 @@ export default function Sponsors({ setActivePage }) {
         }} />
 
         <div className="container" style={{
-          maxWidth: '1100px',
+          maxWidth: '850px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 1,
+          textAlign: 'center',
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '40px'
+          flexDirection: 'column',
+          alignItems: 'center'
         }}>
-          {/* Left Text */}
-          <div style={{ flex: '1 1 500px', textAlign: 'left' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="badge-glass"
-              style={{ marginBottom: '22px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-            >
-              <i className="fa-solid fa-handshake" style={{ fontSize: '0.75rem' }}></i>
-              Our Partners & Sponsors
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="badge-glass"
+            style={{ marginBottom: '22px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+          >
+            <i className="fa-solid fa-handshake" style={{ fontSize: '0.75rem' }}></i>
+            Our Partners & Sponsors
+          </motion.div>
 
-            <div style={{ overflow: 'hidden', marginBottom: '10px' }}>
-              <motion.h1
-                initial={{ y: '110%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  fontFamily: 'var(--font-title)',
-                  fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
-                  fontWeight: '900',
-                  lineHeight: '1.05',
-                  letterSpacing: '-0.03em',
-                  color: 'var(--text-primary)',
-                  textTransform: 'uppercase',
-                  margin: 0,
-                }}
-              >
-                TRUSTED BY
-              </motion.h1>
-            </div>
-            <div style={{ overflow: 'hidden', marginBottom: '28px' }}>
-              <motion.h1
-                initial={{ y: '110%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  fontFamily: 'var(--font-title)',
-                  fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
-                  fontWeight: '900',
-                  lineHeight: '1.05',
-                  letterSpacing: '-0.03em',
-                  textTransform: 'uppercase',
-                  margin: 0,
-                }}
-                className="logo-accent"
-              >
-                INDUSTRY LEADERS.
-              </motion.h1>
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
+          <div style={{ overflow: 'hidden', marginBottom: '10px' }}>
+            <motion.h1
+              initial={{ y: '110%' }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                maxWidth: '560px',
-                fontSize: '1.05rem',
-                lineHeight: '1.65',
-                color: 'var(--text-secondary)',
+                fontFamily: 'var(--font-title)',
+                fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
+                fontWeight: '900',
+                lineHeight: '1.05',
+                letterSpacing: '-0.03em',
+                color: 'var(--text-primary)',
+                textTransform: 'uppercase',
+                margin: 0,
               }}
             >
-              These organisations have backed TEAM AVERERA's push for sustainable mobility — from lab to global stage. Hover over the cards to interact.
-            </motion.p>
+              TRUSTED BY
+            </motion.h1>
+          </div>
+          <div style={{ overflow: 'hidden', marginBottom: '28px' }}>
+            <motion.h1
+              initial={{ y: '110%' }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                fontFamily: 'var(--font-title)',
+                fontSize: 'clamp(2.4rem, 6vw, 4.2rem)',
+                fontWeight: '900',
+                lineHeight: '1.05',
+                letterSpacing: '-0.03em',
+                textTransform: 'uppercase',
+                margin: 0,
+              }}
+              className="logo-accent"
+            >
+              INDUSTRY LEADERS.
+            </motion.h1>
           </div>
 
-          {/* Right BounceCards */}
-          <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center' }}>
-            <BounceCards
-              images={[spTata, spIitbhu, spCerd, sp13, sp5]}
-              containerWidth={400}
-              containerHeight={380}
-              enableHover={true}
-            />
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            style={{
+              maxWidth: '680px',
+              fontSize: '1.05rem',
+              lineHeight: '1.65',
+              color: 'var(--text-secondary)',
+              margin: '0 auto',
+            }}
+          >
+            These organisations have backed TEAM AVERERA's push for sustainable mobility — from lab to global stage.
+          </motion.p>
         </div>
       </section>
 
@@ -167,7 +152,7 @@ export default function Sponsors({ setActivePage }) {
                   transition: 'border-color 0.25s, box-shadow 0.25s, transform 0.25s',
                 }}
               >
-                <img src={img} alt="Sponsor Logo" style={{ maxWidth: '100%', maxHeight: '72px', objectFit: 'contain' }} />
+                <img src={img} alt="Sponsor Logo" loading="lazy" decoding="async" style={{ maxWidth: '100%', maxHeight: '72px', objectFit: 'contain' }} />
               </motion.div>
             ))}
           </div>
