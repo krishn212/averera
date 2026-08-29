@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import semChampionshipImg from '../assets/sem_championship.png';
-import oimtGrantImg from '../assets/oimt_grant.png';
-import vehicleImg from '../assets/vehicle.png';
-import gytiAwardImg from '../assets/gyti_award.png';
-import saeDesignImg from '../assets/sae_design.png';
+import semChampionshipImg from '../assets/sem_championship.webp';
+import oimtGrantImg from '../assets/oimt_grant.webp';
+import vehicleImg from '../assets/vehicle.webp';
+import gytiAwardImg from '../assets/gyti_award.webp';
+import saeDesignImg from '../assets/sae_design.webp';
 import img2025 from '../legacy_assets/2025.avif';
 import img2023 from '../legacy_assets/2023.avif';
 import img2022 from '../legacy_assets/2022_win.avif';

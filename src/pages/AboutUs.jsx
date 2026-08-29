@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import priyaImg from '../assets/priya_anand.png';
-import marcusImg from '../assets/marcus_webb.png';
-import liImg from '../assets/li_yuen.png';
-import gytiImg from '../assets/gyti_award.png';
-import semImg from '../assets/sem_championship.png';
-import oimtImg from '../assets/oimt_grant.png';
-import saeImg from '../assets/sae_design.png';
+import priyaImg from '../assets/priya_anand.webp';
+import marcusImg from '../assets/marcus_webb.webp';
+import liImg from '../assets/li_yuen.webp';
+import gytiImg from '../assets/gyti_award.webp';
+import semImg from '../assets/sem_championship.webp';
+import oimtImg from '../assets/oimt_grant.webp';
+import saeImg from '../assets/sae_design.webp';
 import { initAboutAnimations } from '../utils/animations';
 
 export default function AboutUs() {

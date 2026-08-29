@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Vehicles from './pages/Vehicles';
-import Timeline from './pages/Timeline';
-import Sponsors from './pages/Sponsors';
-import AboutUs from './pages/AboutUs';
-import Team from './pages/Team';
-import Alumni from './pages/Alumni';
 import SideRays from './components/SideRays';
-import wireframeImg from './assets/wireframe_car.png';
+import wireframeImg from './assets/wireframe_car.webp';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const Vehicles = lazy(() => import('./pages/Vehicles'));
+const Timeline = lazy(() => import('./pages/Timeline'));
+const Sponsors = lazy(() => import('./pages/Sponsors'));
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const Team = lazy(() => import('./pages/Team'));
+const Alumni = lazy(() => import('./pages/Alumni'));
 
 export default function App({ introDone }) {
   const [activePage, setActivePage] = useState(() => {
@@ -19,6 +20,8 @@ export default function App({ introDone }) {
     if (path === '/alumni') return 'alumni';
     if (path === '/legacy' || path === '/timeline') return 'legacy';
     if (path === '/sponsors') return 'sponsors';
+    if (path === '/projects' || path === '/vehicles') return 'vehicles';
+    if (path === '/about') return 'about';
     if (path === '/' || path === '') return 'home';
     const savedPage = localStorage.getItem('activePage');
     return savedPage || 'home';
@@ -131,7 +134,7 @@ export default function App({ introDone }) {
       const path = window.location.pathname;
       if (path === '/team') setActivePage('team');
       else if (path === '/alumni') setActivePage('alumni');
-      else if (path === '/vehicles') setActivePage('vehicles');
+      else if (path === '/vehicles' || path === '/projects') setActivePage('vehicles');
       else if (path === '/timeline') setActivePage('timeline');
       else if (path === '/sponsors') setActivePage('sponsors');
       else if (path === '/about') setActivePage('about');
@@ -155,24 +158,66 @@ export default function App({ introDone }) {
   }, []);
 
   const renderActivePage = () => {
+    let PageComponent;
     switch (activePage) {
       case 'home':
-        return <Home setActivePage={setActivePage} introDone={introDone} />;
+        PageComponent = <Home setActivePage={setActivePage} introDone={introDone} />;
+        break;
       case 'about':
-        return <AboutUs />;
+        PageComponent = <AboutUs />;
+        break;
       case 'vehicles':
-        return <Vehicles setActivePage={setActivePage} />;
+      case 'projects':
+        PageComponent = <Vehicles setActivePage={setActivePage} />;
+        break;
       case 'legacy':
-        return <Timeline />;
+        PageComponent = <Timeline />;
+        break;
       case 'sponsors':
-        return <Sponsors setActivePage={setActivePage} />;
+        PageComponent = <Sponsors setActivePage={setActivePage} />;
+        break;
       case 'team':
-        return <Team setActivePage={setActivePage} />;
+        PageComponent = <Team setActivePage={setActivePage} />;
+        break;
       case 'alumni':
-        return <Alumni setActivePage={setActivePage} />;
+        PageComponent = <Alumni setActivePage={setActivePage} />;
+        break;
       default:
-        return <Home setActivePage={setActivePage} />;
+        PageComponent = <Home setActivePage={setActivePage} />;
+        break;
     }
+
+    return (
+      <Suspense
+        fallback={
+          <div style={{
+            minHeight: '80vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            gap: '16px'
+          }}>
+            <div style={{
+              width: '44px',
+              height: '44px',
+              border: '3px solid rgba(24, 208, 219, 0.2)',
+              borderTopColor: '#18D0DB',
+              borderRadius: '50%',
+              animation: 'spin 0.8s linear infinite'
+            }}></div>
+            <span style={{
+              color: '#18D0DB',
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '0.85rem',
+              letterSpacing: '0.1em'
+            }}>INITIALIZING TELEMETRY...</span>
+          </div>
+        }
+      >
+        {PageComponent}
+      </Suspense>
+    );
   };
 
   return (

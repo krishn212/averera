@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import prospectusPdf from '../assets/PARTNERSHIP_PROSPECTUS_2026-27.pdf';
 import BounceCards from '../components/BounceCards';
 
 import spMain  from '../assets/sponsors.avif';
@@ -258,7 +257,7 @@ export default function Sponsors({ setActivePage }) {
             Ready to fuel sustainable innovation? Download our partnership prospectus or reach out directly.
           </p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={prospectusPdf} download="PARTNERSHIP_PROSPECTUS_2026-27.pdf" className="btn btn-glow">
+            <a href="/documents/PARTNERSHIP_PROSPECTUS_2026-27.pdf" download="PARTNERSHIP_PROSPECTUS_2026-27.pdf" className="btn btn-glow">
               Download Prospectus <i className="fa-solid fa-download" style={{ marginLeft: '6px' }}></i>
             </a>
             <a

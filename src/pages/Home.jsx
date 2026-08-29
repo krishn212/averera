@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import priyaImg from '../assets/eee_faculty_shyam.avif';
 import marcusImg from '../assets/eee_faculty_sandip.avif';
 import liImg from '../assets/mec_faculty_amitesh.avif';
-import prospectusPdf from '../assets/PARTNERSHIP_PROSPECTUS_2026-27.pdf';
 
 // Sponsor Logos
 import spMain from '../assets/sponsors.avif';
@@ -273,7 +272,7 @@ export default function Home({ setActivePage, introDone }) {
               <p>We are IIT BHU's premier automotive research team, designing and building ultra-efficient electric and autonomous vehicles to shape green transportation.</p>
               <div className="hero-buttons">
                 <a
-                  href={prospectusPdf}
+                  href="/documents/PARTNERSHIP_PROSPECTUS_2026-27.pdf"
                   download="PARTNERSHIP_PROSPECTUS_2026-27.pdf"
                   className="btn btn-glow"
                 >

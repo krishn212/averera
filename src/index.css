@@ -4374,18 +4374,99 @@ html, body {
 /* ==========================================================================
    Vehicle detail page: responsive
    ========================================================================== */
-@media (max-width: 768px) {
-  .vehicle-detail-grid,
-  .vehicle-detail-grid.swap-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+/* ==========================================================================
+   Project Proposal Banner & R&D Cards Light Mode Styling
+   ========================================================================== */
+.proposal-roadmap-banner {
+  background: linear-gradient(135deg, rgba(24, 208, 219, 0.08) 0%, rgba(10, 14, 23, 0.7) 100%);
+  border: 1px solid rgba(24, 208, 219, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+}
 
-  .image-glass-container {
-    padding: 18px;
-  }
+[data-theme='light'] .proposal-roadmap-banner {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
 
-  .vehicle-card h3 {
-    font-size: 1.4rem;
-  }
+[data-theme='light'] .proposal-roadmap-banner h3 {
+  color: var(--dark-heading) !important;
+}
+
+[data-theme='light'] .proposal-roadmap-banner p {
+  color: var(--body-text) !important;
+}
+
+[data-theme='light'] .proposal-roadmap-banner .proposal-badge-tag {
+  color: var(--accent-cyan) !important;
+}
+
+[data-theme='light'] .proposal-roadmap-banner .proposal-metric-title {
+  color: var(--muted-text) !important;
+}
+
+[data-theme='light'] .proposal-roadmap-banner .proposal-metric-val {
+  color: var(--dark-heading) !important;
+}
+
+[data-theme='light'] .proposal-roadmap-banner .proposal-divider {
+  border-top-color: var(--border-color) !important;
+}
+
+/* Light mode overrides for Upcoming R&D Vertical Cards */
+[data-theme='light'] .upcoming-vertical-card {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+[data-theme='light'] .upcoming-vertical-card h4 {
+  color: var(--dark-heading) !important;
+}
+
+[data-theme='light'] .upcoming-vertical-card p {
+  color: var(--body-text) !important;
+}
+
+[data-theme='light'] .upcoming-vertical-card .vertical-tag {
+  color: var(--accent-cyan) !important;
+}
+
+[data-theme='light'] .upcoming-vertical-card .vertical-deliverables-title {
+  color: var(--dark-heading) !important;
+}
+
+[data-theme='light'] .upcoming-vertical-card ul li {
+  color: var(--body-text) !important;
+}
+
+[data-theme='light'] .upcoming-vertical-card .vertical-budget-val {
+  color: var(--dark-heading) !important;
+}
+
+/* Light mode for Autonomous Technology Card */
+[data-theme='light'] .autonomy-upcoming-card {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+[data-theme='light'] .autonomy-upcoming-card h4 {
+  color: var(--dark-heading) !important;
+}
+
+[data-theme='light'] .autonomy-upcoming-card p {
+  color: var(--body-text) !important;
+}
+
+[data-theme='light'] .autonomy-stay-tuned-badge {
+  background: rgba(6, 182, 212, 0.12) !important;
+  color: var(--accent-cyan) !important;
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
 }
