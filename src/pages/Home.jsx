@@ -463,7 +463,7 @@ export default function Home({ setActivePage, introDone }) {
                     <span className="logo-accent">Project Proposal (2026–2028)</span>
                   </h3>
                   <p style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
-                    A research and development plan establishing testing facilities, dynamometer setups, battery characterization benches, and advanced thermoplastic composite manufacturing at IIT (BHU) Varanasi.
+                    A research and development plan establishing testing facilities, dynamometer setups, battery characterization benches, and lightweight composites manufacturing at IIT (BHU) Varanasi, aiming to develop an urban concept hyperefficient EV.
                   </p>
                 </div>
 
@@ -585,12 +585,13 @@ export default function Home({ setActivePage, introDone }) {
                         {
                           id: 'powertrain',
                           num: '03',
-                          title: 'High-Efficiency Powertrain & Dyno',
+                          title: 'High Efficiency Powertrain',
                           tag: 'Propulsion Optimization',
                           icon: 'fa-gears',
-                          summary: 'Custom BLDC/PMSM motor design with optimized windings, coupled with an in-house motor dynamometer testbench to minimize switching, transmission, and rolling resistance losses.',
+                          summary: 'Custom BLDC/PMSM motor design with optimized windings and custom geartrain design, coupled with an in-house motor dynamometer testbench to minimize switching, transmission, and rolling resistance losses.',
                           highlights: [
                             'Dedicated motor dynamometer testbench with torque/speed power analyzer',
+                            'Custom geartrain design & transmission efficiency optimization',
                             'Genetic algorithm optimization of gear ratios & track driving strategies in MATLAB/Simulink',
                             'Hardware-in-the-loop (HIL) testing platform to isolate subsystem losses'
                           ]
@@ -598,10 +599,10 @@ export default function Home({ setActivePage, introDone }) {
                         {
                           id: 'suspension',
                           num: '04',
-                          title: 'Quasi-Zero Stiffness (QZS) Suspension',
+                          title: 'Suspension Research',
                           tag: 'Vehicle Dynamics & Isolation',
                           icon: 'fa-arrows-down-to-line',
-                          summary: 'Advanced vibration isolation research utilizing Quasi-Zero Stiffness (QZS) compliant mechanisms and eddy-current non-contact damping to reduce dynamic rolling friction and structural fatigue.',
+                          summary: 'Advanced mechanisms for vibration isolation. Active mechanisms, QZS, compliant mechanisms and eddy current based dampers will be few key areas of research.',
                           highlights: [
                             'Quarter-car suspension test rig with actuator-based road excitation',
                             'Dynamic stiffness modulation & vibration transmissibility optimization',
@@ -611,7 +612,7 @@ export default function Home({ setActivePage, introDone }) {
                         {
                           id: 'composites',
                           num: '05',
-                          title: 'Lightweight Thermoplastic Composites',
+                          title: 'Lightweight Composites',
                           tag: 'Advanced Materials & Aeroshell',
                           icon: 'fa-layer-group',
                           summary: 'Pioneering Out-of-Autoclave (OOA) thermal consolidation, ultrasonic & induction fusion welding for thermoplastic CFRP matrices, eliminating mechanical fasteners and parasitic structural adhesives.',

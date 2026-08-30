@@ -326,8 +326,8 @@ export default function Timeline() {
       const itemsCount = timelineEvents.length;
       const isMobile = window.innerWidth <= 768;
       const center = isMobile ? 35 : width / 2;
-      // Amplitude of curve (left-right distance from center line)
-      const amplitude = isMobile ? 0 : width * 0.26;
+      // Wide cinematic curve amplitude flowing through open space opposite each placard
+      const amplitude = isMobile ? 0 : Math.min(210, width * 0.22);
 
       let d = `M ${center} 0`;
       const newCheckpoints = [];
@@ -732,8 +732,9 @@ export default function Timeline() {
             position: 'fixed',
             inset: 0,
             zIndex: 9999,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            backdropFilter: 'blur(10px)',
+            backgroundColor: 'rgba(0, 0, 0, 0.35)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -749,10 +750,13 @@ export default function Timeline() {
               maxHeight: '90vh',
               display: 'flex',
               flexDirection: 'column',
-              background: 'var(--card-bg)',
-              border: '1px solid var(--accent-cyan)',
+              background: 'var(--legacy-card-bg, var(--card-bg))',
+              color: 'var(--legacy-card-text, var(--text-primary))',
+              border: '1px solid var(--legacy-card-border, rgba(43, 197, 206, 0.45))',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
               borderRadius: '16px',
-              boxShadow: '0 20px 50px rgba(0, 208, 220, 0.2)',
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.35), 0 0 35px rgba(24, 208, 220, 0.15)',
               animation: 'fadeIn 0.3s ease',
               overflow: 'hidden'
             }}
@@ -765,8 +769,9 @@ export default function Timeline() {
                 top: '15px',
                 right: '15px',
                 zIndex: 20,
-                background: 'rgba(10, 15, 25, 0.85)',
-                backdropFilter: 'blur(6px)',
+                background: 'rgba(15, 23, 42, 0.65)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
                 border: '1px solid var(--accent-cyan)',
                 color: '#fff',
                 width: '36px',
@@ -777,7 +782,7 @@ export default function Timeline() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '1.1rem',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
               }}
               title="Close"
             >
