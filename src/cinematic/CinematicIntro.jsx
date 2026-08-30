@@ -37,12 +37,6 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
   const timelineRef = useRef(null);
 
   /* ── Initial Configuration & Autoplay Fallback ────────────────────────── */
-  useEffect(() => {
-    if (preloadVehicle) {
-      const img = new Image();
-      img.src = "/frame_149.webp";
-    }
-  }, [preloadVehicle]);
 
   useEffect(() => {
     // Lock page scrolling
@@ -100,7 +94,7 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
     const vehicleVideo = vehicleVideoRef.current;
     if (vehicleVideo) {
       vehicleVideo.muted = isMuted;
-      vehicleVideo.playbackRate = 1.5;
+      vehicleVideo.playbackRate = 1.0;
 
       const transitionToVehicleVideo = () => {
         gsap.to(logoContainerRef.current, {
@@ -119,7 +113,7 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
           console.warn("Vehicle video autoplay blocked. Retrying muted.", err);
           vehicleVideo.muted = true;
           setIsMuted(true);
-          vehicleVideo.playbackRate = 1.5;
+          vehicleVideo.playbackRate = 1.0;
           vehicleVideo.play()
             .then(transitionToVehicleVideo)
             .catch(e => {
@@ -358,7 +352,9 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
           playsInline
           autoPlay
           muted={isMuted}
-          preload="metadata"
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
           onTimeUpdate={handleLogoTimeUpdate}
           onEnded={handleLogoEnded}
         />
@@ -385,29 +381,17 @@ export default function CinematicIntro({ onComplete, onTransitionStart }) {
           className="cin-video-element"
           playsInline
           muted={isMuted}
-          preload={preloadVehicle ? "auto" : "metadata"}
+          preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
           onEnded={handleVehicleEnded}
           style={{
             position: 'absolute',
             inset: 0,
-            opacity: step === 'climax' ? 0 : 1,
-            zIndex: step === 'climax' ? 5 : 6
+            opacity: 1,
+            zIndex: 6
           }}
         />
-        {(preloadVehicle || step === 'climax') && (
-          <img
-            src="/frame_149.webp"
-            alt="Vehicle Climax Frame"
-            className="cin-video-element"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: step === 'climax' ? 1 : 0,
-              zIndex: step === 'climax' ? 6 : 5,
-              pointerEvents: 'none'
-            }}
-          />
-        )}
         <div className="cin-video-vignette" />
 
         {/* CLIMAX OVERLAYS */}

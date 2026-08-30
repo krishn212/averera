@@ -327,7 +327,7 @@ export default function Timeline() {
       const isMobile = window.innerWidth <= 768;
       const center = isMobile ? 35 : width / 2;
       // Wide cinematic curve amplitude flowing through open space opposite each placard
-      const amplitude = isMobile ? 0 : Math.min(210, width * 0.22);
+      const amplitude = isMobile ? 0 : Math.min(270, width * 0.22);
 
       let d = `M ${center} 0`;
       const newCheckpoints = [];
@@ -642,13 +642,13 @@ export default function Timeline() {
                     style={{
                       position: 'relative',
                       width: '100%',
-                      height: '140px',
-                      margin: '12px 0 8px 0',
+                      height: '280px',
+                      margin: '16px 0 12px 0',
                       borderRadius: '12px',
                       overflow: 'hidden',
                       border: '1px solid rgba(24, 208, 220, 0.35)',
                       cursor: 'pointer',
-                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+                      boxShadow: '0 6px 22px rgba(0, 0, 0, 0.35)',
                       transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease'
                     }}
                     onMouseEnter={(e) => {
@@ -745,9 +745,9 @@ export default function Timeline() {
           <div
             style={{
               position: 'relative',
-              maxWidth: '850px',
+              maxWidth: '1100px',
               width: '100%',
-              maxHeight: '90vh',
+              maxHeight: '92vh',
               display: 'flex',
               flexDirection: 'column',
               background: 'var(--legacy-card-bg, var(--card-bg))',
@@ -818,7 +818,7 @@ export default function Timeline() {
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
-                style={{ width: '100%', maxHeight: '55vh', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--glass-border)', margin: '14px 0' }}
+                style={{ width: '100%', maxHeight: '75vh', objectFit: 'cover', borderRadius: '12px', border: '1px solid var(--glass-border)', margin: '14px 0' }}
               />
 
               {selectedImage.imageCaption && (

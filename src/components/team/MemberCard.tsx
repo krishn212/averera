@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import type { Member } from "../../data/team";
 import SocialLinks from "./SocialLinks";
-import { ParticleCard } from "../MagicBento";
 
 export default function MemberCard({
   member,
@@ -123,14 +122,8 @@ export default function MemberCard({
   if (isAlumni) {
     return (
       <>
-        <ParticleCard
+        <div
           className="about-card"
-          enableTilt={!isMobile}
-          enableMagnetism={!isMobile}
-          clickEffect={false}
-          enableBorderGlow={!isMobile}
-          particleCount={0}
-          glowColor="24, 208, 219"
           style={{
             padding: '24px 16px',
             cursor: 'default',
@@ -192,7 +185,7 @@ export default function MemberCard({
               <SocialLinks social={member.social} />
             </div>
           </div>
-        </ParticleCard>
+        </div>
         {photoModal}
       </>
     );
@@ -200,14 +193,8 @@ export default function MemberCard({
 
   return (
     <>
-      <ParticleCard
+      <div
         className="about-card"
-        enableTilt={!isMobile}
-        enableMagnetism={!isMobile}
-        clickEffect={true}
-        enableBorderGlow={!isMobile}
-        particleCount={isMobile ? 0 : 8}
-        glowColor="24, 208, 219"
         style={{
           padding: isMobile ? '20px 16px' : '30px 24px',
           cursor: 'pointer',
@@ -317,7 +304,7 @@ export default function MemberCard({
             <SocialLinks social={member.social} />
           </div>
         </div>
-      </ParticleCard>
+      </div>
       {photoModal}
     </>
   );

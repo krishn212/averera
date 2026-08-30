@@ -4,7 +4,6 @@ import { useMemo, useRef, useState } from "react";
 import type { Member } from "../../data/team";
 import SectionHeading from "./SectionHeading";
 import MemberCard from "./MemberCard";
-import { GlobalSpotlight } from "../MagicBento";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function CurrentTeamSection({
@@ -40,14 +39,18 @@ export default function CurrentTeamSection({
       "subhakanta mohapatra",
       "subhakanta",
       "aryan sharma",
+      "raghav sharma",
       "vasu srivastava",
       "keerthana sri k m",
-      "jai sharma",
-      "raghav sharma"
+      "jai sharma"
     ];
     return uniqueMembers
       .filter((m) => activeLeaderNames.includes(m.name.trim().toLowerCase()))
-      .sort((a, b) => Number(a.generation) - Number(b.generation));
+      .sort((a, b) => {
+        const indexA = activeLeaderNames.indexOf(a.name.trim().toLowerCase());
+        const indexB = activeLeaderNames.indexOf(b.name.trim().toLowerCase());
+        return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
+      });
   }, [uniqueMembers]);
 
   // 2. Verticals definition
@@ -75,7 +78,6 @@ export default function CurrentTeamSection({
     return (
       <section id="current-members" style={{ padding: '60px 0', borderTop: '1px solid var(--border-color)' }}>
         <div ref={gridRef} className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
-          <GlobalSpotlight gridRef={gridRef} glowColor="24, 208, 219" spotlightRadius={350} />
           <SectionHeading
             eyebrow="Search Results"
             title="Matching Members"
@@ -99,7 +101,6 @@ export default function CurrentTeamSection({
   return (
     <section id="current-members" style={{ padding: '60px 0', borderTop: '1px solid var(--border-color)' }}>
       <div ref={gridRef} className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', boxSizing: 'border-box' }}>
-        <GlobalSpotlight gridRef={gridRef} glowColor="24, 208, 219" spotlightRadius={350} />
         
         {/* 1. POSITIONS OF RESPONSIBILITY SECTION */}
         <div style={{ marginBottom: '60px' }}>

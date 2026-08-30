@@ -46,6 +46,21 @@ export default function Home({ setActivePage, introDone }) {
   // --- Upcoming Projects Expandable Dropdown (Urban Concept) ---
   const [isUcDomainsOpen, setIsUcDomainsOpen] = useState(false);
 
+  // --- Photo Gallery State ---
+  const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
+
+  const galleryImages = [
+    "/assets/rastrapti_bhawan.avif",
+    "/assets/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.avif",
+    "/assets/945304_f61f4de4e2cd43deb5dd01119a578a6f~mv2.avif",
+    "/assets/945304_59d8fa4cc53340969eec6e80fb04e374~mv2.avif",
+    "/assets/945304_644096d55870495da77834addd495b48~mv2.jpg",
+    "/assets/945304_a9959891efcc470fa740e64adbfffa13~mv2.jpg",
+    "/assets/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.png",
+    "/assets/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.jpg",
+    "/assets/945304_5a5261e22e1946228c64b92a9b4dedc3f000.avif"
+  ];
+
   // --- 1. Typewriter Effect ---
   const [typedText, setTypedText] = useState('');
   const textArray = [
@@ -55,10 +70,10 @@ export default function Home({ setActivePage, introDone }) {
     "Shaping the Next Era of Transportation"
   ];
   const badgeArray = [
-    "🏆 Winner Shell Eco-Marathon 2021",
-    "⚡ 250+ km/kWh Ultra Efficiency",
-    "🤖 AI Autonomous Sensor Fusion",
-    "🇮🇳 IIT BHU Premier Research Team"
+    "Shell Eco-Marathon 2021 — 1st Global League",
+    "250+ km/kWh Ultra Efficiency",
+    "AI Autonomous Sensor Fusion",
+    "IIT BHU Premier Research Team"
   ];
   const [currentBadge, setCurrentBadge] = useState(badgeArray[0]);
 
@@ -337,7 +352,7 @@ export default function Home({ setActivePage, introDone }) {
         {/* About / Mission Section */}
         <section id="about" className="about-section">
           <div className="section-header">
-            <h2>ABOUT TEAM AVERERA</h2>
+            <h2>About Team Averera</h2>
             <p>“Leave the world better than you found it.”</p>
           </div>
           <div className="about-grid">
@@ -383,7 +398,7 @@ export default function Home({ setActivePage, introDone }) {
         {/* Core Pillars Section */}
         <section id="pillars" className="tech-section">
           <div className="section-header">
-            <h2>CORE PILLARS</h2>
+            <h2>Core Pillars</h2>
             <p>Integrating engineering, innovation, and strategic outreach.</p>
           </div>
           <div className="tech-grid">
@@ -432,7 +447,7 @@ export default function Home({ setActivePage, introDone }) {
             <div className="badge-glass">
               <i className="fa-solid fa-compass-drafting" style={{ marginRight: '6px' }}></i> Future Horizon
             </div>
-            <h2>UPCOMING PROJECTS</h2>
+            <h2>Upcoming Projects</h2>
           </div>
 
           <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '35px' }}>
@@ -775,10 +790,38 @@ export default function Home({ setActivePage, introDone }) {
           </div>
         </section>
 
+        {/* ─── PURE PHOTO GALLERY SECTION ────────────────────── */}
+        <section id="gallery" className="gallery-section" style={{ borderTop: '1px solid var(--glass-border)' }}>
+          <div className="section-header">
+            <h2>Gallery</h2>
+          </div>
+
+          {/* Pure Images Grid */}
+          <div className="gallery-grid">
+            {galleryImages.map((imgSrc, idx) => (
+              <div
+                key={idx}
+                className="gallery-card-glass"
+                onClick={() => setSelectedGalleryImg(imgSrc)}
+              >
+                <img
+                  src={imgSrc}
+                  alt={`Team Averera Gallery ${idx + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="gallery-hover-icon">
+                  <i className="fa-solid fa-expand"></i>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Faculty Mentors Section */}
         <section id="mentors" className="about-section" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '60px' }}>
           <div className="section-header">
-            <h2>FACULTY MENTORS</h2>
+            <h2>Faculty Mentors</h2>
             <p>World-class mentorship empowers our innovative minds to push the boundaries of what is possible.</p>
           </div>
           <div className="about-grid">
@@ -801,11 +844,9 @@ export default function Home({ setActivePage, introDone }) {
                     height: '100%',
                     objectFit: 'cover',
                     borderRadius: '12px',
-                    border: '1px solid rgba(0,255,255,0.25)',
-                    boxShadow: '0 0 20px rgba(0,255,255,0.1)'
+                    border: '1px solid var(--glass-border)'
                   }}
                 />
-                <div className="card-decor-corners" style={{ opacity: 1 }}></div>
               </div>
               <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Shyam Kamal</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
@@ -838,11 +879,9 @@ export default function Home({ setActivePage, introDone }) {
                     height: '100%',
                     objectFit: 'cover',
                     borderRadius: '12px',
-                    border: '1px solid rgba(16,185,129,0.25)',
-                    boxShadow: '0 0 20px rgba(16,185,129,0.1)'
+                    border: '1px solid var(--glass-border)'
                   }}
                 />
-                <div className="card-decor-corners" style={{ opacity: 1 }}></div>
               </div>
               <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Sandip Ghosh</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
@@ -875,11 +914,9 @@ export default function Home({ setActivePage, introDone }) {
                     height: '100%',
                     objectFit: 'cover',
                     borderRadius: '12px',
-                    border: '1px solid rgba(0,255,255,0.25)',
-                    boxShadow: '0 0 20px rgba(0,255,255,0.1)'
+                    border: '1px solid var(--glass-border)'
                   }}
                 />
-                <div className="card-decor-corners" style={{ opacity: 1 }}></div>
               </div>
               <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Amitesh Kumar</h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
@@ -899,11 +936,11 @@ export default function Home({ setActivePage, introDone }) {
         {/* Spacious Closing Statement Section */}
         <section className="closing-section" style={{ padding: '120px 20px', textAlign: 'center', borderTop: '1px solid var(--glass-border)' }}>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '20px', fontFamily: 'Oxanium, sans-serif', fontWeight: 700 }}>
-              ENGINEERING WHAT MOVES TOMORROW.
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '20px', fontFamily: 'var(--font-title)', fontWeight: 700 }}>
+              Engineering What Moves Tomorrow
             </h2>
-            <p style={{ letterSpacing: '0.35em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontSize: 'clamp(0.75rem, 1.8vw, 0.95rem)', marginBottom: '40px' }}>
-              TEAM AVERERA • IIT (BHU), VARANASI
+            <p style={{ letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', fontSize: 'clamp(0.7rem, 1.5vw, 0.85rem)', marginBottom: '40px' }}>
+              Team Averera · IIT (BHU), Varanasi
             </p>
             <a
               href="/legacy"
@@ -962,7 +999,6 @@ export default function Home({ setActivePage, introDone }) {
                   height="100%"
                   style={{
                     border: 0,
-                    filter: 'invert(90%) hue-rotate(180deg) contrast(95%) saturate(80%)',
                     display: 'block'
                   }}
                   allowFullScreen=""
@@ -988,6 +1024,86 @@ export default function Home({ setActivePage, introDone }) {
           </div>
         </section>
       </main>
+
+      {/* ─── PURE IMAGE LIGHTBOX MODAL ───────────────────────── */}
+      {selectedGalleryImg && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            backgroundColor: 'rgba(0, 0, 0, 0.55)',
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+          onClick={() => setSelectedGalleryImg(null)}
+        >
+          <div
+            style={{
+              position: 'relative',
+              maxWidth: '1050px',
+              width: '100%',
+              maxHeight: '92vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(10, 15, 25, 0.6)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              borderRadius: '18px',
+              boxShadow: '0 30px 60px rgba(0, 0, 0, 0.6)',
+              animation: 'fadeIn 0.3s ease',
+              overflow: 'hidden',
+              padding: '12px'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedGalleryImg(null)}
+              style={{
+                position: 'absolute',
+                top: '15px',
+                right: '15px',
+                zIndex: 20,
+                background: 'rgba(15, 23, 42, 0.75)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid var(--accent-cyan)',
+                color: '#fff',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.1rem',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+              }}
+              title="Close"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+
+            <img
+              src={selectedGalleryImg}
+              alt="Gallery Full View"
+              style={{
+                width: '100%',
+                maxHeight: '82vh',
+                objectFit: 'contain',
+                borderRadius: '12px',
+                display: 'block'
+              }}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

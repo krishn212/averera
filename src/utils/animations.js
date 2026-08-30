@@ -98,17 +98,16 @@ export const initStatCounters = (statsContainer) => {
       if (targetVal <= 1 || suffix.toLowerCase().includes('st') || suffix.toLowerCase().includes('nd')) {
         gsap.fromTo(
           card,
-          { opacity: 0, y: 50, scale: 0.94 },
+          { opacity: 0, y: 22 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 1.2,
-            delay: index * 0.12,
-            ease: 'power2.out',
+            duration: 0.8,
+            delay: index * 0.08,
+            ease: 'expo.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 88%',
+              start: 'top 90%',
               toggleActions: 'play none none none'
             }
           }
@@ -120,22 +119,21 @@ export const initStatCounters = (statsContainer) => {
 
       gsap.fromTo(
         card,
-        { opacity: 0, y: 50, scale: 0.94 },
+        { opacity: 0, y: 22 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 1.2,
-          delay: index * 0.12,
-          ease: 'power2.out',
+          duration: 0.8,
+          delay: index * 0.08,
+          ease: 'expo.out',
           scrollTrigger: {
             trigger: card,
-            start: 'top 88%',
+            start: 'top 90%',
             toggleActions: 'play none none none',
             onEnter: () => {
               gsap.to(counterObj, {
                 val: targetVal,
-                duration: 2.2,
+                duration: 1.8,
                 ease: 'power2.out',
                 onUpdate: () => {
                   h3.innerHTML = `${prefix}${Math.floor(counterObj.val)}${suffix}`;
@@ -153,33 +151,33 @@ export const initStatCounters = (statsContainer) => {
 
 /**
  * 3. ULTRA-SMOOTH SECTION & CARD SCROLL REVEALS
- * - Smooth gliding entrance for section headers and cards
+ * - Natural drift-in: reduced y travel, no scale pop, expo easing
  */
 export const initScrollReveals = (scopeContainer) => {
   if (prefersReducedMotion()) return () => {};
 
   const ctx = gsap.context(() => {
-    // Section headers smooth fade & slide up
+    // Section headers — gentle fade up
     const headers = gsap.utils.toArray('.section-header');
     headers.forEach((header) => {
       gsap.fromTo(
         header,
-        { opacity: 0, y: 45 },
+        { opacity: 0, y: 24 },
         {
           opacity: 1,
           y: 0,
-          duration: 1.15,
-          ease: 'power2.out',
+          duration: 0.9,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: header,
-            start: 'top 88%',
+            start: 'top 90%',
             toggleActions: 'play none none none'
           }
         }
       );
     });
 
-    // Smooth gliding cards reveal for About, Vehicles, Tech, Telemetry, Contact
+    // Cards — natural drift, no scale, short travel, tight stagger
     const cardSelectors = [
       '.about-card',
       '.vehicle-card',
@@ -190,19 +188,18 @@ export const initScrollReveals = (scopeContainer) => {
 
     cardSelectors.forEach((selector) => {
       ScrollTrigger.batch(selector, {
-        start: 'top 88%',
+        start: 'top 92%',
         once: true,
         onEnter: (batch) => {
           gsap.fromTo(
             batch,
-            { opacity: 0, y: 55, scale: 0.95 },
+            { opacity: 0, y: 28 },
             {
               opacity: 1,
               y: 0,
-              scale: 1,
-              duration: 1.25,
-              stagger: 0.18,
-              ease: 'power2.out',
+              duration: 0.75,
+              stagger: 0.07,
+              ease: 'expo.out',
               clearProps: 'transform,opacity'
             }
           );
@@ -285,19 +282,18 @@ export const initAboutAnimations = (aboutContainer) => {
     );
 
     ScrollTrigger.batch('.about-card, .team-card, .award-card', {
-      start: 'top 85%',
+      start: 'top 92%',
       once: true,
       onEnter: (batch) => {
         gsap.fromTo(
           batch,
-          { opacity: 0, y: 45, scale: 0.94 },
+          { opacity: 0, y: 26 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 1.1,
-            stagger: 0.15,
-            ease: 'power2.out',
+            duration: 0.75,
+            stagger: 0.07,
+            ease: 'expo.out',
             clearProps: 'transform,opacity'
           }
         );
@@ -372,19 +368,18 @@ export const initSponsorsAnimations = (sponsorsContainer) => {
 
   const ctx = gsap.context(() => {
     ScrollTrigger.batch('.pricing-card', {
-      start: 'top 85%',
+      start: 'top 92%',
       once: true,
       onEnter: (batch) => {
         gsap.fromTo(
           batch,
-          { opacity: 0, y: 50, scale: 0.92 },
+          { opacity: 0, y: 26 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 1.2,
-            stagger: 0.18,
-            ease: 'power2.out',
+            duration: 0.75,
+            stagger: 0.07,
+            ease: 'expo.out',
             clearProps: 'transform,opacity'
           }
         );

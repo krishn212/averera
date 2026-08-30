@@ -356,22 +356,31 @@ p {
 .image-glass-container {
   background: var(--vehicle-img-bg);
   border: 1px solid var(--vehicle-img-border);
-  border-radius: 16px;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 14px;
+  padding: 5px;
+  display: block;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.image-glass-container:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 14px 40px rgba(24, 208, 220, 0.2);
 }
 
 .hero-car-img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  object-fit: contain;
   display: block;
+  object-fit: cover;
+  border-radius: 10px;
   z-index: 2;
+  position: relative;
 }
 
 
@@ -435,7 +444,6 @@ header.nav-hidden {
   z-index: 9999;
   width: 0%;
   pointer-events: none;
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
 }
 
 .navbar-glass {
@@ -563,37 +571,37 @@ nav ul li a.active {
   outline: none;
 }
 
-/* Vibrant Emerald Green to Electric Blue Gradient Pill Buttons */
 .btn-primary,
 .btn-glow {
-  background: linear-gradient(90deg, #10B981 0%, #059669 25%, #0284C7 75%, #2563EB 100%) !important;
+  background: #0E6E4A !important;
   color: #ffffff !important;
   border: none !important;
-  box-shadow: 0 8px 24px -2px rgba(16, 185, 129, 0.35);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 14px -2px rgba(14, 110, 74, 0.4);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary:hover,
 .btn-glow:hover {
-  transform: translateY(-2px) scale(1.03);
-  background: linear-gradient(90deg, #059669 0%, #0284C7 50%, #1D4ED8 100%) !important;
+  transform: translateY(-2px);
+  background: #0B5A3C !important;
   color: #ffffff !important;
-  box-shadow: 0 14px 30px -2px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 8px 20px -2px rgba(14, 110, 74, 0.5);
 }
 
 [data-theme='dark'] .btn-primary,
 [data-theme='dark'] .btn-glow {
-  background: linear-gradient(90deg, #10B981 0%, #0ea5e9 60%, #2563EB 100%) !important;
-  color: #ffffff !important;
-  border: none !important;
-  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+  background: rgba(26, 255, 255, 0.1) !important;
+  color: var(--accent-cyan) !important;
+  border: 1px solid rgba(26, 255, 255, 0.35) !important;
+  box-shadow: none;
 }
 
 [data-theme='dark'] .btn-primary:hover,
 [data-theme='dark'] .btn-glow:hover {
-  background: linear-gradient(90deg, #059669 0%, #0284C7 50%, #1D4ED8 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.55);
+  background: rgba(26, 255, 255, 0.18) !important;
+  color: var(--accent-cyan) !important;
+  border-color: rgba(26, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
@@ -681,8 +689,8 @@ nav ul li a.active {
 [data-theme='dark'] .tech-card:hover,
 [data-theme='dark'] .pricing-card:hover,
 [data-theme='dark'] .simulator-card-glass:hover {
-  border-color: var(--accent-cyan);
-  box-shadow: var(--card-shadow), 0 0 20px var(--accent-cyan);
+  border-color: rgba(26, 255, 255, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
 }
 
 /* Full Page Fixed Cinematic Background */
@@ -711,9 +719,8 @@ nav ul li a.active {
   position: fixed;
   left: 0;
   right: 0;
-  height: 3.5px;
-  background: linear-gradient(90deg, transparent 10%, #1AFFFF 50%, #10B981 85%, transparent 100%);
-  box-shadow: 0 0 20px #1AFFFF, 0 0 35px #10B981;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 10%, rgba(26, 255, 255, 0.5) 50%, rgba(16, 185, 129, 0.4) 85%, transparent 100%);
   z-index: -1;
   pointer-events: none;
   animation: tracer-scan 4.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -809,8 +816,6 @@ nav ul li a.active {
   position: relative;
   max-width: 700px;
   text-align: left;
-  /* Infinite float loop begins after the entrance animation finishes */
-  animation: hero-float-loop 8s ease-in-out infinite 1.2s;
 }
 
 .badge-glass {
@@ -1015,17 +1020,18 @@ nav ul li a.active {
 
 .section-header h2 {
   font-family: var(--font-title);
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 15px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
   color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 
 
 .section-header p {
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 /* Day Mode Subtle Accent Radiance */
@@ -1059,8 +1065,7 @@ nav ul li a.active {
 .about-card h3::before,
 .vehicle-card h3::before,
 .tech-card h4::before {
-  content: ':: ';
-  color: var(--accent-cyan);
+  content: '';
 }
 
 .card-wide {
@@ -1187,12 +1192,10 @@ nav ul li a.active {
 }
 
 .tech-card i {
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--accent-cyan);
+  opacity: 0.85;
 }
 
 .tech-card h4 {
@@ -1208,18 +1211,20 @@ nav ul li a.active {
 
 /* Vehicle Detail Styles */
 .vehicle-detail-section {
-  padding: 40px 0;
+  padding: 50px 0;
+  max-width: 1380px !important;
+  margin: 0 auto;
 }
 
 .vehicle-detail-grid {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 50px;
+  grid-template-columns: 1.38fr 1fr;
+  gap: 55px;
   align-items: center;
 }
 
 .vehicle-detail-grid.swap-grid {
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1.38fr;
 }
 
 .lead-text {
@@ -1321,11 +1326,13 @@ nav ul li a.active {
 .timeline-section {
   position: relative;
   padding: 40px 0;
+  max-width: 1280px !important;
+  margin: 0 auto;
 }
 
 .timeline-container {
   position: relative;
-  max-width: 900px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
@@ -4423,7 +4430,7 @@ html, body {
   }
 
   .image-glass-container {
-    padding: 16px !important;
+    padding: 5px !important;
     max-width: 100% !important;
   }
 
@@ -4830,5 +4837,105 @@ html, body {
 
   .section-header h2 {
     font-size: 1.65rem;
+  }
+}
+
+/* ==========================================================================
+   Home Page: Pure Photo Gallery
+   ========================================================================== */
+.gallery-section {
+  position: relative;
+  padding: 70px 0 90px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.gallery-card-glass {
+  background: var(--card-bg, rgba(15, 23, 42, 0.6));
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  aspect-ratio: 16 / 11;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  display: block;
+}
+
+.gallery-card-glass:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 18px 45px rgba(24, 208, 220, 0.28);
+}
+
+.gallery-card-glass img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card-glass:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-card-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.65) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gallery-card-glass:hover::after {
+  opacity: 1;
+}
+
+.gallery-hover-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(10, 15, 25, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--accent-cyan);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.gallery-card-glass:hover .gallery-hover-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 580px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }

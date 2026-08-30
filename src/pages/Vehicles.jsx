@@ -18,7 +18,7 @@ export default function Vehicles({ setActivePage }) {
   }, []);
 
   return (
-    <main ref={mainRef} style={{ paddingTop: '150px', paddingBottom: '100px' }}>
+    <main ref={mainRef} style={{ paddingTop: '150px', paddingBottom: '100px', maxWidth: '1350px', margin: '0 auto' }}>
       {/* Vehicles Page Hero */}
       <section className="section-header" style={{ marginBottom: '40px' }}>
         <h1
@@ -47,16 +47,13 @@ export default function Vehicles({ setActivePage }) {
         <section className="vehicle-detail-section">
           <div className="vehicle-detail-grid">
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={shivayImg}
                   alt="Shivaay V1 Urban Concept"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
               </div>
@@ -120,16 +117,13 @@ export default function Vehicles({ setActivePage }) {
               </div>
             </div>
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={alternoV3Img}
                   alt="Alterno V3 Prototype"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>
               </div>
@@ -141,16 +135,13 @@ export default function Vehicles({ setActivePage }) {
         <section className="vehicle-detail-section" style={{ marginTop: '100px' }}>
           <div className="vehicle-detail-grid">
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={alternoV2_1Img}
                   alt="Alterno V2.1 Prototype"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
               </div>
@@ -214,16 +205,13 @@ export default function Vehicles({ setActivePage }) {
               </div>
             </div>
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={alternoV2Img}
                   alt="Alterno V2.0 Prototype"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>
               </div>
@@ -235,16 +223,13 @@ export default function Vehicles({ setActivePage }) {
         <section className="vehicle-detail-section" style={{ marginTop: '100px' }}>
           <div className="vehicle-detail-grid">
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={alternoV1Img}
                   alt="Alterno V1.0 Prototype"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
               </div>
@@ -308,16 +293,13 @@ export default function Vehicles({ setActivePage }) {
               </div>
             </div>
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={alternoOrigImg}
                   alt="Alterno 2013-14 Prototype"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)' }}></div>
               </div>
@@ -329,16 +311,13 @@ export default function Vehicles({ setActivePage }) {
         <section className="vehicle-detail-section" style={{ marginTop: '100px', marginBottom: '80px' }}>
           <div className="vehicle-detail-grid">
             <div className="vehicle-gallery">
-              <div className="image-glass-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+              <div className="image-glass-container">
                 <img
                   src={autoTestImg}
                   alt="Autonomous Test Vehicle"
                   className="hero-car-img"
-                  width="580"
-                  height="360"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', maxWidth: '580px', objectFit: 'contain' }}
                 />
                 <div className="glow-overlay" style={{ background: 'radial-gradient(circle, rgba(0,242,254,0.1) 0%, transparent 70%)' }}></div>
               </div>
