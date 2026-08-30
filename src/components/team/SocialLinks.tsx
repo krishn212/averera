@@ -1,13 +1,14 @@
-"use client";
-
+import type { CSSProperties } from "react";
 import type { SocialLinks as SocialLinksType } from "../../data/team";
 
 export default function SocialLinks({
   social,
   className,
+  style,
 }: {
   social: SocialLinksType;
   className?: string;
+  style?: CSSProperties;
 }) {
   const iconMap = [
     { key: "linkedin" as const, iconClass: "fa-brands fa-linkedin", label: "LinkedIn" },
@@ -17,7 +18,7 @@ export default function SocialLinks({
   ];
 
   return (
-    <div className={`socials ${className ?? ""}`} style={{ display: 'flex', gap: '10px', alignItems: 'center', margin: 0, padding: 0 }}>
+    <div className={`socials ${className ?? ""}`} style={{ display: 'flex', gap: '10px', alignItems: 'center', margin: 0, padding: 0, ...style }}>
       {iconMap.map(({ key, iconClass, label }) => {
         const href = social[key];
         if (!href) return null;

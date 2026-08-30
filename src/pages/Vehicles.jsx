@@ -20,12 +20,21 @@ export default function Vehicles({ setActivePage }) {
   return (
     <main ref={mainRef} style={{ paddingTop: '150px', paddingBottom: '100px' }}>
       {/* Vehicles Page Hero */}
-      <section className="section-header">
-        <div className="badge-glass">
-          <i className="fa-solid fa-car" style={{ marginRight: '6px' }}></i> Performance & Efficiency
-        </div>
-        <h2>COMPETITION FLEET</h2>
-        <p>Explore the complete lineage of high-efficiency electric and autonomous vehicles designed and manufactured entirely in-house by Team AVERERA at IIT (BHU) Varanasi.</p>
+      <section className="section-header" style={{ marginBottom: '40px' }}>
+        <h1
+          style={{
+            fontFamily: 'var(--font-title, Oxanium, sans-serif)',
+            fontSize: 'clamp(2.4rem, 5vw, 3.6rem)',
+            fontWeight: 800,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: 'var(--text-primary)',
+            margin: '0 auto',
+            lineHeight: 1.15
+          }}
+        >
+          OUR FLEET
+        </h1>
       </section>
 
       {/* ─── COMPETITION VEHICLES FLEET ────────────────────────────────────────── */}

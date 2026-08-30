@@ -37,14 +37,14 @@ export default function AboutUs() {
       {/* 1. Hero / Mission Header */}
       <section className="section-header">
         <div className="badge-glass">
-          <i className="fa-solid fa-leaf" style={{ marginRight: '6px' }}></i> Mission & Vision of the Team
+          <i className="fa-solid fa-leaf" style={{ marginRight: '6px' }}></i> Mission & Vision
         </div>
-        <h2 style={{ fontSize: '3rem', maxWidth: '800px', margin: '0 auto 20px auto', lineHeight: '1.2' }}>
-          Our Mission: <br />
-          <span className="logo-accent">Leave the world better than you found it.</span>
+        <h2 style={{ fontSize: '2.8rem', maxWidth: '850px', margin: '0 auto 16px auto', lineHeight: '1.2' }}>
+          We believe in the saying — <br />
+          <span className="logo-accent">“Leave the world better than you found it.”</span>
         </h2>
-        <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
-          Engineering the future of sustainable mobility through electric propulsion, autonomous systems, and relentless innovation.
+        <p style={{ maxWidth: '720px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>
+          At Team AVERERA, we are doing our bit to make the world a better place through the Shell Eco-marathon — transforming electric mobility in India through hyper-efficient propulsion and intelligent autonomy.
         </p>
       </section>
 
@@ -63,21 +63,21 @@ export default function AboutUs() {
             style={{ padding: '35px' }}
           >
             <div className="badge-glass" style={{ borderColor: 'rgba(6, 182, 212, 0.3)', color: 'var(--accent-cyan)', marginBottom: '20px' }}>
-              The Challenge
+              The Indian Context
             </div>
-            <h3 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-cyan)', margin: '10px 0 15px 0' }}>75%</h3>
-            <h4 style={{ fontSize: '1.1rem', marginBottom: '15px' }}>of global power grids still rely on fossil fuels.</h4>
+            <h3 style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-cyan)', margin: '10px 0 15px 0' }}>&gt;75%</h3>
+            <h4 style={{ fontSize: '1.1rem', marginBottom: '15px' }}>of India's electricity is generated from fossil fuels.</h4>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '30px' }}>
-              The transport sector accounts for nearly 20% of greenhouse gas emissions worldwide. Internal combustion engines remain dominant despite their environmental cost—a reality that demands engineering solutions, not policy mandates.
+              Simply switching to an electric vehicle does not automatically create a green India—charging from a coal-dominated grid creates upstream emissions comparable to an internal combustion engine. The true solution lies in radically maximizing vehicle efficiency so that every watt delivers maximum range.
             </p>
             <div className="stats-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '20px', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
               <div>
-                <h5 style={{ fontSize: '1.6rem', color: 'var(--accent-cyan)', margin: 0 }}>20%</h5>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: 0 }}>Global Transport Emission</p>
+                <h5 style={{ fontSize: '1.6rem', color: 'var(--accent-cyan)', margin: 0 }}>75%+</h5>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: 0 }}>Fossil Fuel Power Grid</p>
               </div>
               <div>
-                <h5 style={{ fontSize: '1.6rem', color: 'var(--accent-cyan)', margin: 0 }}>1.4B</h5>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: 0 }}>ICE Vehicles in Use</p>
+                <h5 style={{ fontSize: '1.6rem', color: 'var(--accent-cyan)', margin: 0 }}>465+</h5>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: 0 }}>km/kWh Record Efficiency</p>
               </div>
             </div>
           </div>
@@ -90,38 +90,38 @@ export default function AboutUs() {
             style={{ padding: '35px' }}
           >
             <div className="badge-glass" style={{ marginBottom: '20px' }}>
-              Our Solution
+              Our Engineering Response
             </div>
-            <h4 style={{ fontSize: '1.5rem', marginBottom: '15px' }}>High-efficiency electric mobility meets autonomous intelligence.</h4>
+            <h4 style={{ fontSize: '1.45rem', marginBottom: '15px' }}>Hyper-efficient powertrains paired with Indian-road autonomous safety.</h4>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '25px' }}>
-              Team Averera designs next-generation electric vehicle prototypes to solve real-world efficiency challenges. Our electric and autonomous platforms serve as research testbeds—building the vehicles of tomorrow, today.
+              Team AVERERA designs lightweight, ultra-efficient electric vehicles and develops intelligent automation tailored specifically for the complexities of Indian roads and traffic environments.
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              <li style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
+              <li style={{ display: 'flex', gap: '15px', marginBottom: '18px' }}>
                 <span className="card-icon" style={{ width: '40px', height: '40px', fontSize: '1rem', flexShrink: 0, marginBottom: 0 }}>
                   <i className="fa-solid fa-bolt-lightning"></i>
                 </span>
                 <div>
-                  <h5 style={{ fontSize: '1rem', margin: '0 0 4px 0' }}>96% Motor Efficiency</h5>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Custom-designed BLDC controllers that maximize energy conversion efficiency on race tracks.</p>
+                  <h5 style={{ fontSize: '1rem', margin: '0 0 4px 0' }}>Ultra-High Energy Efficiency</h5>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Custom motor controllers, low-drag aerodynamics, and lightweight composite chassis that minimize grid load.</p>
                 </div>
               </li>
-              <li style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
+              <li style={{ display: 'flex', gap: '15px', marginBottom: '18px' }}>
                 <span className="card-icon" style={{ width: '40px', height: '40px', fontSize: '1rem', flexShrink: 0, marginBottom: 0 }}>
                   <i className="fa-solid fa-brain"></i>
                 </span>
                 <div>
-                  <h5 style={{ fontSize: '1rem', margin: '0 0 4px 0' }}>SAE Level 3 Autonomy</h5>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Sensor-fusion algorithms (LiDAR, Camera, IMU) for real-time lane tracking, obstacle avoidance, and path planning.</p>
+                  <h5 style={{ fontSize: '1rem', margin: '0 0 4px 0' }}>SAE Level 3 Indian Road Autonomy</h5>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Developing self-driving perception and control stacks tailored to dynamic traffic, enhancing overall road safety in India.</p>
                 </div>
               </li>
               <li style={{ display: 'flex', gap: '15px' }}>
                 <span className="card-icon" style={{ width: '40px', height: '40px', fontSize: '1rem', flexShrink: 0, marginBottom: 0 }}>
-                  <i className="fa-solid fa-leaf"></i>
+                  <i className="fa-solid fa-award"></i>
                 </span>
                 <div>
-                  <h5 style={{ fontSize: '1rem', margin: '0 0 4px 0' }}>Carbon Fiber Chassis</h5>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Lightweight composite chassis designed entirely in-house, reducing overall weight by 45%.</p>
+                  <h5 style={{ fontSize: '1rem', margin: '0 0 4px 0' }}>Global Benchmarking at Shell Eco-marathon</h5>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>Validating our innovations on world championship tracks against premier automotive institutions globally.</p>
                 </div>
               </li>
             </ul>

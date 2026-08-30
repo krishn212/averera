@@ -143,58 +143,47 @@ export default function ProfileDrawer({
               
               {!simpleOnly && (
                 <>
-                  <div 
-                    className="badge-glass"
-                    style={{
-                      fontSize: '0.68rem',
-                      fontFamily: 'var(--font-mono)',
-                      padding: '2px 10px',
-                      marginTop: '6px',
-                      marginBottom: '6px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
-                    }}
-                  >
-                    {member.position}
-                  </div>
+                  {(member.generation !== "14" || member.isLeadership || member.position === "Web Developer" || member.name.toLowerCase().includes("chakradar")) && (
+                    <div 
+                      className="badge-glass"
+                      style={{
+                        fontSize: '0.68rem',
+                        fontFamily: 'var(--font-mono)',
+                        padding: '2px 10px',
+                        marginTop: '6px',
+                        marginBottom: '6px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em'
+                      }}
+                    >
+                      {member.position}
+                    </div>
+                  )}
 
                   <p style={{
                     fontSize: '0.8rem',
                     color: 'var(--text-secondary)',
-                    margin: '0 0 16px 0',
+                    margin: (member.generation !== "14" || member.isLeadership || member.position === "Web Developer" || member.name.toLowerCase().includes("chakradar")) ? '0 0 16px 0' : '8px 0 16px 0',
                     fontFamily: 'var(--font-body)'
                   }}>
                     {member.department} · Gen {member.generation}
                   </p>
 
-                  <SocialLinks social={member.social} style={{ marginBottom: '24px' }} />
-
-                  <p style={{
-                    fontSize: '0.88rem',
-                    lineHeight: '1.5',
-                    color: 'var(--text-secondary)',
-                    textAlign: 'left',
-                    margin: '24px 0 0 0',
-                    borderTop: '1px solid var(--border-color)',
-                    paddingTop: '20px',
-                    width: '100%'
-                  }}>
-                    {member.bio}
-                  </p>
+                  <SocialLinks social={member.social} style={{ marginBottom: '16px' }} />
 
                   {/* Contact Info Block */}
                   {(member.social.email || member.social.phone) && (
                     <div style={{
                       width: '100%',
                       textAlign: 'left',
-                      marginTop: '20px',
-                      paddingTop: '15px',
-                      borderTop: '1px dashed var(--border-color)',
+                      marginTop: '8px',
+                      paddingTop: '18px',
+                      borderTop: '1px solid var(--border-color)',
                       fontSize: '0.82rem',
                       color: 'var(--text-secondary)',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '6px'
+                      gap: '8px'
                     }}>
                       {member.social.email && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

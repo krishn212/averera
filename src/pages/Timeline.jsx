@@ -29,9 +29,7 @@ export default function Timeline() {
   const [pathD, setPathD] = useState('');
   const [checkpoints, setCheckpoints] = useState([]);
   const [passedCheckpointsCount, setPassedCheckpointsCount] = useState(0);
-  const [currentSpeed, setCurrentSpeed] = useState(0);
-  const lastScrollY = useRef(0);
-  const lastScrollTime = useRef(Date.now());
+  const lastPassedCountRef = useRef(0);
 
   const logsDatabase = {
     "2025": [
@@ -51,9 +49,10 @@ export default function Timeline() {
     "2022": [
       "Fetching Shivaay Global League Telemetry...",
       "Global Rank: 3 (Shivaay Urban Concept).",
-      "Off-track awards won: 2.",
-      "Quiz events: 1st place.",
-      "Asia-Pacific Rank: 7th place.",
+      "Off-Track Winner: Simulate to Innovate Award.",
+      "Off-Track Runner-Up: Carbon Footprint Reduction Award.",
+      "Quiz & Pitch the Future: 1st Place.",
+      "Autonomous Programming (APC): 7th Place Global.",
       ">> LEAGUE DATA PROCESSED."
     ],
     "2021": [
@@ -125,7 +124,7 @@ export default function Timeline() {
           const currentLines = prev[year] || [];
           return { ...prev, [year]: [...currentLines, `> ${line}`] };
         });
-      }, (index + 1) * 280);
+      }, (index + 1) * 75);
 
       timersRef.current[year].push(timeoutId);
     });
@@ -135,7 +134,7 @@ export default function Timeline() {
         const currentLines = prev[year] || [];
         return { ...prev, [year]: [...currentLines, 'cursor'] };
       });
-    }, (lines.length + 1) * 280);
+    }, (lines.length + 1) * 75);
 
     timersRef.current[year].push(cursorTimeoutId);
   };
@@ -187,7 +186,7 @@ export default function Timeline() {
     {
       year: "2022",
       title: "GLOBAL RANK #3",
-      description: "3rd overall global rank with Shivaay Urban Concept; 2 off-track awards, 1st place in quiz events.",
+      description: "Global Rank #3 in Shell Eco-marathon Global League. Winner of Simulate to Innovate Off-Track Award & Runner-Up in Carbon Footprint Reduction.",
       side: "right",
       highlight: true,
       tag: "AVG_GLOBAL3_2022",
@@ -196,10 +195,11 @@ export default function Timeline() {
       image: img2022,
       imageCaption: "Team Averera at Shell Eco-Marathon Global Podium",
       detailedBullets: [
-        "The team demonstrated remarkable success with an impressive overall global ranking of 3.",
-        "Their achievements extended to securing the 7th position in the global Autonomous Programming Competition.",
-        "Moreover, they claimed the 1st position in the APME Quiz and Pitch the Future Competitions, along with winning the Simulate to Innovate Off-track Award.",
-        "Additionally, they secured the runner-up position in the Carbon Footprint Reduction Off-track Award."
+        "Overall Global Rank 3 in Shell Eco-marathon Global League with 'SHIVAAY' Urban Concept.",
+        "Winner of the Simulate to Innovate Off-track Award.",
+        "Runner-Up for the Carbon Footprint Reduction Off-track Award.",
+        "1st position in APME Quiz and Pitch the Future Competitions.",
+        "7th position globally in the Autonomous Programming Competition (APC)."
       ]
     },
     {
@@ -394,15 +394,6 @@ export default function Timeline() {
       let progress = currentScrollDist / Math.max(1, totalScrollDist);
       progress = Math.max(0, Math.min(1, progress));
 
-      // Calculate instantaneous scroll speed
-      const now = Date.now();
-      const dt = Math.max(1, now - lastScrollTime.current);
-      const dy = Math.abs(window.scrollY - lastScrollY.current);
-      const instSpeed = Math.min(140, Math.round((dy / dt) * 55));
-      setCurrentSpeed(instSpeed);
-      lastScrollY.current = window.scrollY;
-      lastScrollTime.current = now;
-
       // Map progress to point along SVG curve path
       const totalLength = pathRef.current.getTotalLength();
       if (totalLength > 0) {
@@ -422,16 +413,20 @@ export default function Timeline() {
           carRef.current.style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%) rotate(${angle}deg)`;
         }
 
-        // Count passed checkpoints
+        // Count passed checkpoints and only update React state when count changes
         let passed = 0;
-        checkpoints.forEach((cp, idx) => {
+        for (let idx = 0; idx < checkpoints.length; idx++) {
+          const cp = checkpoints[idx];
           const cpLength = (totalLength / (checkpoints.length + 0.5)) * (idx + 0.6);
-          // Check both currentLength along the SVG path AND actual scroll distance down the page
           if (currentLength >= cpLength - 25 || currentScrollDist >= cp.y - windowHeight * 0.35) {
             passed = idx + 1;
           }
-        });
-        setPassedCheckpointsCount(passed);
+        }
+
+        if (passed !== lastPassedCountRef.current) {
+          lastPassedCountRef.current = passed;
+          setPassedCheckpointsCount(passed);
+        }
       }
     };
 
@@ -636,7 +631,7 @@ export default function Timeline() {
                   </span>
                 </div>
 
-                <span className={`timeline-date ${item.highlight ? 'highlight-text' : ''}`}>{item.year}</span>
+                <span className="timeline-date">{item.year}</span>
                 <h4>{item.title}</h4>
                 <p>{item.description}</p>
 

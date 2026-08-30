@@ -43,6 +43,9 @@ export default function Home({ setActivePage, introDone }) {
     }
   }, []);
 
+  // --- Upcoming Projects Expandable Dropdown (Urban Concept) ---
+  const [isUcDomainsOpen, setIsUcDomainsOpen] = useState(false);
+
   // --- 1. Typewriter Effect ---
   const [typedText, setTypedText] = useState('');
   const textArray = [
@@ -335,7 +338,7 @@ export default function Home({ setActivePage, introDone }) {
         <section id="about" className="about-section">
           <div className="section-header">
             <h2>ABOUT TEAM AVERERA</h2>
-            <p>Pioneering eco-friendly vehicle technology through engineering excellence.</p>
+            <p>“Leave the world better than you found it.”</p>
           </div>
           <div className="about-grid">
             <div
@@ -343,18 +346,9 @@ export default function Home({ setActivePage, introDone }) {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="card-icon"><i className="fa-solid fa-bolt-lightning"></i></div>
-              <h3>Our Mission</h3>
-              <p>To design, construct, and optimize high-efficiency electric and autonomous vehicles that tackle the world's energy and environmental challenges, representing IIT (BHU) Varanasi on global platforms.</p>
-            </div>
-            <div
-              className="about-card"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="card-icon"><i className="fa-solid fa-microchip"></i></div>
-              <h3>Advanced Engineering</h3>
-              <p>Developing custom carbon fiber monocoques, in-house BLDC motor controllers, and AI-driven autonomous perception models.</p>
+              <div className="card-icon"><i className="fa-solid fa-leaf"></i></div>
+              <h3>Our Philosophy</h3>
+              <p>We believe in the saying — <em>“Leave the world better than you found it.”</em> At Team AVERERA, we are doing our bit to make the world a better place through engineering innovation and clean mobility.</p>
             </div>
             <div
               className="about-card"
@@ -362,25 +356,88 @@ export default function Home({ setActivePage, introDone }) {
               onMouseLeave={handleMouseLeave}
             >
               <div className="card-icon"><i className="fa-solid fa-trophy"></i></div>
-              <h3>Global Excellence</h3>
-              <p>Consistently placing at the top of the leaderboard in Asia & Global Shell Eco-Marathons, competing with top universities globally.</p>
+              <h3>Shell Eco-marathon</h3>
+              <p>Representing IIT (BHU) Varanasi on global stages, leveraging the Shell Eco-marathon platform to benchmark our ultra-efficient prototypes against top universities worldwide.</p>
+            </div>
+            <div
+              className="about-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="card-icon"><i className="fa-solid fa-bolt-lightning"></i></div>
+              <h3>The Efficiency Imperative</h3>
+              <p>With &gt;75% of India’s power generated from fossil fuels, standard EVs still create upstream emissions. The true solution is hyper-efficiency—maximizing travel distance per watt of energy.</p>
+            </div>
+            <div
+              className="about-card card-wide"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="card-icon"><i className="fa-solid fa-brain"></i></div>
+              <h3>SAE Level 3 Autonomy</h3>
+              <p>Keeping in mind the critical need of automation for road safety, our team is developing an intelligent SAE Level 3 autonomous electric vehicle tailored specifically for Indian road conditions.</p>
             </div>
           </div>
         </section>
 
-        {/* Upcoming Projects & Research Proposal Section (Below About Us) */}
+        {/* Core Pillars Section */}
+        <section id="pillars" className="tech-section">
+          <div className="section-header">
+            <h2>CORE PILLARS</h2>
+            <p>Integrating engineering, innovation, and strategic outreach.</p>
+          </div>
+          <div className="tech-grid">
+            <div
+              className="tech-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <i className="fa-solid fa-car-side"></i>
+              <h4>Vehicle Design</h4>
+              <p>Aerodynamics, lightweight structures, efficiency-focused vehicle architecture and mechanical design.</p>
+            </div>
+            <div
+              className="tech-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <i className="fa-solid fa-car-battery"></i>
+              <h4>Embedded Systems</h4>
+              <p>Electronics, BMS, control systems, sensors and intelligent embedded hardware.</p>
+            </div>
+            <div
+              className="tech-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <i className="fa-solid fa-brain"></i>
+              <h4>Autonomous Vehicles</h4>
+              <p>Perception, control, autonomous systems and intelligent mobility.</p>
+            </div>
+            <div
+              className="tech-card"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <i className="fa-solid fa-bullhorn"></i>
+              <h4>Branding & Outreach</h4>
+              <p>Communication, outreach, sponsorship, brand development and representing AVERERA beyond engineering.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Upcoming Projects & Research Proposal Section (Below Core Pillars) */}
         <section id="upcoming-projects" className="about-section" style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '60px' }}>
           <div className="section-header">
             <div className="badge-glass">
               <i className="fa-solid fa-compass-drafting" style={{ marginRight: '6px' }}></i> Future Horizon
             </div>
             <h2>UPCOMING PROJECTS</h2>
-            <p>Strategic research initiatives establishing permanent test facilities, custom motor dynos, and active battery balancing testbeds at IIT (BHU) Varanasi.</p>
           </div>
 
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            {/* Project Proposal Banner */}
-            <div className="proposal-roadmap-banner">
+          <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '35px' }}>
+            {/* Project 1: Urban Concept Electric Vehicle */}
+            <div className="proposal-roadmap-banner" style={{ marginBottom: 0 }}>
               <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -427,16 +484,13 @@ export default function Home({ setActivePage, introDone }) {
                   <a
                     href="/documents/Project_Proposal_UC.pdf"
                     download="Team_AVERERA_Project_Proposal_UC.pdf"
-                    className="btn"
+                    className="btn btn-glow"
                     style={{
-                      padding: '16px 24px',
+                      padding: '16px 26px',
                       fontSize: '1.05rem',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '10px',
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      border: '1px solid var(--glass-border)',
-                      color: 'var(--text-primary)'
+                      gap: '10px'
                     }}
                   >
                     Download Proposal <i className="fa-solid fa-file-pdf"></i>
@@ -459,291 +513,263 @@ export default function Home({ setActivePage, introDone }) {
                 </div>
                 <div>
                   <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>R&D Scope</div>
-                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>5 Core Verticals</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>5 Strategic Domains</div>
                 </div>
                 <div>
                   <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>Timeline Horizon</div>
                   <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>24 Months (3 Phases)</div>
                 </div>
               </div>
-            </div>
 
-            {/* 5 R&D Research Verticals as Full Editorial Subsections */}
-            <div style={{ marginTop: '50px', display: 'flex', flexDirection: 'column', gap: '35px' }}>
-              <div style={{ borderBottom: '1px solid var(--glass-border)', paddingBottom: '16px' }}>
-                <h3 style={{ fontSize: '2rem', marginBottom: '8px', letterSpacing: '-0.01em' }}>Strategic Research Verticals</h3>
-                <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '1rem' }}>
-                  Phase-by-phase experimental testbenches and technical focus areas from the official project proposal.
-                </p>
-              </div>
+              {/* Dropdown Toggle for Strategic Research Domains */}
+              <div style={{ marginTop: '30px' }}>
+                <button
+                  type="button"
+                  onClick={() => setIsUcDomainsOpen(!isUcDomainsOpen)}
+                  className="project-dropdown-toggle-btn"
+                  aria-expanded={isUcDomainsOpen}
+                >
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                    <i className="fa-solid fa-layer-group" style={{ color: 'var(--accent-cyan)' }}></i>
+                    <strong>Strategic Research Domains</strong>
+                    <span className="domains-count-badge">5 Domains</span>
+                  </span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                    <span>{isUcDomainsOpen ? 'Hide Focus Areas' : 'Explore Focus Areas'}</span>
+                    <i
+                      className={`fa-solid fa-chevron-down dropdown-chevron ${isUcDomainsOpen ? 'rotated' : ''}`}
+                    ></i>
+                  </span>
+                </button>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                {[
-                  {
-                    id: 'thermal',
-                    num: '01',
-                    title: 'Thermal Management Research',
-                    tag: 'Powertrain & Battery Reliability',
-                    icon: 'fa-fire-flame-curved',
-                    summary: 'Establishing a dedicated thermal characterization facility to prevent thermal hotspots, lower electrical resistance losses, and CFD-optimize submerged NACA cooling ducts without bluff-body aerodynamic drag penalties.',
-                    highlights: [
-                      'Custom insulated testbench & FLIR thermal imaging setup',
-                      'CFD & FEA airflow analysis across battery pack & motor controller',
-                      'Active/passive hybrid cooling and Peltier module characterization'
-                    ]
-                  },
-                  {
-                    id: 'bms',
-                    num: '02',
-                    title: 'Advanced Battery Management Systems',
-                    tag: 'Energy Storage Intelligence',
-                    icon: 'fa-battery-bolt',
-                    summary: 'Developing custom in-house BMS hardware featuring active inductive/capacitive cell balancing, STM32 real-time monitoring, and Kalman-filtered model-based SoC & SoH estimations to extract maximum energy from every watt-hour.',
-                    highlights: [
-                      'Multi-channel cell cycler dataset generation rig for cell characterization',
-                      'Transition from passive resistive bleed to high-efficiency active balancing',
-                      'CAN/UART telemetry pipeline streaming real-time metrics to pit crew dashboard'
-                    ]
-                  },
-                  {
-                    id: 'powertrain',
-                    num: '03',
-                    title: 'High-Efficiency Powertrain & Dyno',
-                    tag: 'Propulsion Optimization',
-                    icon: 'fa-gears',
-                    summary: 'Custom BLDC/PMSM motor design with optimized windings, coupled with an in-house motor dynamometer testbench to minimize switching, transmission, and rolling resistance losses.',
-                    highlights: [
-                      'Dedicated motor dynamometer testbench with torque/speed power analyzer',
-                      'Genetic algorithm optimization of gear ratios & track driving strategies in MATLAB/Simulink',
-                      'Hardware-in-the-loop (HIL) testing platform to isolate subsystem losses'
-                    ]
-                  },
-                  {
-                    id: 'suspension',
-                    num: '04',
-                    title: 'Quasi-Zero Stiffness (QZS) Suspension',
-                    tag: 'Vehicle Dynamics & Isolation',
-                    icon: 'fa-arrows-down-to-line',
-                    summary: 'Advanced vibration isolation research utilizing Quasi-Zero Stiffness (QZS) compliant mechanisms and eddy-current non-contact damping to reduce dynamic rolling friction and structural fatigue.',
-                    highlights: [
-                      'Quarter-car suspension test rig with actuator-based road excitation',
-                      'Dynamic stiffness modulation & vibration transmissibility optimization',
-                      'Lightweight flexure-based prototype fabrication for racing dynamics'
-                    ]
-                  },
-                  {
-                    id: 'composites',
-                    num: '05',
-                    title: 'Lightweight Thermoplastic Composites',
-                    tag: 'Advanced Materials & Aeroshell',
-                    icon: 'fa-layer-group',
-                    summary: 'Pioneering Out-of-Autoclave (OOA) thermal consolidation, ultrasonic & induction fusion welding for thermoplastic CFRP matrices, eliminating mechanical fasteners and parasitic structural adhesives.',
-                    highlights: [
-                      'Localized heat-press & ultrasonic welding infrastructure',
-                      'Aerogel & honeycomb core sandwich structures for extreme weight reduction',
-                      'Full-scale research-derived aerodynamic aeroshell integration'
-                    ]
-                  }
-                ].map((vert) => (
-                  <div
-                    key={vert.id}
-                    id={`vertical-${vert.id}`}
-                    className="about-card"
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    style={{
-                      width: '100%',
-                      padding: '36px 38px',
-                      borderRadius: '20px',
-                      textAlign: 'left',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '20px'
-                    }}
-                  >
-                    <div className="card-decor-corners" style={{ opacity: 1 }}></div>
-
-                    <div style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: '16px',
-                      paddingBottom: '16px',
-                      borderBottom: '1px solid var(--glass-border)'
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <span style={{
-                          fontFamily: 'var(--font-mono, monospace)',
-                          color: 'var(--badge-color)',
-                          fontSize: '1.4rem',
-                          fontWeight: '800'
-                        }}>
-                          {vert.num}
-                        </span>
-                        <h4 style={{
-                          fontSize: '1.5rem',
-                          margin: 0,
-                          fontWeight: '700',
-                          letterSpacing: '-0.01em',
-                          color: 'var(--text-primary)'
-                        }}>
-                          {vert.title}
-                        </h4>
-                      </div>
-
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{
-                          background: 'var(--badge-bg)',
-                          color: 'var(--badge-color)',
-                          border: 'var(--badge-border)',
-                          borderRadius: '100px',
-                          padding: '6px 16px',
-                          fontSize: '0.82rem',
-                          fontWeight: '600',
-                          letterSpacing: '0.04em'
-                        }}>
-                          <i className={`fa-solid ${vert.icon}`} style={{ marginRight: '8px' }}></i>
-                          {vert.tag}
-                        </span>
-                      </div>
+                {/* Dropdown Collapsible Content */}
+                {isUcDomainsOpen && (
+                  <div className="project-dropdown-pane" style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    <div style={{ borderBottom: '1px solid var(--glass-border)', paddingBottom: '14px' }}>
+                      <h4 style={{ fontSize: '1.3rem', margin: '0 0 6px 0', color: 'var(--text-primary)' }}>
+                        Phase-by-Phase Experimental Testbenches
+                      </h4>
+                      <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.92rem' }}>
+                        Core technical focus areas and research infrastructure from the official project proposal.
+                      </p>
                     </div>
 
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                      gap: '30px',
-                      alignItems: 'start'
-                    }}>
-                      <div>
-                        <p style={{
-                          fontSize: '1.02rem',
-                          lineHeight: '1.75',
-                          color: 'var(--text-secondary)',
-                          margin: 0
-                        }}>
-                          {vert.summary}
-                        </p>
-                      </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                      {[
+                        {
+                          id: 'thermal',
+                          num: '01',
+                          title: 'Thermal Management Research',
+                          tag: 'Powertrain & Battery Reliability',
+                          icon: 'fa-fire-flame-curved',
+                          summary: 'Establishing a dedicated thermal characterization facility to prevent thermal hotspots, lower electrical resistance losses, and CFD-optimize submerged NACA cooling ducts without bluff-body aerodynamic drag penalties.',
+                          highlights: [
+                            'Custom insulated testbench & FLIR thermal imaging setup',
+                            'CFD & FEA airflow analysis across battery pack & motor controller',
+                            'Active/passive hybrid cooling and Peltier module characterization'
+                          ]
+                        },
+                        {
+                          id: 'bms',
+                          num: '02',
+                          title: 'Advanced Battery Management Systems',
+                          tag: 'Energy Storage Intelligence',
+                          icon: 'fa-battery-bolt',
+                          summary: 'Developing custom in-house BMS hardware featuring active inductive/capacitive cell balancing, STM32 real-time monitoring, and Kalman-filtered model-based SoC & SoH estimations to extract maximum energy from every watt-hour.',
+                          highlights: [
+                            'Multi-channel cell cycler dataset generation rig for cell characterization',
+                            'Transition from passive resistive bleed to high-efficiency active balancing',
+                            'CAN/UART telemetry pipeline streaming real-time metrics to pit crew dashboard'
+                          ]
+                        },
+                        {
+                          id: 'powertrain',
+                          num: '03',
+                          title: 'High-Efficiency Powertrain & Dyno',
+                          tag: 'Propulsion Optimization',
+                          icon: 'fa-gears',
+                          summary: 'Custom BLDC/PMSM motor design with optimized windings, coupled with an in-house motor dynamometer testbench to minimize switching, transmission, and rolling resistance losses.',
+                          highlights: [
+                            'Dedicated motor dynamometer testbench with torque/speed power analyzer',
+                            'Genetic algorithm optimization of gear ratios & track driving strategies in MATLAB/Simulink',
+                            'Hardware-in-the-loop (HIL) testing platform to isolate subsystem losses'
+                          ]
+                        },
+                        {
+                          id: 'suspension',
+                          num: '04',
+                          title: 'Quasi-Zero Stiffness (QZS) Suspension',
+                          tag: 'Vehicle Dynamics & Isolation',
+                          icon: 'fa-arrows-down-to-line',
+                          summary: 'Advanced vibration isolation research utilizing Quasi-Zero Stiffness (QZS) compliant mechanisms and eddy-current non-contact damping to reduce dynamic rolling friction and structural fatigue.',
+                          highlights: [
+                            'Quarter-car suspension test rig with actuator-based road excitation',
+                            'Dynamic stiffness modulation & vibration transmissibility optimization',
+                            'Lightweight flexure-based prototype fabrication for racing dynamics'
+                          ]
+                        },
+                        {
+                          id: 'composites',
+                          num: '05',
+                          title: 'Lightweight Thermoplastic Composites',
+                          tag: 'Advanced Materials & Aeroshell',
+                          icon: 'fa-layer-group',
+                          summary: 'Pioneering Out-of-Autoclave (OOA) thermal consolidation, ultrasonic & induction fusion welding for thermoplastic CFRP matrices, eliminating mechanical fasteners and parasitic structural adhesives.',
+                          highlights: [
+                            'Localized heat-press & ultrasonic welding infrastructure',
+                            'Aerogel & honeycomb core sandwich structures for extreme weight reduction',
+                            'Full-scale research-derived aerodynamic aeroshell integration'
+                          ]
+                        }
+                      ].map((domain) => (
+                        <div
+                          key={domain.id}
+                          className="about-card"
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={handleMouseLeave}
+                          style={{
+                            width: '100%',
+                            padding: '28px 30px',
+                            borderRadius: '16px',
+                            textAlign: 'left',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '16px'
+                          }}
+                        >
+                          <div className="card-decor-corners" style={{ opacity: 1 }}></div>
 
-                      <div style={{
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        border: '1px solid var(--glass-border)',
-                        borderRadius: '14px',
-                        padding: '22px 26px',
-                        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05)'
-                      }}>
-                        <div style={{
-                          fontSize: '0.85rem',
-                          fontWeight: '700',
-                          marginBottom: '12px',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.08em',
-                          color: 'var(--badge-color)'
-                        }}>
-                          Key Deliverables
+                          <div style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            gap: '14px',
+                            paddingBottom: '14px',
+                            borderBottom: '1px solid var(--glass-border)'
+                          }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                              <span style={{
+                                fontFamily: 'var(--font-mono, monospace)',
+                                color: 'var(--badge-color)',
+                                fontSize: '1.25rem',
+                                fontWeight: '800'
+                              }}>
+                                {domain.num}
+                              </span>
+                              <h5 style={{
+                                fontSize: '1.3rem',
+                                margin: 0,
+                                fontWeight: '700',
+                                letterSpacing: '-0.01em',
+                                color: 'var(--text-primary)'
+                              }}>
+                                {domain.title}
+                              </h5>
+                            </div>
+
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                              <span style={{
+                                background: 'var(--badge-bg)',
+                                color: 'var(--badge-color)',
+                                border: 'var(--badge-border)',
+                                borderRadius: '100px',
+                                padding: '5px 14px',
+                                fontSize: '0.78rem',
+                                fontWeight: '600',
+                                letterSpacing: '0.04em'
+                              }}>
+                                <i className={`fa-solid ${domain.icon}`} style={{ marginRight: '6px' }}></i>
+                                {domain.tag}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                            gap: '24px',
+                            alignItems: 'start'
+                          }}>
+                            <div>
+                              <p style={{
+                                fontSize: '0.98rem',
+                                lineHeight: '1.7',
+                                color: 'var(--text-secondary)',
+                                margin: 0
+                              }}>
+                                {domain.summary}
+                              </p>
+                            </div>
+
+                            <div style={{
+                              background: 'rgba(255, 255, 255, 0.03)',
+                              border: '1px solid var(--glass-border)',
+                              borderRadius: '12px',
+                              padding: '18px 22px',
+                              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+                            }}>
+                              <div style={{
+                                fontSize: '0.8rem',
+                                fontWeight: '700',
+                                marginBottom: '10px',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.08em',
+                                color: 'var(--badge-color)'
+                              }}>
+                                Key Deliverables
+                              </div>
+                              <ul style={{
+                                paddingLeft: '16px',
+                                fontSize: '0.88rem',
+                                lineHeight: '1.6',
+                                margin: 0,
+                                color: 'var(--text-secondary)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '8px'
+                              }}>
+                                {domain.highlights.map((h, i) => (
+                                  <li key={i} style={{ listStyleType: 'disc' }}>{h}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                        <ul style={{
-                          paddingLeft: '18px',
-                          fontSize: '0.92rem',
-                          lineHeight: '1.65',
-                          margin: 0,
-                          color: 'var(--text-secondary)',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '10px'
-                        }}>
-                          {vert.highlights.map((h, i) => (
-                            <li key={i} style={{ listStyleType: 'disc' }}>{h}</li>
-                          ))}
-                        </ul>
-                      </div>
+                      ))}
                     </div>
                   </div>
-                ))}
+                )}
               </div>
             </div>
 
-            {/* Separate Autonomous Research Project Block */}
-            <div style={{ marginTop: '60px' }}>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '8px' }}>Autonomous Technology</h3>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>
-                Upcoming autonomous vehicle development initiatives and research tracks.
+            {/* Project 2: Autonomous Vehicle Project */}
+            <div className="about-card autonomy-upcoming-card" style={{
+              background: 'linear-gradient(135deg, rgba(24, 208, 219, 0.04) 0%, rgba(10, 14, 23, 0.6) 100%)',
+              border: '1px solid rgba(24, 208, 219, 0.25)',
+              borderRadius: '20px',
+              padding: '30px 35px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
+                <h4 style={{ fontSize: '1.35rem', margin: 0, color: 'var(--text-primary)' }}>
+                  Autonomous Golf Cart
+                </h4>
+                <span className="autonomy-stay-tuned-badge" style={{
+                  background: 'rgba(24, 208, 219, 0.12)',
+                  color: 'var(--accent-cyan)',
+                  border: '1px solid rgba(24, 208, 219, 0.35)',
+                  fontSize: '0.75rem',
+                  fontWeight: '700',
+                  padding: '4px 12px',
+                  borderRadius: '100px',
+                  letterSpacing: '0.05em'
+                }}>
+                  STAY TUNED
+                </span>
+              </div>
+              <p style={{ margin: 0, maxWidth: '850px', fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>
+                Research and testing in intelligent mobility, drive-by-wire actuation, and autonomous vehicle technology.
               </p>
-
-              <div className="about-card autonomy-upcoming-card" style={{
-                background: 'linear-gradient(135deg, rgba(24, 208, 219, 0.04) 0%, rgba(10, 14, 23, 0.6) 100%)',
-                border: '1px solid rgba(24, 208, 219, 0.25)',
-                borderRadius: '20px',
-                padding: '30px 35px'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
-                  <h4 style={{ fontSize: '1.35rem', margin: 0 }}>
-                    Autonomous Vehicle Project
-                  </h4>
-                  <span className="autonomy-stay-tuned-badge" style={{
-                    background: 'rgba(24, 208, 219, 0.12)',
-                    color: 'var(--accent-cyan)',
-                    border: '1px solid rgba(24, 208, 219, 0.35)',
-                    fontSize: '0.75rem',
-                    fontWeight: '700',
-                    padding: '4px 12px',
-                    borderRadius: '100px',
-                    letterSpacing: '0.05em'
-                  }}>
-                    STAY TUNED
-                  </span>
-                </div>
-                <p style={{ margin: 0, maxWidth: '850px', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  Research and testing in intelligent mobility, drive-by-wire actuation, and autonomous vehicle technology.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Tech Stack */}
-        <section id="tech" className="tech-section">
-          <div className="section-header">
-            <h2>TECHNOLOGICAL PILLARS</h2>
-            <p>Integrating hardware, software, and aerodynamics.</p>
-          </div>
-          <div className="tech-grid">
-            <div
-              className="tech-card"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <i className="fa-solid fa-car-side"></i>
-              <h4>Vehicle Design</h4>
-              <p>Aerodynamics, lightweight structures, efficiency-focused vehicle architecture and mechanical design.</p>
-            </div>
-            <div
-              className="tech-card"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <i className="fa-solid fa-car-battery"></i>
-              <h4>Embedded Systems</h4>
-              <p>Electronics, BMS, control systems, sensors and intelligent embedded hardware.</p>
-            </div>
-            <div
-              className="tech-card"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <i className="fa-solid fa-brain"></i>
-              <h4>Autonomous Vehicles</h4>
-              <p>Perception, control, autonomous systems and intelligent mobility.</p>
-            </div>
-            <div
-              className="tech-card"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <i className="fa-solid fa-bullhorn"></i>
-              <h4>Branding & Outreach</h4>
-              <p>Communication, outreach, sponsorship, brand development and representing AVERERA beyond engineering.</p>
             </div>
           </div>
         </section>

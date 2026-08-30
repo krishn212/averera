@@ -388,11 +388,14 @@ const gen2026 = [
     name: "Peddada Shanmukh Sai Das Chakradar",
     bio: "Web Developer.",
     achievements: [],
-    skills: [],
+    skills: ["Web Development", "Frontend Engineering"],
     photo: "/assets/team/peddada_shanmukh.webp",
     position: "Web Developer",
     department: "Electronics Engineering" as Department,
     team: "Management" as TeamGroup,
+    timeline: [
+      { year: "2026-27", label: "Web Developer" }
+    ],
     social: {
       linkedin: "https://www.linkedin.com/in/peddada-shanmukh-b31560272",
       email: "shannu.chakri@gmail.com",
@@ -908,6 +911,7 @@ function buildGeneration(
     projects?: string[];
     achievements?: string[];
     social?: SocialLinks;
+    timeline?: Array<{ year: string; label: string }>;
   }>,
   generation: string
 ): Member[] {
@@ -925,6 +929,7 @@ function buildGeneration(
       skills: member.skills,
       projects: member.projects,
       achievements: member.achievements,
+      timeline: member.timeline,
       social: member.social,
     })
   );
