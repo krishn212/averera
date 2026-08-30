@@ -56,7 +56,7 @@ export default function Sponsors({ setActivePage }) {
             style={{ marginBottom: '22px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
             <i className="fa-solid fa-handshake" style={{ fontSize: '0.75rem' }}></i>
-            Our Partners & Sponsors
+            Previous Sponsors
           </motion.div>
 
           <div style={{ overflow: 'hidden', marginBottom: '10px' }}>
@@ -121,7 +121,7 @@ export default function Sponsors({ setActivePage }) {
           <div style={{ marginBottom: '40px', textAlign: 'center' }}>
             <div className="badge-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 14px', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
               <i className="fa-solid fa-star" style={{ fontSize: '0.65rem', color: 'var(--accent-cyan)' }}></i>
-              Our Sponsors & Partners
+              Previous Sponsors
             </div>
           </div>
 

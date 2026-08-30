@@ -156,7 +156,7 @@ export const leadership: Member[] = [
     name: "Aryan Sharma",
     photo: "/assets/team/aryan_sharma_fixed.webp",
     position: "Project Manager (Urban Concept EV)",
-    department: "Mechanical Engineering",
+    department: "Electrical Engineering",
     generation: "13",
     team: "Mechanical",
     isCurrent: true,
@@ -212,7 +212,7 @@ export const leadership: Member[] = [
   makeMember({
     name: "Jai Sharma",
     position: "Embedded Systems Head",
-    department: "Electronics Engineering",
+    department: "Electrical Engineering",
     generation: "13",
     team: "Electronics",
     isCurrent: true,
@@ -228,7 +228,7 @@ export const leadership: Member[] = [
   makeMember({
     name: "Raghav Sharma",
     photo: "/assets/team/raghav_sharma.webp",
-    position: "Autonomy Head",
+    position: "Project Manager (Autonomy)",
     department: "Mechanical Engineering",
     generation: "13",
     team: "Technical",
@@ -586,7 +586,7 @@ const gen2025 = [
     name: "Aryan Sharma",
     photo: "/assets/team/aryan_sharma_fixed.webp",
     position: "Project Manager (Urban Concept EV)",
-    department: "Mechanical Engineering" as Department,
+    department: "Electrical Engineering" as Department,
     team: "Mechanical" as TeamGroup,
     bio: "Worked on transmission design, driving strategy",
     achievements: ["PM (Urban Concept) in 26-27"],
@@ -598,7 +598,7 @@ const gen2025 = [
   {
     name: "Jai Sharma",
     position: "Embedded Systems Head",
-    department: "Electronics Engineering" as Department,
+    department: "Electrical Engineering" as Department,
     team: "Electronics" as TeamGroup,
     bio: "Designed dual motor control PCB and its control logic, served as Embedded Systems Head in 2025-26.",
     achievements: ["Embedded Systems Head in 26-27"],
@@ -745,11 +745,11 @@ const gen2025 = [
   {
     name: "Raghav Sharma",
     photo: "/assets/team/raghav_sharma.webp",
-    position: "Autonomy Head",
+    position: "Project Manager (Autonomy)",
     department: "Mechanical Engineering" as Department,
     team: "Technical" as TeamGroup,
     bio: "Worked on computer vision, object detection, voxelization",
-    achievements: ["Autonomy head 26-27"],
+    achievements: ["PM (Autonomy) in 26-27"],
     skills: [],
     social: {
       linkedin: "https://www.linkedin.com/in/raghavs8",
@@ -774,7 +774,7 @@ const gen2025 = [
   {
     name: "Sai Charan",
     position: "Embedded Systems Engineer",
-    department: "Electronics Engineering" as Department,
+    department: "Electrical Engineering" as Department,
     team: "Electronics" as TeamGroup,
     bio: "Designed dual motor control PCB and implemented DNT PCB modifications",
     achievements: [],
