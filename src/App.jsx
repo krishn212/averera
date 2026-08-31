@@ -260,7 +260,7 @@ export default function App({ introDone }) {
       {renderActivePage()}
 
       {/* Footer */}
-      <Footer />
+      <Footer setActivePage={setActivePage} />
     </div>
   );
 }

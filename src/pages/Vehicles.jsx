@@ -50,7 +50,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={shivayImg}
-                  alt="Shivaay V1 Urban Concept"
+                  alt="SHIVAAY V1: Team Averera's Urban Concept electric vehicle with carbon fibre monocoque chassis, achieving SAE Level-2 autonomy integration"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"
@@ -120,7 +120,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={alternoV3Img}
-                  alt="Alterno V3 Prototype"
+                  alt="ALTERNO V3 'Black Panther': Carbon fibre monocoque prototype (14 kg) with 0.092 drag coefficient, achieving 465.1 km/kWh — 1st in India, 2nd in Asia"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"
@@ -138,7 +138,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={alternoV2_1Img}
-                  alt="Alterno V2.1 Prototype"
+                  alt="ALTERNO V2.1: First Indian team vehicle to complete an official attempt at Shell Eco-Marathon Asia 2017, achieving 131.8 km/kWh"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"
@@ -208,7 +208,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={alternoV2Img}
-                  alt="Alterno V2.0 Prototype"
+                  alt="ALTERNO V2.0: Third-generation prototype with circular truss chassis and sleek low-drag aerodynamic profile, Shell Eco-Marathon 2016"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"
@@ -226,7 +226,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={alternoV1Img}
-                  alt="Alterno V1.0 Prototype"
+                  alt="ALTERNO V1.0: First Indian team to represent the country at Shell Eco-Marathon Asia 2015"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"
@@ -296,7 +296,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={alternoOrigImg}
-                  alt="Alterno 2013-14 Prototype"
+                  alt="ALTERNO (2013–14): India's first-ever Shell Eco-Marathon Asia entry, with self-fabricated motor controller and lightweight custom chassis"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"
@@ -314,7 +314,7 @@ export default function Vehicles({ setActivePage }) {
               <div className="image-glass-container">
                 <img
                   src={autoTestImg}
-                  alt="Autonomous Test Vehicle"
+                  alt="Autonomous Test Vehicle (2021–22): Drive-by-wire Ackermann steering with LiDAR, Vision, and IMU sensor fusion for Indian road conditions"
                   className="hero-car-img"
                   loading="lazy"
                   decoding="async"

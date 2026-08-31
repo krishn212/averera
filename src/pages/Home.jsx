@@ -50,15 +50,15 @@ export default function Home({ setActivePage, introDone }) {
   const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
 
   const galleryImages = [
-    "/assets/rastrapti_bhawan.avif",
-    "/assets/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.avif",
-    "/assets/945304_f61f4de4e2cd43deb5dd01119a578a6f~mv2.avif",
-    "/assets/945304_59d8fa4cc53340969eec6e80fb04e374~mv2.avif",
-    "/assets/945304_644096d55870495da77834addd495b48~mv2.jpg",
-    "/assets/945304_a9959891efcc470fa740e64adbfffa13~mv2.jpg",
-    "/assets/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.png",
-    "/assets/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.jpg",
-    "/assets/945304_5a5261e22e1946228c64b92a9b4dedc3f000.avif"
+    { src: "/assets/rastrapti_bhawan.avif",                                      alt: "Team Averera at Rashtrapati Bhawan, New Delhi" },
+    { src: "/assets/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.avif",           alt: "Team Averera members at Shell Eco-Marathon Asia competition" },
+    { src: "/assets/945304_f61f4de4e2cd43deb5dd01119a578a6f~mv2.avif",           alt: "SHIVAAY V1 Urban Concept vehicle on race track" },
+    { src: "/assets/945304_59d8fa4cc53340969eec6e80fb04e374~mv2.avif",           alt: "Team Averera engineering team working on vehicle subsystems" },
+    { src: "/assets/945304_644096d55870495da77834addd495b48~mv2.jpg",            alt: "Alterno V3 prototype with aerodynamic carbon fibre body" },
+    { src: "/assets/945304_a9959891efcc470fa740e64adbfffa13~mv2.jpg",            alt: "Team Averera at Shell Eco-Marathon Asia 2019 award ceremony" },
+    { src: "/assets/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.png",            alt: "Team Averera group photo at IIT BHU Varanasi campus" },
+    { src: "/assets/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.jpg",            alt: "Vehicle technical inspection at Shell Eco-Marathon" },
+    { src: "/assets/945304_5a5261e22e1946228c64b92a9b4dedc3f000.avif",           alt: "Team Averera members with the SHIVAAY V1 urban concept vehicle" },
   ];
 
   // --- 1. Typewriter Effect ---
@@ -294,7 +294,7 @@ export default function Home({ setActivePage, introDone }) {
                   download="PARTNERSHIP_PROSPECTUS_2026-27.pdf"
                   className="btn btn-glow"
                 >
-                  Partnership Prospectus <i className="fa-solid fa-download"></i>
+                  Partnership Prospectus <i className="fa-solid fa-download" aria-hidden="true"></i>
                 </a>
                 <a
                   href="#about"
@@ -304,7 +304,7 @@ export default function Home({ setActivePage, introDone }) {
                     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  Learn More <i className="fa-solid fa-arrow-right"></i>
+                  Learn More <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -797,24 +797,30 @@ export default function Home({ setActivePage, introDone }) {
           </div>
 
           {/* Pure Images Grid */}
-          <div className="gallery-grid">
-            {galleryImages.map((imgSrc, idx) => (
-              <div
-                key={idx}
-                className="gallery-card-glass"
-                onClick={() => setSelectedGalleryImg(imgSrc)}
-              >
-                <img
-                  src={imgSrc}
-                  alt={`Team Averera Gallery ${idx + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="gallery-hover-icon">
-                  <i className="fa-solid fa-expand"></i>
+          <div className="gallery-grid-wrapper">
+            <div className="gallery-grid">
+              {galleryImages.map(({ src, alt }, idx) => (
+                <div
+                  key={idx}
+                  className="gallery-card-glass"
+                  onClick={() => setSelectedGalleryImg(src)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View full size: ${alt}`}
+                  onKeyDown={(e) => e.key === 'Enter' && setSelectedGalleryImg(src)}
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="gallery-hover-icon" aria-hidden="true">
+                    <i className="fa-solid fa-expand"></i>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -1008,17 +1014,104 @@ export default function Home({ setActivePage, introDone }) {
               </div>
             </div>
             <div className="contact-form">
-              <form onSubmit={(e) => { e.preventDefault(); alert('Message sent! (Demo only)'); }}>
+              <form
+                action="https://formsubmit.co/averera@iitbhu.ac.in"
+                method="POST"
+                onSubmit={(e) => {
+                  // Progressive enhancement: try formsubmit, fallback to mailto
+                  if (!navigator.onLine) {
+                    e.preventDefault();
+                    const name = e.target.name.value;
+                    const email = e.target.email.value;
+                    const message = e.target.message.value;
+                    window.location.href = `mailto:averera@iitbhu.ac.in?subject=Website Enquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+                  }
+                }}
+              >
+                {/* FormSubmit hidden config fields */}
+                <input type="hidden" name="_subject" value="New Enquiry — Team Averera Website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value="http://localhost:5173/?sent=true" />
+
                 <div className="form-group">
-                  <input type="text" placeholder="Your Name" required />
+                  <label
+                    htmlFor="contact-name"
+                    style={{
+                      display: 'block',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-secondary)',
+                      marginBottom: '6px',
+                      fontFamily: 'var(--font-mono)'
+                    }}
+                  >
+                    Your Name
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    placeholder="e.g. Arjun Sharma"
+                    required
+                    autoComplete="name"
+                  />
                 </div>
                 <div className="form-group">
-                  <input type="email" placeholder="Your Email" required />
+                  <label
+                    htmlFor="contact-email"
+                    style={{
+                      display: 'block',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-secondary)',
+                      marginBottom: '6px',
+                      fontFamily: 'var(--font-mono)'
+                    }}
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                    autoComplete="email"
+                  />
                 </div>
                 <div className="form-group">
-                  <textarea placeholder="Your Message" rows="4" required></textarea>
+                  <label
+                    htmlFor="contact-message"
+                    style={{
+                      display: 'block',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-secondary)',
+                      marginBottom: '6px',
+                      fontFamily: 'var(--font-mono)'
+                    }}
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder="Tell us about your partnership interest, research collaboration, or sponsorship opportunity…"
+                    rows="5"
+                    required
+                  ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary btn-full">Send Message</button>
+                <button type="submit" className="btn btn-primary btn-full" style={{ marginTop: '8px' }}>
+                  <i className="fa-solid fa-paper-plane" aria-hidden="true" style={{ marginRight: '8px' }} />
+                  Send Message
+                </button>
               </form>
             </div>
           </div>
@@ -1028,6 +1121,9 @@ export default function Home({ setActivePage, introDone }) {
       {/* ─── PURE IMAGE LIGHTBOX MODAL ───────────────────────── */}
       {selectedGalleryImg && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Gallery image viewer"
           style={{
             position: 'fixed',
             inset: 0,
@@ -1065,6 +1161,7 @@ export default function Home({ setActivePage, introDone }) {
           >
             <button
               onClick={() => setSelectedGalleryImg(null)}
+              aria-label="Close image viewer"
               style={{
                 position: 'absolute',
                 top: '15px',
@@ -1085,14 +1182,13 @@ export default function Home({ setActivePage, introDone }) {
                 fontSize: '1.1rem',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
               }}
-              title="Close"
             >
-              <i className="fa-solid fa-xmark"></i>
+              <i className="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
 
             <img
               src={selectedGalleryImg}
-              alt="Gallery Full View"
+              alt={galleryImages.find(g => g.src === selectedGalleryImg)?.alt || 'Team Averera gallery image'}
               style={{
                 width: '100%',
                 maxHeight: '82vh',

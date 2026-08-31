@@ -122,6 +122,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
                 <a
                   href={`#${key}`}
                   className={activePage === key ? 'active' : ''}
+                  aria-current={activePage === key ? 'page' : undefined}
                   onClick={(e) => { e.preventDefault(); handleNavClick(key); }}
                 >
                   {label}
@@ -140,10 +141,10 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
               window.location.reload();
             }}
             className="navbar-icon-btn"
-            aria-label="Replay Intro"
+            aria-label="Replay cinematic intro animation"
             title="Replay Intro"
           >
-            <i className="fa-solid fa-rotate-left" />
+            <i className="fa-solid fa-rotate-left" aria-hidden="true" />
           </button>
 
           {/* Theme toggle */}
@@ -155,9 +156,10 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
               window.location.reload();
             }}
             className="navbar-icon-btn"
-            aria-label="Toggle Theme"
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
           >
-            <i className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} />
+            <i className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'} aria-hidden="true" />
           </button>
 
           {/* Desktop CTA */}
@@ -174,7 +176,7 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
               }
             }}
           >
-            Connect With Us
+            Partner With Us
           </a>
         </div>
       </div>
