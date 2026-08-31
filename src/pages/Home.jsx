@@ -49,6 +49,72 @@ export default function Home({ setActivePage, introDone }) {
   // --- Photo Gallery State ---
   const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
 
+  // --- Contact Form Interactive State ('idle' | 'submitting' | 'success' | 'error') ---
+  const [formStatus, setFormStatus] = useState('idle');
+  const [formErrorMsg, setFormErrorMsg] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  // Handle ?sent=true if redirected from legacy submit
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('sent') === 'true') {
+        setFormStatus('success');
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      return;
+    }
+
+    setFormStatus('submitting');
+    setFormErrorMsg('');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/averera@iitbhu.ac.in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Website Enquiry from ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+
+      const result = await response.json();
+      if (response.ok && (result.success === 'true' || result.success === true || response.status === 200)) {
+        setFormStatus('success');
+      } else {
+        throw new Error(result.message || 'Submission was not completed.');
+      }
+    } catch (err) {
+      console.warn('Form submit error:', err);
+      if (!navigator.onLine) {
+        window.location.href = `mailto:averera@iitbhu.ac.in?subject=Website Enquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`)}`;
+      } else {
+        setFormStatus('error');
+        setFormErrorMsg('Could not send message automatically. Please try again or reach out directly via email.');
+      }
+    }
+  };
+
   const galleryImages = [
     { src: "/assets/rastrapti_bhawan.avif",                                      alt: "Team Averera at Rashtrapati Bhawan, New Delhi" },
     { src: "/assets/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.avif",           alt: "Team Averera members at Shell Eco-Marathon Asia competition" },
@@ -1014,105 +1080,193 @@ export default function Home({ setActivePage, introDone }) {
               </div>
             </div>
             <div className="contact-form">
-              <form
-                action="https://formsubmit.co/averera@iitbhu.ac.in"
-                method="POST"
-                onSubmit={(e) => {
-                  // Progressive enhancement: try formsubmit, fallback to mailto
-                  if (!navigator.onLine) {
-                    e.preventDefault();
-                    const name = e.target.name.value;
-                    const email = e.target.email.value;
-                    const message = e.target.message.value;
-                    window.location.href = `mailto:averera@iitbhu.ac.in?subject=Website Enquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-                  }
-                }}
-              >
-                {/* FormSubmit hidden config fields */}
-                <input type="hidden" name="_subject" value="New Enquiry — Team Averera Website" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_next" value="http://localhost:5173/?sent=true" />
+              {formStatus === 'success' ? (
+                <div className="contact-success-card" role="alert" aria-live="polite">
+                  <div className="contact-success-icon-wrap">
+                    <i className="fa-solid fa-circle-check" aria-hidden="true" />
+                  </div>
 
-                <div className="form-group">
-                  <label
-                    htmlFor="contact-name"
+                  <div>
+                    <h3 className="contact-success-title">
+                      Message Sent Successfully!
+                    </h3>
+                    <p className="contact-success-desc">
+                      Thank you for contacting Team Averera. We have received your inquiry and our team will get back to you shortly at{' '}
+                      <span className="contact-success-pill">
+                        {formData.email || 'your email'}
+                      </span>.
+                    </p>
+                  </div>
+
+                  <div className="contact-success-summary-box">
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                      <i className="fa-solid fa-paper-plane" style={{ color: '#10B981' }} aria-hidden="true" />
+                      <strong>Recipient:</strong> averera@iitbhu.ac.in
+                    </span>
+                    <span style={{ color: '#10B981', fontWeight: '600' }}>
+                      ✓ Delivered
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormStatus('idle');
+                      setFormData({ name: '', email: '', message: '' });
+                    }}
+                    className="btn btn-primary"
                     style={{
-                      display: 'block',
-                      fontSize: '0.8rem',
-                      fontWeight: '600',
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      color: 'var(--text-secondary)',
-                      marginBottom: '6px',
-                      fontFamily: 'var(--font-mono)'
+                      marginTop: '4px',
+                      padding: '12px 28px',
+                      fontSize: '0.92rem'
                     }}
                   >
-                    Your Name
-                  </label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="name"
-                    placeholder="e.g. Arjun Sharma"
-                    required
-                    autoComplete="name"
-                  />
+                    <i className="fa-solid fa-rotate-left" style={{ marginRight: '8px' }} aria-hidden="true" />
+                    Send Another Message
+                  </button>
                 </div>
-                <div className="form-group">
-                  <label
-                    htmlFor="contact-email"
+              ) : (
+                <form onSubmit={handleFormSubmit}>
+                  {formStatus === 'error' && (
+                    <div className="contact-error-banner" role="alert" aria-live="assertive">
+                      <i className="fa-solid fa-triangle-exclamation" style={{ color: '#EF4444', fontSize: '1.35rem', marginTop: '2px' }} aria-hidden="true" />
+                      <div style={{ flex: 1 }}>
+                        <div className="error-title">Message Delivery Note</div>
+                        <div style={{ lineHeight: '1.5', color: 'var(--text-secondary)' }}>
+                          {formErrorMsg || 'Unable to submit automatically right now. You can retry below or send directly from your email client.'}
+                        </div>
+                        <div style={{ marginTop: '12px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                          <a
+                            href={`mailto:averera@iitbhu.ac.in?subject=Website Enquiry from ${encodeURIComponent(formData.name || 'Visitor')}&body=${encodeURIComponent(formData.message || '')}`}
+                            className="btn btn-sm"
+                            style={{
+                              background: 'rgba(239, 68, 68, 0.15)',
+                              border: '1px solid rgba(239, 68, 68, 0.5)',
+                              color: 'var(--text-primary)',
+                              fontSize: '0.82rem',
+                              padding: '8px 14px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              textDecoration: 'none',
+                              fontWeight: '600'
+                            }}
+                          >
+                            <i className="fa-solid fa-envelope" aria-hidden="true" />
+                            Email Us Directly
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="form-group">
+                    <label
+                      htmlFor="contact-name"
+                      style={{
+                        display: 'block',
+                        fontSize: '0.8rem',
+                        fontWeight: '600',
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        color: 'var(--text-secondary)',
+                        marginBottom: '6px',
+                        fontFamily: 'var(--font-mono)'
+                      }}
+                    >
+                      Your Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="e.g. Arjun Sharma"
+                      required
+                      autoComplete="name"
+                      disabled={formStatus === 'submitting'}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="contact-email"
+                      style={{
+                        display: 'block',
+                        fontSize: '0.8rem',
+                        fontWeight: '600',
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        color: 'var(--text-secondary)',
+                        marginBottom: '6px',
+                        fontFamily: 'var(--font-mono)'
+                      }}
+                    >
+                      Email Address
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="your@email.com"
+                      required
+                      autoComplete="email"
+                      disabled={formStatus === 'submitting'}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="contact-message"
+                      style={{
+                        display: 'block',
+                        fontSize: '0.8rem',
+                        fontWeight: '600',
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        color: 'var(--text-secondary)',
+                        marginBottom: '6px',
+                        fontFamily: 'var(--font-mono)'
+                      }}
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us about your partnership interest, research collaboration, or sponsorship opportunity…"
+                      rows="5"
+                      required
+                      disabled={formStatus === 'submitting'}
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-full"
+                    disabled={formStatus === 'submitting'}
                     style={{
-                      display: 'block',
-                      fontSize: '0.8rem',
-                      fontWeight: '600',
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      color: 'var(--text-secondary)',
-                      marginBottom: '6px',
-                      fontFamily: 'var(--font-mono)'
+                      marginTop: '8px',
+                      opacity: formStatus === 'submitting' ? 0.75 : 1,
+                      cursor: formStatus === 'submitting' ? 'not-allowed' : 'pointer'
                     }}
                   >
-                    Email Address
-                  </label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    required
-                    autoComplete="email"
-                  />
-                </div>
-                <div className="form-group">
-                  <label
-                    htmlFor="contact-message"
-                    style={{
-                      display: 'block',
-                      fontSize: '0.8rem',
-                      fontWeight: '600',
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      color: 'var(--text-secondary)',
-                      marginBottom: '6px',
-                      fontFamily: 'var(--font-mono)'
-                    }}
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    placeholder="Tell us about your partnership interest, research collaboration, or sponsorship opportunity…"
-                    rows="5"
-                    required
-                  ></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary btn-full" style={{ marginTop: '8px' }}>
-                  <i className="fa-solid fa-paper-plane" aria-hidden="true" style={{ marginRight: '8px' }} />
-                  Send Message
-                </button>
-              </form>
+                    {formStatus === 'submitting' ? (
+                      <>
+                        <i className="fa-solid fa-circle-notch fa-spin" aria-hidden="true" style={{ marginRight: '8px' }} />
+                        Sending Message...
+                      </>
+                    ) : (
+                      <>
+                        <i className="fa-solid fa-paper-plane" aria-hidden="true" style={{ marginRight: '8px' }} />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </section>
