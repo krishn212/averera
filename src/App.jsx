@@ -13,7 +13,7 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const Team = lazy(() => import('./pages/Team'));
 const Alumni = lazy(() => import('./pages/Alumni'));
 
-export default function App({ introDone }) {
+export default function App() {
   const [activePage, setActivePage] = useState(() => {
     const path = window.location.pathname;
     if (path === '/team') return 'team';
@@ -27,17 +27,7 @@ export default function App({ introDone }) {
     return savedPage || 'home';
   });
 
-  const initialTargetPage = useRef(activePage);
-  const wasInitiallyBehindIntro = useRef(!introDone);
 
-  useEffect(() => {
-    if (introDone && wasInitiallyBehindIntro.current) {
-      setActivePage(initialTargetPage.current);
-      const targetPath = initialTargetPage.current === 'home' ? '/' : `/${initialTargetPage.current}`;
-      window.history.pushState(null, '', targetPath);
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    }
-  }, [introDone]);
 
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
@@ -161,7 +151,7 @@ export default function App({ introDone }) {
     let PageComponent;
     switch (activePage) {
       case 'home':
-        PageComponent = <Home setActivePage={setActivePage} introDone={introDone} />;
+        PageComponent = <Home setActivePage={setActivePage} />;
         break;
       case 'about':
         PageComponent = <AboutUs />;

@@ -124,7 +124,7 @@ export default function Home({ setActivePage, introDone }) {
     { src: "/assets/945304_a9959891efcc470fa740e64adbfffa13~mv2.jpg",            alt: "Team Averera at Shell Eco-Marathon Asia 2019 award ceremony" },
     { src: "/assets/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.png",            alt: "Team Averera group photo at IIT BHU Varanasi campus" },
     { src: "/assets/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.jpg",            alt: "Vehicle technical inspection at Shell Eco-Marathon" },
-    { src: "/assets/945304_5a5261e22e1946228c64b92a9b4dedc3f000.avif",           alt: "Team Averera members with the SHIVAAY V1 urban concept vehicle" },
+    { src: "/assets/sem_2025_qatar.avif",                                       alt: "Team Averera at Shell Eco-Marathon Asia-Pacific 2025 in Lusail, Qatar" },
   ];
 
   // --- 1. Typewriter Effect ---

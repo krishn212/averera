@@ -156,7 +156,7 @@ export const leadership: Member[] = [
     name: "Aryan Sharma",
     photo: "/assets/team/aryan_sharma_fixed.webp",
     position: "Project Manager (Urban Concept EV)",
-    department: "Electrical Engineering",
+    department: "Mechanical Engineering",
     generation: "13",
     team: "Mechanical",
     isCurrent: true,

@@ -134,18 +134,6 @@ export default function Navbar({ activePage, setActivePage, theme, setTheme }) {
 
         {/* Right-side controls */}
         <div className="navbar-controls">
-          {/* Replay intro */}
-          <button
-            onClick={() => {
-              sessionStorage.removeItem('hasPlayedCinematic');
-              window.location.reload();
-            }}
-            className="navbar-icon-btn"
-            aria-label="Replay cinematic intro animation"
-            title="Replay Intro"
-          >
-            <i className="fa-solid fa-rotate-left" aria-hidden="true" />
-          </button>
 
           {/* Theme toggle */}
           <button
