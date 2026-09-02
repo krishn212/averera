@@ -4,6 +4,7 @@ import './index.css';
 import App from './App.jsx';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Analytics } from '@vercel/analytics/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,5 +17,6 @@ if (!root) {
 root.render(
   <StrictMode>
     <App />
+    <Analytics />
   </StrictMode>
 );
