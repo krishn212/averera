@@ -1049,7 +1049,7 @@ export default function Home({ setActivePage, introDone }) {
                 </p>
                 <p>
                   <i className="fa-solid fa-location-dot" style={{ marginRight: '8px', color: 'var(--accent-cyan)' }}></i>
-                  Team AVERERA Workshop, Indian Institute of Technology (BHU), Varanasi, Uttar Pradesh 221005, India
+                  IC engine Lab, Department of Mechanical Engineering, Indian Institute of Technology (BHU), Varanasi 221005, Uttar Pradesh, India
                 </p>
               </div>
 
@@ -1066,7 +1066,7 @@ export default function Home({ setActivePage, introDone }) {
               }}>
                 <iframe
                   title="Team AVERERA IIT BHU Location Map"
-                  src="https://maps.google.com/maps?q=Indian%20Institute%20of%20Technology%20(BHU)%20Varanasi&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=CERD,%20IIT%20BHU&t=&z=14&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{
