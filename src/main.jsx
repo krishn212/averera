@@ -5,6 +5,7 @@ import App from './App.jsx';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,5 +19,6 @@ root.render(
   <StrictMode>
     <App />
     <Analytics />
+    <SpeedInsights />
   </StrictMode>
 );
