@@ -132,7 +132,7 @@ export default function Home({ setActivePage, introDone }) {
   const textArray = [
     "Engineering The Future of Sustainable Mobility",
     "Designing Zero-Emission Electric Vehicles",
-    "Pioneering Autonomous Racing Systems",
+    "Pioneering Autonomous Systems",
     "Shaping the Next Era of Transportation"
   ];
   const badgeArray = [
