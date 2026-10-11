@@ -138,7 +138,7 @@ export default function Home({ setActivePage, introDone }) {
     },
     {
       thumb: "/assets/gallery/Indian Racing Team at Mandalika Circuit.webp",
-      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/Indian Racing Team at Mandalika Circuit.webp",
+      full: "/assets/gallery/Indian Racing Team at Mandalika Circuit.webp",
       alt: "Team Averera at Pertamina Mandalika International Circuit"
     },
     {
