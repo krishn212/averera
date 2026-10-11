@@ -116,15 +116,51 @@ export default function Home({ setActivePage, introDone }) {
   };
 
   const galleryImages = [
-    { src: "/assets/rastrapti_bhawan.avif",                                      alt: "Team Averera at Rashtrapati Bhawan, New Delhi" },
-    { src: "/assets/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.avif",           alt: "Team Averera members at Shell Eco-Marathon Asia competition" },
-    { src: "/assets/945304_f61f4de4e2cd43deb5dd01119a578a6f~mv2.avif",           alt: "SHIVAAY V1 Urban Concept vehicle on race track" },
-    { src: "/assets/945304_59d8fa4cc53340969eec6e80fb04e374~mv2.avif",           alt: "Team Averera engineering team working on vehicle subsystems" },
-    { src: "/assets/945304_644096d55870495da77834addd495b48~mv2.jpg",            alt: "Alterno V3 prototype with aerodynamic carbon fibre body" },
-    { src: "/assets/945304_a9959891efcc470fa740e64adbfffa13~mv2.jpg",            alt: "Team Averera at Shell Eco-Marathon Asia 2019 award ceremony" },
-    { src: "/assets/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.png",            alt: "Team Averera group photo at IIT BHU Varanasi campus" },
-    { src: "/assets/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.jpg",            alt: "Vehicle technical inspection at Shell Eco-Marathon" },
-    { src: "/assets/sem_2025_qatar.avif",                                       alt: "Team Averera at Shell Eco-Marathon Asia-Pacific 2025 in Lusail, Qatar" },
+    {
+      thumb: "/assets/gallery/rastrapti_bhawan.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/rastrapti_bhawan.webp",
+      alt: "Team Averera at Rashtrapati Bhawan, New Delhi"
+    },
+    {
+      thumb: "/assets/gallery/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/945304_b610bac1f4fb4cfd8be88e43edac055e~mv2.webp",
+      alt: "Team Averera members at Shell Eco-Marathon Asia competition"
+    },
+    {
+      thumb: "/assets/gallery/945304_f61f4de4e2cd43deb5dd01119a578a6f~mv2.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/945304_f61f4de4e2cd43deb5dd01119a578a6f~mv2.webp",
+      alt: "SHIVAAY V1 Urban Concept vehicle on race track"
+    },
+    {
+      thumb: "/assets/gallery/945304_59d8fa4cc53340969eec6e80fb04e374~mv2.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/945304_59d8fa4cc53340969eec6e80fb04e374~mv2.webp",
+      alt: "Team Averera engineering team working on vehicle subsystems"
+    },
+    {
+      thumb: "/assets/gallery/Indian Racing Team at Mandalika Circuit.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/Indian Racing Team at Mandalika Circuit.webp",
+      alt: "Team Averera at Pertamina Mandalika International Circuit"
+    },
+    {
+      thumb: "/assets/gallery/945304_a9959891efcc470fa740e64adbfffa13~mv2.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/945304_a9959891efcc470fa740e64adbfffa13~mv2.webp",
+      alt: "Team Averera at Shell Eco-Marathon Asia 2019 award ceremony"
+    },
+    {
+      thumb: "/assets/gallery/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/945304_c9b664e22c8d44debdb22021ffc38a9f~mv2.webp",
+      alt: "Team Averera group photo at IIT BHU Varanasi campus"
+    },
+    {
+      thumb: "/assets/gallery/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/945304_4eda23fc650e41eea26aff99f6f1a8e2~mv2.webp",
+      alt: "Vehicle technical inspection at Shell Eco-Marathon"
+    },
+    {
+      thumb: "/assets/gallery/sem_2025_qatar.webp",
+      full: "/assets/gallery/upscayl_png_upscayl-standard-4x_4x/sem_2025_qatar.webp",
+      alt: "Team Averera at Shell Eco-Marathon Asia-Pacific 2025 in Lusail, Qatar"
+    },
   ];
 
   // --- 1. Typewriter Effect ---
@@ -865,19 +901,19 @@ export default function Home({ setActivePage, introDone }) {
           {/* Pure Images Grid */}
           <div className="gallery-grid-wrapper">
             <div className="gallery-grid">
-              {galleryImages.map(({ src, alt }, idx) => (
+              {galleryImages.map((img, idx) => (
                 <div
                   key={idx}
                   className="gallery-card-glass"
-                  onClick={() => setSelectedGalleryImg(src)}
+                  onClick={() => setSelectedGalleryImg(img.full || img.thumb || img.src)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`View full size: ${alt}`}
-                  onKeyDown={(e) => e.key === 'Enter' && setSelectedGalleryImg(src)}
+                  aria-label={`View full size: ${img.alt}`}
+                  onKeyDown={(e) => e.key === 'Enter' && setSelectedGalleryImg(img.full || img.thumb || img.src)}
                 >
                   <img
-                    src={src}
-                    alt={alt}
+                    src={img.thumb || img.src}
+                    alt={img.alt}
                     loading="lazy"
                     decoding="async"
                   />
@@ -1342,13 +1378,15 @@ export default function Home({ setActivePage, introDone }) {
 
             <img
               src={selectedGalleryImg}
-              alt={galleryImages.find(g => g.src === selectedGalleryImg)?.alt || 'Team Averera gallery image'}
+              alt={galleryImages.find(g => (g.full || g.thumb || g.src) === selectedGalleryImg)?.alt || 'Team Averera gallery image'}
               style={{
-                width: '100%',
+                width: 'auto',
+                maxWidth: 'min(1200px, 94vw)',
                 maxHeight: '82vh',
                 objectFit: 'contain',
                 borderRadius: '12px',
-                display: 'block'
+                display: 'block',
+                margin: '0 auto'
               }}
             />
           </div>
