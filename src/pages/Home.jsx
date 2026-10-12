@@ -43,8 +43,9 @@ export default function Home({ setActivePage, introDone }) {
     }
   }, []);
 
-  // --- Upcoming Projects Expandable Dropdown (Urban Concept) ---
+  // --- Upcoming Projects Expandable Dropdowns (Urban Concept & Autonomous Golf Cart) ---
   const [isUcDomainsOpen, setIsUcDomainsOpen] = useState(false);
+  const [isAgcDomainsOpen, setIsAgcDomainsOpen] = useState(false);
 
   // --- Photo Gallery State ---
   const [selectedGalleryImg, setSelectedGalleryImg] = useState(null);
@@ -137,8 +138,8 @@ export default function Home({ setActivePage, introDone }) {
       alt: "Team Averera engineering team working on vehicle subsystems"
     },
     {
-      thumb: "/assets/gallery/Indian Racing Team at Mandalika Circuit.webp",
-      full: "/assets/gallery/Indian Racing Team at Mandalika Circuit.webp",
+      thumb: "/assets/945304_644096d55870495da77834addd495b48~mv2.webp",
+      full: "/assets/945304_644096d55870495da77834addd495b48~mv2.webp",
       alt: "Team Averera at Pertamina Mandalika International Circuit"
     },
     {
@@ -861,33 +862,304 @@ export default function Home({ setActivePage, introDone }) {
               </div>
             </div>
 
-            {/* Project 2: Autonomous Vehicle Project */}
-            <div className="about-card autonomy-upcoming-card" style={{
-              background: 'linear-gradient(135deg, rgba(24, 208, 219, 0.04) 0%, rgba(10, 14, 23, 0.6) 100%)',
-              border: '1px solid rgba(24, 208, 219, 0.25)',
-              borderRadius: '20px',
-              padding: '30px 35px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '12px' }}>
-                <h4 style={{ fontSize: '1.35rem', margin: 0, color: 'var(--text-primary)' }}>
-                  Autonomous Golf Cart
-                </h4>
-                <span className="autonomy-stay-tuned-badge" style={{
-                  background: 'rgba(24, 208, 219, 0.12)',
-                  color: 'var(--accent-cyan)',
-                  border: '1px solid rgba(24, 208, 219, 0.35)',
-                  fontSize: '0.75rem',
-                  fontWeight: '700',
-                  padding: '4px 12px',
-                  borderRadius: '100px',
-                  letterSpacing: '0.05em'
-                }}>
-                  STAY TUNED
-                </span>
+            {/* Project 2: Autonomous Electric Golf Cart */}
+            <div className="proposal-roadmap-banner" style={{ marginBottom: 0 }}>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '24px'
+              }}>
+                <div style={{ maxWidth: '720px' }}>
+                  <div className="proposal-badge-tag" style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '0.85rem',
+                    fontWeight: '700',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px'
+                  }}>
+                    <i className="fa-solid fa-file-lines"></i> Official R&D Roadmap
+                  </div>
+                  <h3 style={{ fontSize: '2.2rem', marginBottom: '14px', lineHeight: '1.2' }}>
+                    Autonomous Electric Golf Cart <br />
+                    <span className="logo-accent">Project Proposal (2026–2028)</span>
+                  </h3>
+                  <p style={{ fontSize: '1.05rem', lineHeight: '1.6' }}>
+                    A research and development plan transforming a standard electric golf cart into an SAE Level 4 autonomous urban pod at IIT (BHU) Varanasi, establishing Drive-by-Wire actuation, 360° sensor fusion, RTK-GNSS centimeter localization, and edge-AI compute.
+                  </p>
+                </div>
+
+                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                  <a
+                    href="mailto:averera@iitbhu.ac.in?subject=Partnership%20Inquiry%20-%20Autonomous%20Golf%20Cart"
+                    className="btn btn-glow"
+                    style={{
+                      padding: '16px 28px',
+                      fontSize: '1.05rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '10px'
+                    }}
+                  >
+                    Partner with Us <i className="fa-solid fa-handshake"></i>
+                  </a>
+                  <a
+                    href="/documents/Project%20Proposal%20Autonomous%20vehicle.pdf"
+                    download="Team_AVERERA_Autonomous_Vehicle_Proposal.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-glow"
+                    style={{
+                      padding: '16px 26px',
+                      fontSize: '1.05rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '10px'
+                    }}
+                  >
+                    Download Proposal <i className="fa-solid fa-file-pdf"></i>
+                  </a>
+                </div>
               </div>
-              <p style={{ margin: 0, maxWidth: '850px', fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>
-                Research and testing in intelligent mobility, drive-by-wire actuation, and autonomous vehicle technology.
-              </p>
+
+              {/* Quick Metrics Bar - 3 core stats */}
+              <div className="proposal-divider" style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '20px',
+                marginTop: '35px',
+                paddingTop: '25px',
+                borderTop: '1px solid rgba(255, 255, 255, 0.1)'
+              }}>
+                <div>
+                  <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>Target Autonomy</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>SAE Level 4</div>
+                </div>
+                <div>
+                  <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>R&D Scope</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>4 Strategic Domains</div>
+                </div>
+                <div>
+                  <div className="proposal-metric-title" style={{ fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '4px' }}>Timeline Horizon</div>
+                  <div className="proposal-metric-val" style={{ fontSize: '1.4rem', fontWeight: '700' }}>24 Months (4 Phases)</div>
+                </div>
+              </div>
+
+              {/* Dropdown Toggle for Strategic Research Domains */}
+              <div style={{ marginTop: '30px' }}>
+                <button
+                  type="button"
+                  onClick={() => setIsAgcDomainsOpen(!isAgcDomainsOpen)}
+                  className="project-dropdown-toggle-btn"
+                  aria-expanded={isAgcDomainsOpen}
+                >
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                    <i className="fa-solid fa-layer-group" style={{ color: 'var(--accent-cyan)' }}></i>
+                    <strong>Strategic Research Domains</strong>
+                    <span className="domains-count-badge">4 Domains</span>
+                  </span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                    <span>{isAgcDomainsOpen ? 'Hide Focus Areas' : 'Explore Focus Areas'}</span>
+                    <i
+                      className={`fa-solid fa-chevron-down dropdown-chevron ${isAgcDomainsOpen ? 'rotated' : ''}`}
+                    ></i>
+                  </span>
+                </button>
+
+                {/* Dropdown Collapsible Content */}
+                {isAgcDomainsOpen && (
+                  <div className="project-dropdown-pane" style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                    <div style={{ borderBottom: '1px solid var(--glass-border)', paddingBottom: '14px' }}>
+                      <h4 style={{ fontSize: '1.3rem', margin: '0 0 6px 0', color: 'var(--text-primary)' }}>
+                        Phase-by-Phase Experimental Testbenches
+                      </h4>
+                      <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.92rem' }}>
+                        Core technical focus areas and research infrastructure from the official project proposal.
+                      </p>
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                      {[
+                        {
+                          id: 'dbw',
+                          num: '01',
+                          title: 'Drive-by-Wire Conversion & Actuation Hardening',
+                          tag: 'Electronic Actuation & Control',
+                          icon: 'fa-microchip',
+                          summary: 'Converting the mechanical steering, braking, and propulsion systems of the base golf cart to deterministic electronic interfaces controlled via CAN-bus commands, providing sub-10 ms deterministic actuation and fail-safe manual takeover.',
+                          highlights: [
+                            'Electronic Power Steering (EPS) column and servo actuator kit',
+                            'Linear electro-hydraulic brake actuators with emergency-stop relays',
+                            'Digital throttle DAC and dual-channel CAN-to-USB deterministic interfaces',
+                            'Low-level PID/MPC torque controllers tuned across wet and dry pavement profiles'
+                          ]
+                        },
+                        {
+                          id: 'perception',
+                          num: '02',
+                          title: 'Multi-Modal Perception & 360° Sensor Fusion',
+                          tag: 'LiDAR & Vision AI',
+                          icon: 'fa-bullseye',
+                          summary: 'Providing 360-degree redundancy capable of operating in dense urban traffic, varying lighting, and adverse weather by combining primary 3D digital LiDAR, solid-state corner LiDARs, and industrial RGB-D vision cameras.',
+                          highlights: [
+                            '3D Industrial Digital LiDAR (Ouster OS0/64) for dense 360-degree point clouds',
+                            'Solid-State Perimeter LiDARs (Livox Mid-360) eliminating bumper blind spots',
+                            'Industrial RGB-D vision cameras for semantic segmentation and sign detection',
+                            'Unified probabilistic bird’s-eye-view (BEV) occupancy grid sensor fusion'
+                          ]
+                        },
+                        {
+                          id: 'localization',
+                          num: '03',
+                          title: 'Tactical Localization, Mapping & RTK-GNSS Navigation',
+                          tag: 'Centimeter Localization',
+                          icon: 'fa-location-crosshairs',
+                          summary: 'Determining position with centimeter-level precision while resisting drift when satellite signals are occluded by trees or buildings by fusing dual-antenna GNSS/INS, campus RTK-GNSS base station, wheel odometry, and LiDAR SLAM.',
+                          highlights: [
+                            'Dual-Antenna GNSS/INS (VectorNav VN-300) providing drift-free true heading',
+                            'Campus RTK-GNSS base station broadcasting corrections via NTRIP/LoRa (2–3 cm accuracy)',
+                            'High-Definition (HD) 3D point-cloud mapping generated via LIO-SAM',
+                            'GPS-denied drift bounds verified to ±5 cm using LiDAR odometry and INS fusion'
+                          ]
+                        },
+                        {
+                          id: 'compute',
+                          num: '04',
+                          title: 'Industrial Compute, Motion Planning & AI Algorithms',
+                          tag: 'Edge-AI Supercomputing',
+                          icon: 'fa-brain',
+                          summary: 'Computational engine transforming perception occupancy grids and localization coordinates into collision-free trajectories in real time, featuring 275 TOPS of edge-AI compute inside an actively cooled, vibration-proof enclosure.',
+                          highlights: [
+                            'Dual NVIDIA Jetson AGX Orin (64GB, 275 TOPS) running containerized ROS 2 nodes',
+                            'Rugged industrial automotive Ethernet switch for real-time deterministic IPC',
+                            'Model Predictive Controller (MPC) for local curvature-constrained trajectory execution',
+                            'High-fidelity digital twin simulation environment in CARLA and Gazebo'
+                          ]
+                        }
+                      ].map((domain) => (
+                        <div
+                          key={domain.id}
+                          className="about-card"
+                          onMouseMove={handleMouseMove}
+                          onMouseLeave={handleMouseLeave}
+                          style={{
+                            width: '100%',
+                            padding: '28px 30px',
+                            borderRadius: '16px',
+                            textAlign: 'left',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '16px'
+                          }}
+                        >
+                          <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+
+                          <div style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            gap: '14px',
+                            paddingBottom: '14px',
+                            borderBottom: '1px solid var(--glass-border)'
+                          }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                              <span style={{
+                                fontFamily: 'var(--font-mono, monospace)',
+                                color: 'var(--badge-color)',
+                                fontSize: '1.25rem',
+                                fontWeight: '800'
+                              }}>
+                                {domain.num}
+                              </span>
+                              <h5 style={{
+                                fontSize: '1.3rem',
+                                margin: 0,
+                                fontWeight: '700',
+                                letterSpacing: '-0.01em',
+                                color: 'var(--text-primary)'
+                              }}>
+                                {domain.title}
+                              </h5>
+                            </div>
+
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                              <span style={{
+                                background: 'var(--badge-bg)',
+                                color: 'var(--badge-color)',
+                                border: 'var(--badge-border)',
+                                borderRadius: '100px',
+                                padding: '5px 14px',
+                                fontSize: '0.78rem',
+                                fontWeight: '600',
+                                letterSpacing: '0.04em'
+                              }}>
+                                <i className={`fa-solid ${domain.icon}`} style={{ marginRight: '6px' }}></i>
+                                {domain.tag}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                            gap: '24px',
+                            alignItems: 'start'
+                          }}>
+                            <div>
+                              <p style={{
+                                fontSize: '0.98rem',
+                                lineHeight: '1.7',
+                                color: 'var(--text-secondary)',
+                                margin: 0
+                              }}>
+                                {domain.summary}
+                              </p>
+                            </div>
+
+                            <div style={{
+                              background: 'rgba(255, 255, 255, 0.03)',
+                              border: '1px solid var(--glass-border)',
+                              borderRadius: '12px',
+                              padding: '18px 22px',
+                              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+                            }}>
+                              <div style={{
+                                fontSize: '0.8rem',
+                                fontWeight: '700',
+                                marginBottom: '10px',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.08em',
+                                color: 'var(--badge-color)'
+                              }}>
+                                Key Deliverables
+                              </div>
+                              <ul style={{
+                                paddingLeft: '16px',
+                                fontSize: '0.88rem',
+                                lineHeight: '1.6',
+                                margin: 0,
+                                color: 'var(--text-secondary)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '8px'
+                              }}>
+                                {domain.highlights.map((h, i) => (
+                                  <li key={i} style={{ listStyleType: 'disc' }}>{h}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
@@ -1331,8 +1603,8 @@ export default function Home({ setActivePage, introDone }) {
           <div
             style={{
               position: 'relative',
-              maxWidth: '1050px',
-              width: '100%',
+              maxWidth: 'min(1200px, 94vw)',
+              width: 'fit-content',
               maxHeight: '92vh',
               display: 'flex',
               alignItems: 'center',
@@ -1380,8 +1652,9 @@ export default function Home({ setActivePage, introDone }) {
               src={selectedGalleryImg}
               alt={galleryImages.find(g => (g.full || g.thumb || g.src) === selectedGalleryImg)?.alt || 'Team Averera gallery image'}
               style={{
-                width: 'auto',
-                maxWidth: 'min(1200px, 94vw)',
+                width: 'min(1100px, 92vw)',
+                height: 'auto',
+                maxWidth: '100%',
                 maxHeight: '82vh',
                 objectFit: 'contain',
                 borderRadius: '12px',
