@@ -1105,6 +1105,22 @@ nav ul li a.active {
   gap: 25px;
 }
 
+.mentors-grid-bottom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 800px;
+  margin: 25px auto 0 auto;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .mentors-grid-bottom {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+}
+
 .about-card {
   padding: 35px;
 }

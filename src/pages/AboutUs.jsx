@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import priyaImg from '../assets/eee_faculty_shyam.avif';
 import marcusImg from '../assets/eee_faculty_sandip.avif';
 import liImg from '../assets/mec_faculty_amitesh.avif';
+import tirkeyImg from '../assets/mec_faculty_tirkey.webp';
+import shuklaImg from '../assets/mec_faculty_shukla.webp';
 import gytiImg from '../assets/gyti_award.webp';
 import semImg from '../assets/sem_championship.webp';
 import oimtImg from '../assets/oimt_grant.webp';
@@ -374,6 +376,169 @@ export default function AboutUs() {
             <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
               <a href="https://scholar.google.com/citations?user=pC__275a9wAutfkat4HBPfFv9W_tmVzPq90yBzS_iE6V4meBFskMz-qM2NX9g_eYwSn7BUdqCRoFzs3nuaIJ-IrwwyhdCJlSeIrxVovAsmSkTzy19SHoGVVTnBqO-GfXM1zUJa5EdFMqakrTkslGxYSY" target="_blank" rel="noopener noreferrer" title="Google Scholar" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-graduation-cap"></i></a>
               <a href="mailto:amitesh.mec@iitbhu.ac.in" title="Email" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Row: 2 Mentors */}
+        <div className="mentors-grid-bottom">
+          {/* Card 4 */}
+          <div
+            className="about-card"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ textAlign: 'center', padding: '35px 25px' }}
+          >
+            <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
+              <img
+                src={tirkeyImg}
+                alt="Dr. Jeewan Vachan Tirkey"
+                width="130"
+                height="130"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(0,255,255,0.25)',
+                  boxShadow: '0 0 20px rgba(0,255,255,0.1)'
+                }}
+              />
+              <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+            </div>
+            <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
+              Mechanical Engineering
+            </div>
+            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Jeewan Vachan Tirkey</h4>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 16px 0' }}>
+              Professor<br />
+              Dept. of Mechanical Engg.<br />
+              IIT (BHU) Varanasi
+            </p>
+
+            {/* Research Domains (Google Scholar) */}
+            <div style={{
+              textAlign: 'left',
+              margin: '0 0 20px 0',
+              padding: '12px 14px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '8px',
+              border: '1px solid var(--glass-border)'
+            }}>
+              <div style={{
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--accent-cyan)',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <i className="fa-solid fa-graduation-cap" style={{ fontSize: '0.75rem' }}></i>
+                Research Domains
+              </div>
+              <ul style={{
+                margin: 0,
+                paddingLeft: '18px',
+                fontSize: '0.78rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.55'
+              }}>
+                <li>Internal Combustion Engine Simulation</li>
+                <li>Alternate Fuel for Engines</li>
+                <li>Renewable Energy & Gasification</li>
+                <li>Life Cycle Assessment (LCA)</li>
+              </ul>
+            </div>
+
+            <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
+              <a href="https://scholar.google.com/citations?hl=en&user=gGngANsAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener noreferrer" title="Google Scholar" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-graduation-cap"></i></a>
+              <a href="mailto:jvtirkey.mec@iitbhu.ac.in" title="Email: jvtirkey.mec@iitbhu.ac.in" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              <a href="tel:+919415450968" title="Phone: 9415450968 / 9648126644" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-phone"></i></a>
+            </div>
+          </div>
+
+          {/* Card 5 */}
+          <div
+            className="about-card"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ textAlign: 'center', padding: '35px 25px' }}
+          >
+            <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
+              <img
+                src={shuklaImg}
+                alt="Dr. Shailendra K. Shukla"
+                width="130"
+                height="130"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(0,255,255,0.25)',
+                  boxShadow: '0 0 20px rgba(0,255,255,0.1)'
+                }}
+              />
+              <div className="card-decor-corners" style={{ opacity: 1 }}></div>
+            </div>
+            <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
+              Mechanical Engineering
+            </div>
+            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Shailendra K. Shukla</h4>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 16px 0' }}>
+              Professor<br />
+              Dept. of Mechanical Engg.<br />
+              IIT (BHU) Varanasi
+            </p>
+
+            {/* Research Domains (Google Scholar) */}
+            <div style={{
+              textAlign: 'left',
+              margin: '0 0 20px 0',
+              padding: '12px 14px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '8px',
+              border: '1px solid var(--glass-border)'
+            }}>
+              <div style={{
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--accent-cyan)',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <i className="fa-solid fa-graduation-cap" style={{ fontSize: '0.75rem' }}></i>
+                Research Domains
+              </div>
+              <ul style={{
+                margin: 0,
+                paddingLeft: '18px',
+                fontSize: '0.78rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.55'
+              }}>
+                <li>Solar Energy</li>
+                <li>Thermal Engineering</li>
+                <li>I.C. Engines</li>
+                <li>Heat Transfer</li>
+              </ul>
+            </div>
+
+            <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
+              <a href="https://scholar.google.com/citations?user=62ETN78AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-graduation-cap"></i></a>
+              <a href="mailto:skshukla.mec@iitbhu.ac.in" title="Email: skshukla.mec@iitbhu.ac.in" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              <a href="tel:+919450011123" title="Phone: 09450011123" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-phone"></i></a>
             </div>
           </div>
         </div>
