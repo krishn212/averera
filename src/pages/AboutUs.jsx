@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import priyaImg from '../assets/priya_anand.webp';
-import marcusImg from '../assets/marcus_webb.webp';
-import liImg from '../assets/li_yuen.webp';
+import priyaImg from '../assets/eee_faculty_shyam.avif';
+import marcusImg from '../assets/eee_faculty_sandip.avif';
+import liImg from '../assets/mec_faculty_amitesh.avif';
 import gytiImg from '../assets/gyti_award.webp';
 import semImg from '../assets/sem_championship.webp';
 import oimtImg from '../assets/oimt_grant.webp';
@@ -44,7 +44,7 @@ export default function AboutUs() {
           <span className="logo-accent">“Leave the world better than you found it.”</span>
         </h2>
         <p style={{ maxWidth: '720px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>
-          At Team AVERERA, we are doing our bit to make the world a better place through the Shell Eco-marathon — transforming electric mobility in India through hyper-efficient propulsion and intelligent autonomy.
+          At Team AVERERA (Alternative Vehicle Energy Research: Efficiency, Reliability and Autonomy), we are doing our bit to make the world a better place through the Shell Eco-marathon — transforming electric mobility in India through hyper-efficient propulsion and intelligent autonomy.
         </p>
       </section>
 
@@ -149,7 +149,7 @@ export default function AboutUs() {
             <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
               <img
                 src={priyaImg}
-                alt="Dr. Priya Anand"
+                alt="Dr. Shyam Kamal"
                 width="130"
                 height="130"
                 loading="lazy"
@@ -166,15 +166,56 @@ export default function AboutUs() {
               <div className="card-decor-corners" style={{ opacity: 1 }}></div>
             </div>
             <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
-              Mechanical & Aerospace
+              Electrical Engineering
             </div>
-            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Priya Anand</h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-              Specializes in structural composites and aerodynamic design optimization.
+            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Shyam Kamal</h4>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 16px 0' }}>
+              Associate Professor<br />
+              Dept. of Electrical Engg.<br />
+              IIT (BHU) Varanasi
             </p>
+
+            {/* Research Domains (Google Scholar) */}
+            <div style={{
+              textAlign: 'left',
+              margin: '0 0 20px 0',
+              padding: '12px 14px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '8px',
+              border: '1px solid var(--glass-border)'
+            }}>
+              <div style={{
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--accent-cyan)',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <i className="fa-solid fa-graduation-cap" style={{ fontSize: '0.75rem' }}></i>
+                Research Domains
+              </div>
+              <ul style={{
+                margin: 0,
+                paddingLeft: '18px',
+                fontSize: '0.78rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.55'
+              }}>
+                <li>Control Theory</li>
+                <li>Control Engineering</li>
+                <li>Quantum Control</li>
+                <li>Sliding Mode Control</li>
+              </ul>
+            </div>
+
             <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
-              <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
-              <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              <a href="https://scholar.google.co.in/citations?user=N5BEZM4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-graduation-cap"></i></a>
+              <a href="https://www.linkedin.com/in/dr-shyam-kamal-9b750b98/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+              <a href="mailto:shyamkamal.eee@iitbhu.ac.in" title="Email" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
             </div>
           </div>
 
@@ -188,7 +229,7 @@ export default function AboutUs() {
             <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
               <img
                 src={marcusImg}
-                alt="Prof. Marcus Webb"
+                alt="Dr. Sandip Ghosh"
                 width="130"
                 height="130"
                 loading="lazy"
@@ -205,15 +246,55 @@ export default function AboutUs() {
               <div className="card-decor-corners" style={{ opacity: 1 }}></div>
             </div>
             <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px', borderColor: 'rgba(16,185,129,0.2)', color: 'var(--accent-green)' }}>
-              Autonomous Systems
+              Electrical Engineering
             </div>
-            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Prof. Marcus Webb</h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-              Leads research in sensor fusion algorithms and vehicle autonomy.
+            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Sandip Ghosh</h4>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 16px 0' }}>
+              Associate Professor<br />
+              Dept. of Electrical Engg.<br />
+              IIT (BHU) Varanasi
             </p>
+
+            {/* Research Domains (Google Scholar) */}
+            <div style={{
+              textAlign: 'left',
+              margin: '0 0 20px 0',
+              padding: '12px 14px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '8px',
+              border: '1px solid var(--glass-border)'
+            }}>
+              <div style={{
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--accent-cyan)',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <i className="fa-solid fa-graduation-cap" style={{ fontSize: '0.75rem' }}></i>
+                Research Domains
+              </div>
+              <ul style={{
+                margin: 0,
+                paddingLeft: '18px',
+                fontSize: '0.78rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.55'
+              }}>
+                <li>Robust and Delay Systems</li>
+                <li>Control of Electrical Machines and Power Systems</li>
+                <li>Battery Management Systems</li>
+              </ul>
+            </div>
+
             <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
-              <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
-              <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              <a href="https://scholar.google.com/citations?user=AUZIYQH1s5dAvB6XQO4LTrxFOapRQLU2mECW8DgvWx_BGGlu2zBMkI_NXHnvej364YERwRTpu8cgsGfjuczQhrPu1_2pZsHJi-tnCNpxP0kWwPnWUO412TD-8--hMmJdg6B1XHBnlxolG9GdSp8qr4g3tu95QmE=" target="_blank" rel="noopener noreferrer" title="Google Scholar" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-graduation-cap"></i></a>
+              <a href="https://www.linkedin.com/in/sandip-ghosh-b3269614/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
+              <a href="mailto:sghosh.eee@iitbhu.ac.in" title="Email" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
             </div>
           </div>
 
@@ -227,7 +308,7 @@ export default function AboutUs() {
             <div className="mentor-img-wrapper" style={{ position: 'relative', width: '130px', height: '130px', margin: '0 auto 20px auto' }}>
               <img
                 src={liImg}
-                alt="Dr. Li Yuen"
+                alt="Dr. Amitesh Kumar"
                 width="130"
                 height="130"
                 loading="lazy"
@@ -244,15 +325,55 @@ export default function AboutUs() {
               <div className="card-decor-corners" style={{ opacity: 1 }}></div>
             </div>
             <div className="badge-glass" style={{ fontSize: '0.75rem', padding: '4px 10px', marginBottom: '10px' }}>
-              Power & Battery systems
+              Mechanical Engineering
             </div>
-            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Li Yuen</h4>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 20px 0' }}>
-              Focuses on custom BMS safety circuits and electric powertrains.
+            <h4 style={{ fontSize: '1.2rem', margin: '0 0 6px 0' }}>Dr. Amitesh Kumar</h4>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '0 0 16px 0' }}>
+              Assistant Professor<br />
+              Dept. of Mechanical Engg.<br />
+              IIT (BHU) Varanasi
             </p>
+
+            {/* Research Domains (Google Scholar) */}
+            <div style={{
+              textAlign: 'left',
+              margin: '0 0 20px 0',
+              padding: '12px 14px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '8px',
+              border: '1px solid var(--glass-border)'
+            }}>
+              <div style={{
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--accent-cyan)',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <i className="fa-solid fa-graduation-cap" style={{ fontSize: '0.75rem' }}></i>
+                Research Domains
+              </div>
+              <ul style={{
+                margin: 0,
+                paddingLeft: '18px',
+                fontSize: '0.78rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.55'
+              }}>
+                <li>Computational Fluid Dynamics (CFD)</li>
+                <li>Turbulent Flow</li>
+                <li>High Mach Number Flows</li>
+                <li>Cryotherapy</li>
+              </ul>
+            </div>
+
             <div className="socials" style={{ gap: '10px', justifyContent: 'center' }}>
-              <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-brands fa-linkedin"></i></a>
-              <a href="#" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
+              <a href="https://scholar.google.com/citations?user=pC__275a9wAutfkat4HBPfFv9W_tmVzPq90yBzS_iE6V4meBFskMz-qM2NX9g_eYwSn7BUdqCRoFzs3nuaIJ-IrwwyhdCJlSeIrxVovAsmSkTzy19SHoGVVTnBqO-GfXM1zUJa5EdFMqakrTkslGxYSY" target="_blank" rel="noopener noreferrer" title="Google Scholar" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-graduation-cap"></i></a>
+              <a href="mailto:amitesh.mec@iitbhu.ac.in" title="Email" style={{ fontSize: '0.95rem' }}><i className="fa-solid fa-envelope"></i></a>
             </div>
           </div>
         </div>
